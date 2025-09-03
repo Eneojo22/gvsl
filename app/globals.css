@@ -3,18 +3,16 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-poppins: 'Poppins', sans-serif;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-poppins);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    /* --background: #171717; */
     --foreground: #ededed;
   }
 }
@@ -22,5 +20,22 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-poppins); /* Apply Poppins globally */
+}
+
+.font-sans {
+  font-family: var(--font-poppins);
+}
+.bobi{
+  /* border: 3px solid rgb(255, 0, 0); */
+}
+.bobi2{
+  /* border: 1px solid blue; */
+}
+ul li{
+  list-style: none;
+}
+
+.logo{
+  /* font-size: 20px; */
 }
