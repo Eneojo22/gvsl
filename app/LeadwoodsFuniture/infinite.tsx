@@ -61,14 +61,15 @@ interface ProductCardProps {
   image: string;
   title: string;
   price: string;
-  oldPrice?: string;
+  category: string;
+  // oldPrice?: string;
 }
 
 export default function ProductCard({
   image,
   title,
   price,
-  oldPrice,
+  // oldPrice,
 }: ProductCardProps) {
   return (
     <motion.div
@@ -76,10 +77,10 @@ export default function ProductCard({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       whileHover={{ scale: 1.05 }}
-      className="shadow-md rounded-xl  p-4 flex flex-col items-center cursor-pointer"
+      className="shadow-md rounded-xl border-2  p-4 flex flex-col items-center  cursor-pointer"
     >
       {/* Product Image */}
-      <div className="w-full h-100 bg-white relative">
+      <div className="w-full h-100 border-5 text-white  bg-white relative">
         <Image
           src={image}
           alt={title}
@@ -91,12 +92,12 @@ export default function ProductCard({
 
       {/* Product Info */}
       <div className="text-center mt-4">
-        <h3 className="text-base font-semibold text-gray-800">{title}</h3>
-        <p className="text-green-600 font-bold">{price}</p>
-        {oldPrice && (
-          <p className="text-sm text-gray-400 line-through">{oldPrice}</p>
-        )}
-      </div>
+        <h3 className="text-base font-semibold text-amber-50">{title}</h3>
+        <p className="text-white font-bold">{price}</p>
+         <button className="mt-3 w-full bg-[#ca430d] text-white py-2 rounded-lg hover:bg-green-700 transition">
+            Order Now</button>
+    
+        </div>
     </motion.div>
   );
 }
@@ -120,7 +121,8 @@ export  function ChatWidget() {
 
   return (
     <div className="fixed bottom-6 right-6 flex items-center space-x-2 z-50">
-      <div className="bg-white text-sm rounded-md shadow-md px-3 py-2">
+      <div className="bg- text-sm rounded-md shadow-md px-3 py-2">
+        
         Need Help? <span className="text-blue-600 font-medium cursor-pointer">Chat with us</span>
       </div>
       <button

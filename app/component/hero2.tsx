@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, Variants, easeOut } from "framer-motion";
 import { FaCarSide, FaPassport, FaSearch, FaMoneyBillWave } from "react-icons/fa";
 
 interface Service {
@@ -15,47 +15,24 @@ interface ServicesRowProps {
   services: Service[];
 }
 
-const servicesData: Service[] = [
-  {
-    title: "mobility",
-    bgImage: "/image/last.jpg",
-    icon: <FaCarSide size={48} className="text-black opacity-90" />,
-  },
-  {
-    title: "immigration",
-    bgImage: "/image/immigration.jpg",
-    icon: <FaPassport size={48} className="text-black opacity-90" />,
-  },
-  {
-    title: "Our Homes",
-    bgImage: "/image/homes.jpg",
-    icon: <FaSearch size={48} className="text-white opacity-90" />,
-  },
-  {
-    title: "remuneration",
-    bgImage: "/path/to/remuneration-man-baking.jpg",
-    icon: <FaMoneyBillWave size={48} className="text-white opacity-90" />,
-  },
-];
-
-const itemVariants = {
-  hidden: { opacity: 0, x: 50 }, // slide in from right
+// ✅ Animation variants with TypeScript-friendly easing
+const itemVariants: Variants = {
+  hidden: { opacity: 0, x: 50 },
   visible: (i: number) => ({
     opacity: 1,
     x: 0,
     transition: {
-      delay: i * 0.2, // stagger
-      duration: 0.10,
-      ease: "easeOut",
+      delay: i * 0.2,
+      duration: 0.4,
+      ease: easeOut,
     },
   }),
 };
 
 const ServicesRow: React.FC<ServicesRowProps> = ({ services }) => {
- 
   return (
     <motion.div
-      className="  flex justify-around w-full py-10 h-auto flex-wrap gap-6"
+      className="flex justify-around w-full py-10 h-auto flex-wrap gap-6"
       initial="hidden"
       animate="visible"
     >
@@ -66,11 +43,11 @@ const ServicesRow: React.FC<ServicesRowProps> = ({ services }) => {
           variants={itemVariants}
           custom={index}
         >
-          {/* Main circular image with hover animation */}
+          {/* Circular image with hover effect */}
           <motion.div
             whileHover={{ scale: 1.05, rotate: 3 }}
             transition={{ type: "spring", stiffness: 300 }}
-            className="w-100 h-100 rounded-full overflow-hidden relative shadow-lg"
+            className="relative w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden shadow-lg"
           >
             <Image
               src={service.bgImage}
@@ -78,23 +55,34 @@ const ServicesRow: React.FC<ServicesRowProps> = ({ services }) => {
               fill
               className="object-cover"
             />
+
             {/* Blur overlay */}
-            <div className="absolute inset-0 backdrop-blur-sm bg-white/20 flex items-center justify-center opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-              <span className="text-white text-lg font-semibold bg-amber-200 p-5 pointer-coarse:">
-                Read More .............................
+            <div className="absolute inset-0 backdrop-blur-sm bg-black/30 flex items-center justify-center opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+              <span className="text-black text-lg font-semibold bg-amber-200 px-4 py-2 rounded-lg shadow">
+                Read More →
               </span>
             </div>
           </motion.div>
 
-          {/* Icon */}
-          <div className="mt-3 flex justify-center">{service.icon}</div>
+          {/* Icon with hover scale */}
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            className="mt-3 flex justify-center"
+          >
+            {service.icon}
+          </motion.div>
 
           {/* Title */}
-          <p className="text-[#b95715] text-xl mt-2 font-bold">{service.title}</p>
+          <motion.p
+            whileHover={{ color: "#b95715" }}
+            className="text-neutral-800 dark:text-white text-xl mt-2 font-bold"
+          >
+            {service.title}
+          </motion.p>
         </motion.div>
       ))}
     </motion.div>
   );
 };
 
-
+export default ServicesRow;

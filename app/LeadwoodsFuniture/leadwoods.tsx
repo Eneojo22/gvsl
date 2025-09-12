@@ -1,10 +1,19 @@
 "use client"
 import Image from "next/image";
+import { useState } from "react";
+import { products } from "./product";
 import { InfiniteMovingCard } from "./infinite";
-// import { Products } from "./infinite";
-import { Products } from "../component/products";
+// import { Products } from "../component/products";
 import ProductCard from "./infinite";
 export default function Herowood() {
+
+ const [query, setQuery] = useState("");
+
+  const filteredProducts = products.filter((product) =>
+    product.name.toLowerCase().includes(query.toLowerCase())
+  );
+
+
   return (
     <>
     <section className="mt-40  relative h-200 flex flex-col justify-between">
@@ -14,7 +23,7 @@ export default function Herowood() {
         alt="Hero Background"
         fill
         priority
-        className="object-cover object-center "
+        className="object-cover object-center"
       />
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/30" />
@@ -56,6 +65,8 @@ export default function Herowood() {
       <input
         type="text"
         placeholder="Search..."
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
         className="border rounded-l-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-gray-400 text-black"
       />
       <button className="bg-black text-white px-4 py-2 rounded-r-md hover:bg-gray-700">
@@ -63,18 +74,27 @@ export default function Herowood() {
       </button>
     </div>
   </div>
-    {/* </div> */}
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:bg-[#000000] md:pt-10">
-      {Products.map((p, i) => (
-        <ProductCard
-          key={i}
-          image={p.image}
-          title={p.title}
-          price={p.price}
-          oldPrice={p.oldPrice}
+  <div className="grid  grid-cols-1   gap-8 md:bg-[#09031b] md:pt-10">
+{filteredProducts.length > 0 ? (
+  <div className="grid grid-cols-1 sm:grid-cols-2  md:grid-cols-4   gap-8">
+    {filteredProducts.map((product) => (
+      <div key={product.id}>
+      <ProductCard
+        image={product.image}
+        title={product.name}
+        price={product.price}
+        category={product.category}
+        
+        
         />
-      ))}
-    </div>
-    </>
+      </div>
+    ))}
+  </div>
+) : (
+  <p className="text-center text-gray-500 text-lg">No results found.</p>
+)}
+
+    </div>   
+     </>
   );
 }

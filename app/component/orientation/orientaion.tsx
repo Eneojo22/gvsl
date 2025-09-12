@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-// import { calsans } from "@/fonts/calsans";
-import { Cal_Sans } from "next/font/google";
+
+import Image from "next/image";
 
 import { twMerge } from "tailwind-merge";
 // import { TracingBeam } from "../ui/tracing-beam";
@@ -16,7 +16,7 @@ export function TracingBm() {
         {Content.map((item, index) => (
           <div key={`content-${index}`} className="mb-10">
             <h2 className="bg-black text-white rounded-full text-sm w-fit px-4 py-1 mb-4">
-              {item.badge}
+              {/* {item.} */}
             </h2>
 
             <p className= "text-xl mb-4">
@@ -25,7 +25,7 @@ export function TracingBm() {
 
             <div className="text-sm  prose prose-sm dark:prose-invert">
               {item?.image && (
-                <img
+                <Image
                   src={item.image}
                   alt="blog thumbnail"
                   height="1000"

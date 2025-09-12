@@ -112,8 +112,8 @@ const HeroSection: React.FC = () => {
 
   const currentMessage = heroMessages[currentMessageIndex];
 
-  return (
-    <section className="text-white md:h-dvh flex  items-center relative  bg-gradient-to-r from-[#000000] to-[#868585]">
+return (
+    <section className="text-white h-dvh flex  items-center relative  bg-gradient-to-r from-[#000000] to-[#868585]">
       {/* Background Image Blend */}
       <div className={`absolute inset-0 opacity-50 transition-opacity duration-1000 ${isTransitioning ? 'opacity-0' : 'opacity-50'}`}>
         <Image
@@ -134,8 +134,8 @@ const HeroSection: React.FC = () => {
         <p className="text-lg  text-center pb-3.5 mb-6 animate-fade">
           {currentMessage.description}
         </p>
-        <button className="bg-[#c93e08] text-[#fff]  font-semibold py-5 px-8 rounded  transition animate-fade">
-          {currentMessage.cta} &gt;
+        <button className="bg-[#fff] text-[#c93e08] text-2xl font-semibold py-7 px-10 rounded  transition animate-fade">
+          {currentMessage.cta} 
         </button>
       </div>
 

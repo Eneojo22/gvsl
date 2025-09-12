@@ -1,5 +1,5 @@
 import React from 'react'
-import { Hero } from '../airportmeetandgreet/iairportmeetandgreet'
+import { Hero } from '../airportmeetandgreet/airportmeetandgreet'
 // import { CheckCircle } from "lucide-react";
 import { BiCheckbox } from 'react-icons/bi';
 const Departure = () => {

@@ -12,14 +12,16 @@ export default function ContactForm() {
     agree: false,
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-  };
-
+ const handleChange = (
+  e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+) => {
+  const { name, value, type } = e.currentTarget;
+  const checked = (e.currentTarget as HTMLInputElement).checked;
+  setFormData((prev) => ({
+    ...prev,
+    [name]: type === "checkbox" ? checked : value,
+  }));
+};
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
@@ -60,10 +62,11 @@ export default function ContactForm() {
           <div className="flex gap-4">
             <input
               type="text"
-              name="firstName"
-              placeholder="First Name"
-              value={formData.firstName}
-              onChange={handleChange}
+                name="firstName"
+                placeholder="First Name"
+                value={formData.firstName}
+                onChange={handleChange}
+                required
               className="w-1/2 p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring focus:ring-gray-600"
             />
             <input
@@ -94,18 +97,20 @@ export default function ContactForm() {
             className="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring focus:ring-gray-600"
           />
 
-          <select
-            name="role"
-            value={formData.role}
-            onChange={handleChange}
-            className="w-full p-3 rounded-lg bg-gray-800 text-gray-400 border border-gray-700 focus:outline-none focus:ring focus:ring-gray-600"
-          >
-            <option value="">Which best describes you?</option>
-            <option value="developer">Investor</option>
-            <option value="designer">Tourist</option>
-            <option value="business">Business Owner</option>
-            <option value="student">Student</option>
-          </select>
+         <select
+         name="role"
+         value={formData.role}
+          onChange={handleChange}
+          className="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring focus:ring-gray-600"
+        >
+          <option value="" disabled hidden>
+           Which best describes you?
+          </option>
+          <option value="investor">Investor</option>
+          <option value="tourist">Tourist</option>
+          <option value="business">Business Owner</option>
+          <option value="student">Student</option>
+        </select>
 
           <textarea
             name="message"
@@ -116,13 +121,13 @@ export default function ContactForm() {
           />
 
           <label className="flex items-center space-x-2 text-sm">
-            <input
-              type="checkbox"
-              name="agree"
-              checked={formData.agree}
-              onChange={handleChange}
-              className="w-4 h-4 text-[#dd5500] bg-gray-800 border-gray-700 rounded"
-            />
+           <input
+            type="checkbox"
+            name="agree"
+            checked={formData.agree}
+                onChange={handleChange}
+            className="w-4 h-4 accent-[#dd5500] bg-gray-800 border-gray-700 rounded"
+          />
             <span className="text-white">
               I agree to GVSSL <a href="#" className="text-[#dd5500] "> Terms of Use </a> and{" "}
               <a href="#" className="text-[#dd5500]">Privacy Policy</a>
@@ -131,10 +136,12 @@ export default function ContactForm() {
 
           <button
             type="submit"
-            className="w-full bg-[#dd5500] text-white font-semibold py-3 rounded-lg hover:bg-[#dd5500] 0 transition"
-          >
-            Submit
-          </button>
+          disabled={!formData.agree}
+         className={`w-full font-semibold py-3 rounded-lg transition 
+            ${formData.agree ? "bg-[#dd5500] text-white hover:bg-[#c54400]" : "bg-gray-600 text-gray-300 cursor-not-allowed"}`}
+        >
+  Submit
+</button>
         </form>
       </div>
     </div>

@@ -37,8 +37,10 @@ export default function RootLayout({
       {/* <div className="mt-16"> */}
         {children} 
       {/* </div> */}
-       
+       <footer >
         <Footer/>
+       </footer>
+        
       </body>
      
     </html>

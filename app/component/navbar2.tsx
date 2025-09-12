@@ -14,7 +14,7 @@ const montserrat = Montserrat({
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState<number | null>(null);
+ const [openDropdown, setOpenDropdown] = useState<number | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
@@ -29,13 +29,13 @@ export default function Navbar() {
 
   const navLinks = [
   {
-    href: "#",
+    href: "/aboutUs",
     label: "ABOUT US ",
     dropdown: [
-      { name: "Company Information", href: "/about-us/item1" },
-      { name: "Team Info", href: "/about-us/item1" },
-      { name: "Events", href: "/about-us/item2" },
-      { name: "Testimonials", href: "/about-us/item3" },
+      { name: "Company Information", href: "/aboutUs/companyInformation" },
+      { name: "Team Info", href: "/aboutUs/teamInfo" },
+      { name: "Events", href: "/aboutUs/Event" },
+      { name: "Testimonials", href: "/aboutUs/Testimonials" },
     ],
   },
   {
@@ -45,9 +45,6 @@ export default function Navbar() {
     dropdown: [
       { name: "Orientation", href: "/component/orientation" },
       { name: "Airport Meet and Greet", href: "/component/airportmeetandgreet" },
-      // { name: "Short-term Housing", href: "/services/item3" },
-      // { name: "Home Search", href: "/servieces/leadwoodsHomes" },
-      // { name: "Educational Assistance", href: "/services/item5" },
       { name: "LeadsWoods Home", href: "/component/ourapartment" },
       { name: "LeadsWoods Furniture", href: "/LeadwoodsFuniture" },
       { name: "Settling-in", href: "/services/item7" },
@@ -105,11 +102,12 @@ export default function Navbar() {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex space-x-6 text-sm">
-          {navLinks.map(({ href, label, highlight, dropdown }) => (
-            <div key={href} className="relative group text-[#000000]">
+         {navLinks.map(({ href, label, dropdown }, index) => (
+        <div key={`${href}-${index}`} className="relative group text-[#000000]">
+
               {/* <Link key={i} href={normalizePath(href)}></Link> */}
               <Link href={normalizePath(href)}
-                className={`hover:text-[#cf6c3d] ${highlight ? "font-bold " : ""}
+                className={`hover:text-[#cf6c3d] ${ "font-bold "}
                 ${isScrolled ? "text-[#ffffff] font-bold":""}
                 
                 `}
@@ -168,13 +166,16 @@ export default function Navbar() {
         }`}
       >
         <div className="flex flex-col text-sm px-6 py-4 bg-white shadow-lg">
-          {navLinks.map(({ href, label, highlight, dropdown }, idx) => (
-            <div key={href} className="border-b border-gray-200 py-2">
+          {/* {navLinks.map(({ href, label, highlight, dropdown }, idx) => (
+            <div key={href} className="border-b border-gray-200 py-2"> */}
+              {navLinks.map(({ href, label,  dropdown }, idx) => (
+  <div key={`${href}-${idx}`} className="border-b border-gray-200 py-2">
+
               <div className="flex justify-between items-center text-black">
                 <Link
                   href={href}
                   className={`${
-                    highlight ? "font-medium" : ""
+                     "font-medium" 
                   }`}
                 >
                   {label}
@@ -184,6 +185,7 @@ export default function Navbar() {
                         onClick={() =>
                           setOpenDropdown(openDropdown === idx ? null : idx)
                         }
+   
                         className="text-black transform transition-transform duration-300"
                       >
                         <HiPlus
