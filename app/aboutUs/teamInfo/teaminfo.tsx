@@ -19,22 +19,23 @@ const Company = () => {
                   height="h-[30vh]"
           
           />
-
+{/* why then how */}
+{/* What will i do if i know i cant fail */}
             <div className='w-full text-center p-6 md:text-5xl text-3xl font-bold'>Meet Our team</div>
             
             <div>
-             <CompanyInfo name='Godwin Ezeani' workTitle='Managing Director' image='/image/picpic.jpg'  details='With over 15 years of experience in the relocation industry, Godwin has a deep understanding of the challenges and opportunities 
-            that come with moving to a new country. He is passionate about helping clients navigate the complexities of international relocation and is committed to providing exceptional service and support throughout the entire process.'
+             <CompanyInfo name='Godwin Akuetiemhe' workTitle='Managing Director' image='/image/picpic.jpg'  
+             details='Godwin Akuetiemhe is the Managing Director of G&V Support Services, providing strategic leadership and driving the company’s vision for growth and excellence. With a wealth of experience and a results-driven mindset, he ensures that GVSS delivers outstanding value to clients while fostering innovation, efficiency, and long-term success.'
             />
           
-            <CompanyInfo name='Godwin Ezeani' workTitle='Human Resources' image='/image/picpic.jpg' details='With over 15 years of experience in the relocation industry, Godwin has a deep understanding of the challenges and opportunities 
-            that come with moving to a new country. He is passionate about helping clients navigate the complexities of international relocation and is committed to providing exceptional service and support throughout the entire process.'
+            <CompanyInfo name='Abiodun Akuetiemhe' workTitle='Human Resources' image='/image/picpic.jpg'
+             details='Abiodun Akuetiemhe is the Human Resources Manager at G&V Support Services, dedicated to building a strong workforce and fostering a positive organizational culture. With expertise in recruitment, employee relations, and staff development, she ensures that GVSS attracts, nurtures, and retains top talent to drive the company’s mission and success.'
             /> 
-            <CompanyInfo name='Abiodun Akutetiemhe ' workTitle='Hum' image='/image/picpic.jpg' details='With over 15 years of experience in the relocation industry, Godwin has a deep understanding of the challenges and opportunities 
-            that come with moving to a new country. He is passionate about helping clients navigate the complexities of international relocation and is committed to providing exceptional service and support throughout the entire process.'
+            <CompanyInfo name='Wisdom Ugwu ' workTitle='Accountant' image='/image/wisdompic.jpg'
+             details='Wisdom Ugwu is the Accountant at G&V Support Services, bringing expertise in financial reporting, auditing, and tax compliance. With a strong eye for detail and commitment to accuracy, he ensures transparency and efficiency across all financial operations, helping GVSS maintain solid financial health and compliance with industry standards.'
             />  
-            <CompanyInfo name='Abiodun Akutetiemhe ' workTitle='Hum' image='/image/picpic.jpg'  details='With over 15 years of experience in the relocation industry, Godwin has a deep understanding of the challenges and opportunities 
-            that come with moving to a new country. He is passionate about helping clients navigate the complexities of international relocation and is committed to providing exceptional service and support throughout the entire process.'
+            <CompanyInfo name='oluwakemi Adesanwo ' workTitle='Facility Supervisor' image='/image/kemipic.jpg'  
+            details='Oluwakemi Adesanwo is the Facility Supervisor at G&V Support Services, responsible for overseeing day-to-day facility operations and ensuring a safe, efficient, and well-organized work environment. With strong attention to detail and a commitment to excellence, she supports GVSS in maintaining smooth operations that drive productivity and organizational success.'
             />  
             </div>
            
@@ -122,7 +123,7 @@ export function ImageCarousel({
                 ease: [0, 0.71, 0.2, 1.01],
            }}  
         
-        className="relative  h-65 md:w-80 md:h-90 border-2 shadow-2xl  rounded-lg overflow-hidden">
+        className="relative  h-100 md:w-80 md:h-90  shadow-2xl  rounded-lg overflow-hidden">
           <Image
             src={image}
             alt={name}
@@ -142,7 +143,7 @@ export function ImageCarousel({
                 ease: [0, 0.71, 0.2, 1.01],
            }}
            className="md:flex-1  md:w-1/2 p-3 ">
-          <h1 className="md:text-2xl font-bold text-[#000] py-4">{name}</h1>
+          <h1 className="md:text-lg font-bold text-[#000] py-4">{name}</h1>
           <h2 className="text-[#d17000] font-extrabold">{workTitle}</h2>
           <p className="mt-2 md:w-1/2 text-gray-700  ">{details}</p>
         </motion.div>

@@ -65,7 +65,7 @@
     "**/*.tsx",
     "next-env.d.ts",
     ".next/types/**/*.ts"
-  ],
+, "app/services/LeadwoodsFuniture/animation.jsx"  ],
   "exclude": [
     "node_modules"
   ]

@@ -53,7 +53,7 @@ return (
 
 // import { ImageCarousel } from "../teamInfo/teaminfo";
 
-import { ImageCarousel } from "../teamInfo/teaminfo"
+import { ImageCarousel } from "../../aboutUs/teamInfo/teaminfo"
 import { div } from "framer-motion/dist/types/client";
 import Link from "next/link";
 

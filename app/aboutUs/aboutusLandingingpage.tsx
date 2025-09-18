@@ -25,7 +25,8 @@ const Messages: HeroMessage[] = [
     title: "Our Team",
     description: "Take a Look at our wonderful and extraordinary team who work seamlessly to make you feel comfortable and warming.",
     cta: "Our Teams",
-    ctaLink: "aboutUs/teamInfo",
+    ctaLink: "aboutUs",
+    // teamInfo",
      image: "/image/immigration.jpg"
     // image: "/image/meetgreet.jpg"
   },

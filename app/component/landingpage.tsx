@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Navbar from './navbar2';
 import { CardsCarousel } from './courasel';
-import { HeroSectionOne, RideSection } from './carrentals/carrental';
+import { HeroSectionOne, RideSection } from '../services/carrentals/carrental';
 // import { Section } from './carrentals/carrental';
 import { AboutSection } from './main-section';
 
