@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { HiMenu, HiX, HiPlus, HiMinus } from "react-icons/hi";
+import { HiMenu, HiX, HiPlus } from "react-icons/hi";
 import { Montserrat } from 'next/font/google';
 import { FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
 const montserrat = Montserrat({

@@ -212,16 +212,16 @@ function useOutsideClick(
     onCardClose(index);
   };
 
-  return (
+  return (///////////////////////////////////////////////
     <>
-      <AnimatePresence>
+      {/* <AnimatePresence> */}
         {open && (
-          <div className="fixed inset-0 z-50 h-screen overflow-auto">
+          <div className="fixed inset-0 z-50  h-screen overflow-auto">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 h-full w-full bg-black/80 backdrop-blur-lg"
+              className="fixed inset-0 h-full w-full  backdrop-blur-lg"
             />
             <motion.div
               initial={{ opacity: 0 }}
@@ -232,7 +232,7 @@ function useOutsideClick(
               className="relative z-[60] mx-auto my-10 h-fit max-w-5xl rounded-3xl bg-white p-4 font-sans md:p-10 dark:bg-neutral-900"
             >
               <button
-                className="sticky top-4 right-0 ml-auto flex h-8 w-8 items-center justify-center rounded-full bg-black dark:bg-white"
+                className="sticky top-4 right-0 ml-auto flex h-8 w-8 items-center justify-center rounded-full bg-amber-800 dark:bg-white"
                 onClick={handleClose}
               >
                 <IconX className="h-6 w-6 text-neutral-100 dark:text-neutral-900" />
@@ -253,7 +253,7 @@ function useOutsideClick(
             </motion.div>
           </div>
         )}
-      </AnimatePresence>
+      {/* </AnimatePresence> */}
       <motion.button
         layoutId={layout ? `card-${card.title}` : undefined}
         onClick={handleOpen}

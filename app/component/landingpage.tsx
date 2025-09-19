@@ -140,17 +140,17 @@ return (
       </div>
 
       {/* Decorative Hexagon */}
-      <div
+      {/* <div
         className="absolute bottom-4 right-4 w-10 h-10 bg-yellow-400"
         style={hexagonClipPath}
-      />
+      /> */}
     </section>
   );
 };
 
 // Hexagon Clip Path
-const hexagonClipPath = {
-  clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
-};
+// const hexagonClipPath = {
+//   clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
+// };
 
 export default Landingpage;
