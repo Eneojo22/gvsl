@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import packages from "../seeingData";
-import React, { useState } from "react";
+import React from "react";
 import { CarRentalCard } from "../../main";
 
 
@@ -53,10 +53,11 @@ export default async function page({ params }: {params:Promise<{slug:string}>}) 
         </span>{" "}
         For personalized recommendations, you can contact our admin.
       </p>
-
+      <Link href={'/services/carrentals/booking-summary'}>
       <button className="mt-5 bg-orange-500 hover:bg-orange-600 transition-colors py-2 px-6 text-white font-semibold rounded-3xl shadow-md">
         Rent a car now
       </button>
+      </Link>
     </div>
   </div>
 </div>
