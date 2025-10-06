@@ -114,7 +114,7 @@ export default function Navbar() {
               >
                 {label}
               </Link>
-
+                    {/* THIS IS FOR THE DROPDOWN */}
               {dropdown && (
                 <ul className="absolute left-0 mt-2 bg-white shadow-lg rounded-md w-58 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-in-out z-50">
                   {dropdown.map((item, i) => (
@@ -134,15 +134,12 @@ export default function Navbar() {
           <div className="border">
             <Link
                   href="/book-appointment"
-                  className="bg-white text-[#dd5500] font-bold px-4 py-4 rounded shadow-lg hover:shadow-xl hover:bg-gray-100 transition-all duration-300"
-                >
+                  className="bg-white text-[#dd5500] font-bold px-4 py-4 rounded shadow-lg hover:shadow-xl hover:bg-gray-100 transition-all duration-300">
             Book Appointment
             </Link>
           </div>
-           
         </div>
         
-
         {/* Mobile Menu Toggle */}
         <div className="md:hidden">
           <button
@@ -151,9 +148,9 @@ export default function Navbar() {
             className="text-[#dd5500] transition-transform duration-300 ease-in-out"
           >
             {menuOpen ? (
-              <HiX size={28} className="rotate-90 transition-transform duration-300" />
+              <HiX size={28} className="rotate-90 transition-transform duration-300"/>
             ) : (
-              <HiMenu size={28} className="scale-110 transition-transform duration-300" />
+              <HiMenu size={28} className="scale-110 transition-transform duration-300"/>
             )}
           </button>
         </div>
@@ -169,15 +166,12 @@ export default function Navbar() {
           {/* {navLinks.map(({ href, label, highlight, dropdown }, idx) => (
             <div key={href} className="border-b border-gray-200 py-2"> */}
               {navLinks.map(({ href, label,  dropdown }, idx) => (
-  <div key={`${href}-${idx}`} className="border-b border-gray-200 py-2">
+                <div key={`${href}-${idx}`} className="border-b border-gray-200 py-2">
 
               <div className="flex justify-between items-center text-black">
                 <Link
                   href={href}
-                  className={`${
-                     "font-medium" 
-                  }`}
-                >
+                  className={`${"font-medium"}`}>
                   {label}
                 </Link>
                     {dropdown && (

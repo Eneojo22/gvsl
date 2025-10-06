@@ -26,6 +26,5 @@ export default async function Page({params,}: { params: Promise<{ slug: string }
     );
   }
 
-  return <div className="h-100 mt-35 flex   justify-center items-center text-black text-4xl font-bold">
-    Can't find this post: {slug} </div>;
+  return <div className="h-100 mt-35 flex   justify-center items-center text-black text-4xl font-bold">Can Not find this post: {slug} </div>;
 }

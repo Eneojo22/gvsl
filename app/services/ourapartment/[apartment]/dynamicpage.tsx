@@ -9,12 +9,12 @@ type Props = {
 };
 
 export default function Settlings({ apartmentId }: Props) {
-  const apartment = properties.find((p) => p.id.toString() === apartmentId);
+  const apartment = properties.find((p) => p.id.toLocaleString() === apartmentId);
 //  go an error here because i was compare a number to a string this is the error This comparison appears to be unintentional because the types
-  if (!apartment) {
+ if (!apartment) {
     return <div>Apartment not found <Link href={'/'}>Go back to our Apartment</Link></div>;
   }
-
+ 
   return (
     <div>
         <h2 className="mt-35 text-3xl font-semibold p-2">{apartment.title}</h2>

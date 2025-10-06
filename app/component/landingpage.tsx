@@ -4,9 +4,10 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Navbar from './navbar2';
 import { CardsCarousel } from './courasel';
-import { HeroSectionOne, RideSection } from '../services/carrentals/carrental';
+// import { HeroSectionOne, RideSection } from '../services/carrentals/carrental';
 // import { Section } from './carrentals/carrental';
 import { AboutSection } from './main-section';
+import Carrental from '../services/carrentals/main';
 
 interface HeroMessage {
   title: string;
@@ -60,8 +61,6 @@ const Landingpage = () => {
         </nav>
         <HeroSection/>
         <CardsCarousel/>
-        {/* <RideSection/> */}
-        <HeroSectionOne/>
         <SectionforCarRebtals/>
       </div>
 
@@ -83,10 +82,6 @@ function SectionforCarRebtals(){
 />
   )
 }
-
-
-
-
 const HeroSection: React.FC = () => {
    const [currentMessageIndex, setCurrentMessageIndex] = useState<number>(0);
   const [isTransitioning, setIsTransitioning] = useState<boolean>(false);

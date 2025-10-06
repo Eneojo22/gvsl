@@ -4,63 +4,14 @@ import { motion } from "framer-motion";
 import React, { useState,useEffect, } from "react";
 import { HiMenu, HiX, HiPlus } from "react-icons/hi";
 import Cartlist from "./cartlist";
+import { useCart } from "./cartContext";
 
 
 
 // --- Props for ProductCard ---
-interface ProductCardProps {
-  image: string;
-  title: string;
-  price: string;
-  isOpen: boolean;
-  handleBtnClick2:(e: React.MouseEvent<HTMLButtonElement>) => void;
-  onToggle: () => void;
-}
+
 
 // --- Product Card ---
-export default function ProductCard({
-  image,
-  title,
-  price,
-  handleBtnClick2
-  
-  // isOpen,
-  // onToggle,
-}: ProductCardProps) {
- 
- 
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      whileHover={{ scale: 1.05 }}
-      className="shadow-md rounded-xl border-2 p-4 flex flex-col items-center cursor-pointer"
-    >
-      {/* Product Image */}
-      <div className="w-full h-100 bg-white relative">
-        <Image
-          src={image}
-          alt={title}
-          fill
-          className="object-contain transition-transform duration-500 hover:scale-110 w-full"
-        />
-      </div>
-
-      {/* Product Info */}
-      <div className="text-center mt-4">
-        <h3 className="text-base font-semibold text-white">{title}</h3>
-        <p className="text-white font-bold">{price}</p>
-
-      <Button value="Order Noow" handleBtnClick={handleBtnClick2}/>
-
-       {/* Conditionally render Background */}
-{/* {cartOpen} */}
-      </div>
-    </motion.div>
-  
-  );
-}
 
 
 // import { useState } from "react";
@@ -138,19 +89,3 @@ export  function ChatWidget() {
 {/* <button  onClick={handleBtnClick} className="mt-3 w-full bg-[#ca430d] text-white py-2 rounded-lg hover:bg-amber-800 transition">
   Add to Cart
 </button> */}
-interface buttonProps {
-  value:string
-  handleBtnClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-}
-
-// --- Product Card ---
-
-
-
-function Button({ value, handleBtnClick }: buttonProps) {
-  return (
-    <button className="square" onClick={handleBtnClick}>
-      {value}
-    </button>
-  );
-}

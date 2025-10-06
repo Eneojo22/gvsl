@@ -264,6 +264,7 @@ function useOutsideClick(
           <motion.p
             layoutId={layout ? `category-${card.category}` : undefined}
             className="text-left font-sans text-sm font-medium text-white md:text-base"
+             
           >
             {card.category}
           </motion.p>

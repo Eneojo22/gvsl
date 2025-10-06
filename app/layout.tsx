@@ -7,6 +7,7 @@ import "./globals.css";
 // import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "./component/navbar2";
+import { CartProvider } from "./services/LeadwoodsFuniture/cartContext";
 const montserrat = Montserrat({
   weight: '700',
   subsets: ['latin'],
@@ -35,9 +36,13 @@ export default function RootLayout({
       <body className={`${poppins.variable}  antialiased`}>
       <Navbar/>
       {/* <div className="mt-16"> */}
-        {children} 
+       <CartProvider>
+         {children} 
+       </CartProvider>
+       
       {/* </div> */}
        <footer >
+       
         <Footer/>
        </footer>
         
