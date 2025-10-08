@@ -81,12 +81,11 @@ const CardisplayPage: React.FC = () => {
 export default CardisplayPage
 
 function DisplayDifferentCar(){
-     const [currentMessageIndex, setCurrentMessageIndex] = useState<number>(0);
+    const [currentMessageIndex, setCurrentMessageIndex] = useState<number>(0);
       const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
       useEffect(() => {
         const transitionDuration = 1000; // 1 second for fade out/in
         const displayDuration = 6000;    // 6 seconds display time
-        
         const interval = setInterval(() => {
           // Start transition out
           setIsTransitioning(true);
