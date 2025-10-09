@@ -2,29 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import packages from "../seeingData";
 import React from "react";
-// import { CarRentalCard, carTypes } from "../../main"; // ✅ import both
-import { use } from "react";
+import { CarRentalCard } from "../../main";
 
-// ✅ Locations (same as in main file)
-const locations: string[] = [
-  "Murtala Muhammed International Airport (MMIA)",
-  "Ikeja",
-  "Victoria Island",
-  "Lekki Phase 1",
-  "Ajah",
-  "Ikoyi",
-  "Surulere",
-  "Yaba",
-  "Maryland",
-  "Festac",
-  "Apapa",
-  "Ogba",
-  "Magodo",
-  "Gbagada",
-  "Oshodi",
-];
-
-// ✅ Page
+//  Page
 export default async function Page({
   params,
 }: {
@@ -32,12 +12,15 @@ export default async function Page({
 }) {
   const { slug } = await params;
   const decodedSlug = decodeURIComponent(slug);
+  console.log("recieved slug:",slug);
+  console.log("decoded slug:", decodedSlug);
 
   const location = packages.find(
-    (p) => p.id.toLocaleString() === decodedSlug
+    (p) => p.slug === decodedSlug
   );
 
-  if (!location) {
+
+  if (!location){
     return (
       <div className="mt-35 h-dvh text-black text-center flex flex-col items-center justify-center">
         <p className="text-2xl font-semibold mb-4">
@@ -56,19 +39,20 @@ export default async function Page({
   return (
     <>
       {/* Apartment Details Section */}
-      <div className="mt-25 mx-auto max-w-5xl p-4 text-gray-900">
-        <p className="font-extrabold text-3xl md:text-4xl bg-black text-white rounded-3xl shadow-md text-center py-4 mb-8 tracking-tight">
+      <div className="mt-35  w-full  p-4 text-gray-900">
+        <p className="font-extrabold text-3xl md:text-3xl  text-black rounded-3xl inline  text-center py-4 mt-12 tracking-tight">
           {location.title}
         </p>
 
-        <div className="flex flex-col md:flex-row items-center gap-8">
-          <div className="w-full md:w-1/2">
+        <div className="flex flex-col md:flex-row w-full items-center gap-8">
+          <div className=" mx-5">
+          <div className="  ">
             <Image
               src={location.imageUrl}
               height={400}
               width={600}
               alt={location.title}
-              className="rounded-2xl shadow-md w-full h-[300px] object-cover"
+              className="rounded-2xl shadow-md  h-[400px] border-2 object-cover"
             />
           </div>
 
@@ -90,6 +74,8 @@ export default async function Page({
               </button>
             </Link>
           </div>
+           </div>
+          <CarRentalCard/>
         </div>
       </div>
 

@@ -10,7 +10,7 @@ import Link from 'next/link';
 
 const Sightseeing = () => {
   return (
-      <div className="px-6  max-w-6xl mx-auto">
+      <div className="px-6 mt-35  max-w-6xl mx-auto">
       {/* Breadcrumb */}
       <div className="text-sm text-gray-500 mb-17 flex items-center">
         <span><Home className='hover:text-black mx-1.5'/></span><span className='text-[17px] mx-1.5 font-extrabold'> &gt;</span><span>Sightseeing Packages</span> 
@@ -59,7 +59,7 @@ export function DirectionAwareHoverprop() {
       <span className="text-sm md:text-white font-normal shadow-2xl block">
         {pkg.description}
       </span>
-      <Link href={`/services/carrentals/sight-seeing/${pkg.id}`}>
+      <Link href={`/services/carrentals/sight-seeing/${pkg.slug}`}>
         <button className="mt-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-full px-4 py-2">
           Book This Trip
         </button>
@@ -79,7 +79,7 @@ export function DirectionAwareHoverprop() {
     <div className="p-3 bg-white rounded-b-2xl">
       <h3 className="text-black font-bold text-lg mb-1">{pkg.title}</h3>
       <p className="text-gray-600 text-sm">{pkg.description}</p>
-      <Link href={`/services/carrentals/sight-seeing/${pkg.id}`}>
+      <Link href={`/services/carrentals/sight-seeing/${pkg.slug}`}>
         <button className="mt-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-full px-4 py-2">
           Book This Trip
         </button>

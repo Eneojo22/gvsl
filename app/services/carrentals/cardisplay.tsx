@@ -63,10 +63,10 @@ const CardisplayPage: React.FC = () => {
             <h3 className='font-extrabold md:text-6xl text-orange-500 my-4 '>Car Rental</h3>
             <p  className='font-extrabold md:text-4xl text-shadow-2xs  '>in Lagos,Abuja. Nigeria </p>
             <div>
-                <p className='text-shadow-2xs text-[#5f5c5c] mt-5'> We stand for exciting mobility and tailored solutions. 
+                <div className='text-shadow-2xs text-[#5f5c5c] mt-5'> We stand for exciting mobility and tailored solutions. 
                     <p>We lead with innovation in the car-hire sector.</p>
                     High-quality customer service and seamless rental experiences
-                </p>
+                </div>
             </div>
         </div>
         <div className=' py-10 '>

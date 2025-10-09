@@ -1,10 +1,3 @@
-"use client"
-import React from 'react'
-import { useState } from 'react';
-import Image from "next/image";
-import { Users, Briefcase, DoorClosed} from "lucide-react";
-import { UseCarContextForInput } from './gettingcarinputfromclient';
-// Define the Car type
 export type Car = {
   type: string;
   name: string;
@@ -12,10 +5,12 @@ export type Car = {
   bags: number;
   doors: number;
   imageUrl: string;
+  amount: string;
+  slug: string; 
 };
 
-// Export the array directly ✅
-const carTypes: Car[] = [
+
+export const carTypes: Car[] = [
   {
     type: "Compact car",
     name: "Toyota Camry",
@@ -23,6 +18,8 @@ const carTypes: Car[] = [
     bags: 2,
     doors: 4,
     imageUrl: "/image/compact-car.webp",
+    amount: "50,000",
+    slug: "toyota-camry-compact-car",
   },
   {
     type: "Premium car",
@@ -31,6 +28,8 @@ const carTypes: Car[] = [
     bags: 2,
     doors: 4,
     imageUrl: "/image/premium-sedan.webp",
+    amount: "100,000",
+    slug: "benz-premium-car",
   },
   {
     type: "Cargo Transporter",
@@ -39,6 +38,8 @@ const carTypes: Car[] = [
     bags: 6,
     doors: 3,
     imageUrl: "/image/van-transporter.webp",
+    amount: "100,000",
+    slug: "ford-transit-cargo-transporter",
   },
   {
     type: "Mini",
@@ -47,6 +48,8 @@ const carTypes: Car[] = [
     bags: 1,
     doors: 4,
     imageUrl: "/image/mini.webp",
+    amount: "80,000",
+    slug: "mini-camry-mini",
   },
   {
     type: "Luxury",
@@ -55,6 +58,8 @@ const carTypes: Car[] = [
     bags: 3,
     doors: 4,
     imageUrl: "/image/hybrid-sedan.webp",
+    amount: "80,000",
+    slug: "toyota-luxury-luxury",
   },
   {
     type: "7-Seater",
@@ -63,12 +68,7 @@ const carTypes: Car[] = [
     bags: 7,
     doors: 4,
     imageUrl: "/image/7-seater.webp",
+    amount: "90,000",
+    slug: "toyota-7-seater",
   },
 ];
-
-// export default
-
-// carTypes;
-
-
-

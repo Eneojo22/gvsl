@@ -3,14 +3,15 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { UseCarContextForInput } from "@/app/services/carrentals/gettingcarinputfromclient";
-import { Car, carTypes } from "../main";
+import { Car,carTypes } from "../chooseAvehicle";
 import Link from "next/link";
+
 
 type CarCardProps = {
   carTypes: Car;
 };
-
-export const BookingSummaryPage: React.FC<CarCardProps> = () => {
+type CombinedProps = CarCardProps; 
+export const BookingSummaryPage: React.FC<CombinedProps> = () => {
   const { booking } = UseCarContextForInput();
 
   if (!booking) {
@@ -105,7 +106,7 @@ export const BookingSummaryPage: React.FC<CarCardProps> = () => {
                 <p className="text-lg font-semibold text-orange-600">
                   ₦{car.amount} / day
                 </p>
-                <Link href={`/services/carrentals/booking-summary/`} >
+                <Link href={`/services/carrentals/booking-summary/${car.slug}`} >
                 <button className="mt-3 border border-orange-500 text-orange-500 px-5 py-2 rounded-3xl hover:bg-orange-500 hover:text-white transition-all">
                   Rent this Vehicle
                 </button>
