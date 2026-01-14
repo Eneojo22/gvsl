@@ -1,10 +1,11 @@
 import React from 'react'
 import BookingSummaryPage from './booking'
 
+
 const page = () => {
   return (
     <div className='mt-35 text-black'>
-        <BookingSummaryPage />
+        <BookingSummaryPage   />
         </div>
   )
 }

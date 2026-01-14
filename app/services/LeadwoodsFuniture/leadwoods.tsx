@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 import { useCart } from "./cartContext";
 import { InfiniteMovingCard } from "./infinite";
 import Link from "next/link";
-import OrderPage from "./order/orderpage";
 
 export default function Herowood() {
   
@@ -92,7 +91,17 @@ export default function Herowood() {
                 <div className="text-center mt-4">
                   <h3 className="text-base font-semibold text-white">{product.name}</h3>
                   <p className="text-white font-bold">₦{product.price}</p>
-                  <Button value="Order Now" handleBtnClick={() => addToCart(product)} />
+                  <Button 
+  value="Order Now" 
+  handleBtnClick={() => addToCart({
+    id: product.id,
+    name: product.name,         // or product.title
+    price: product.price,       // or product.regular_price
+    image: product.image        // or product.img
+  })}
+/>
+
+
                 </div>
               </motion.div>
             ))
@@ -102,7 +111,7 @@ export default function Herowood() {
         </div>
 
         {/* CART SECTION */}
-        <div className="w-80 bg-white shadow-md rounded-xl p-4 text-black">
+        <div className="w-80 bg-white  rounded-xl p-4 text-black">
           <h2 className="text-xl font-bold mb-4">🛒 Your Cart</h2>
 
           {cartItems.length === 0 ? (
@@ -114,6 +123,7 @@ export default function Herowood() {
       key={item.id}
       className="flex justify-between items-center border-b pb-2"
     >
+      
       <div>
         <span className="font-medium">{item.name}</span>
         {item.quantity > 1 && (

@@ -19,11 +19,15 @@ type CartContextType = {
   clearCart: () => void;
 };
 
+
 // Create context
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  // console.log("Adding item...", item);
+
+console.log("Rendered with items:", cartItems);
 
   //  Load cart from localStorage when app starts
   useEffect(() => {
@@ -41,11 +45,14 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   // Add item (or increase qty if it exists)
   const addToCart = (item: Omit<CartItem, "quantity">) => {
     setCartItems((prev) => {
+      
       const existing = prev.find((p) => p.id === item.id);
       if (existing) {
         return prev.map((p) =>
           p.id === item.id ? { ...p, quantity: p.quantity + 1 } : p
         );
+
+
       }
       return [...prev, { ...item, quantity: 1 }];
     });
@@ -77,15 +84,14 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   };
 
   // Clear cart (also clear localStorage)
+
   const clearCart = () => {
     setCartItems([]);
     localStorage.removeItem("cart");
   };
 
   return (
-    <CartContext.Provider
-      value={{ cartItems, addToCart, removeFromCart, increaseQty, decreaseQty, clearCart }}
-    >
+    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, increaseQty, decreaseQty, clearCart }}>
       {children}
     </CartContext.Provider>
   );

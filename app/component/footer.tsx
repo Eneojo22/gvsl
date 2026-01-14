@@ -6,33 +6,33 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="bg-neutral-900 text-white py-12 px-4 md:px-8">
+    <footer className="bg-[#dfdede] text-black py-12 px-4 md:px-8 mt-20">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Logo and Company Info */}
         <div className="space-y-4">
           <div className="flex items-center">
             <Image
-              src="/image/G___V_SUPPORT_SERVICE_ltd__6_-removebg-preview.png"
+              src="/image/G___V_SUPPORT_SERVICE_ltd__7_-removebg-preview.png"
               alt="GVS Support Services"
               width={120}
               height={40}
-              className="h-10 w-auto"
+              className="h-20 w-auto"
             />
           </div>
-          <p className="text-neutral-300 text-sm">
+          <p className="text-[#000] text-sm">
             Your trusted partner for seamless relocation and settling-in services worldwide.
           </p>
-          <div className="flex space-x-4">
-              <SocialIcon href="https://facebook.com" icon="facebook" />
+          <div className="flex space-x-4 ">
+              {/* <SocialIcon href="https://facebook.com" icon="facebook" /> */}
               <SocialIcon href="https://www.linkedin.com/in/g-v-support-services-025a84376/" icon="linkedin" />
-              <SocialIcon href="https://twitter.com" icon="twitter" />
-              <SocialIcon href="https://instagram.com" icon="instagram" />
+              <SocialIcon href="https://twitter.com" icon="twitter"  />
+              <SocialIcon href="https://instagram.com" icon="instagram"  />
           </div>
         </div>
 
         {/* Services Links */}
         <div>
-          <h3 className="font-bold text-lg mb-4">Our Services</h3>
+          <h3 className="font-bold text-[#000] text-lg mb-4">Our Services</h3>
           <ul className="space-y-2">
             <FooterLink href="/component/orientation" text="Orientation" />
             <FooterLink href="/component/airportmeetandgreet" text="Airport Meet & Greet" />
@@ -44,7 +44,7 @@ export function Footer() {
 
         {/* Company Links */}
         <div>
-          <h3 className="font-bold text-lg mb-4">Company</h3>
+          <h3 className="font-bold text-lg mb-4 text-black">Company</h3>
           <ul className="space-y-2">
             <FooterLink href="/about" text="About Us" />
             <FooterLink href="/team" text="Our Team" />
@@ -57,7 +57,7 @@ export function Footer() {
         {/* Contact Information */}
         <div>
           <h3 className="font-bold text-lg mb-4">Contact Us</h3>
-          <address className="not-italic text-neutral-300 space-y-2">
+          <address className="not-italic  space-y-2">
             {/* <p>123 Relocation Avenue</p> */}
             <p>90, Allen Avenue Ikeja Lagos</p>
             <p>Email: info@gvssupport.com</p>
@@ -67,16 +67,16 @@ export function Footer() {
       </div>
 
       {/* Copyright */}
-      <div className="border-t border-neutral-800 mt-8 pt-8 text-center text-neutral-400 text-sm">
+      <div className=" border-neutral-800 font-bold text-shadow-amber-50  mt-8 pt-8 text-center text-[#000] text-sm">
         <p>© {new Date().getFullYear()} GVS Support Services Limited. All rights reserved.</p>
         <div className="flex justify-center space-x-4 mt-2">
-          <Link href="/privacy" className="hover:text-white">
+          <Link href="/privacy" className="hover:text-[#2c0606]">
             Privacy Policy
           </Link>
-          <Link href="/terms" className="hover:text-white">
+          <Link href="/terms" className="hover:text-[#270101]">
             Terms of Service
           </Link>
-          <Link href="/cookies" className="hover:text-white">
+          <Link href="/cookies" className="hover:text-[#270101]">
             Cookie Policy
           </Link>
         </div>
@@ -117,7 +117,7 @@ const SocialIcon = ({ icon, href }: SocialIconProps) => {
 
 const FooterLink = ({ href, text }: { href: string; text: string }) => (
   <li>
-    <Link href={href} className="text-neutral-300 hover:text-white text-sm transition-colors">
+    <Link href={href} className="text-[#2e2d2d] hover:text-white text-sm transition-colors">
       {text}
     </Link>
   </li>

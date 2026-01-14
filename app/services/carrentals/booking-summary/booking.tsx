@@ -3,27 +3,24 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { UseCarContextForInput } from "@/app/services/carrentals/gettingcarinputfromclient";
-import { Car,carTypes } from "../chooseAvehicle";
+import {carTypes } from "../chooseAvehicle";
 import Link from "next/link";
 
+// type CarCardProps = {
+//   carTypes: Car;
+// };
 
-type CarCardProps = {
-  carTypes: Car;
-};
-type CombinedProps = CarCardProps; 
-export const BookingSummaryPage: React.FC<CombinedProps> = () => {
+export const BookingSummaryPage: React.FC = () => {
   const { booking } = UseCarContextForInput();
 
   if (!booking) {
     return (
-      <div className="p-6 text-center text-gray-700">
+      <div className="p-6 h-dvh text-center text-gray-700">
         <h2 className="text-2xl font-bold mb-2">No booking found</h2>
         <p className="text-gray-500">Please go back and select a car first.</p>
       </div>
     );
   }
-
-  // const total = +booking.amount * 3;
 
   return (
     <main className="flex flex-col lg:flex-row gap-8 p-6 bg-gray-50 min-h-screen font-[Poppins]">
@@ -62,16 +59,18 @@ export const BookingSummaryPage: React.FC<CombinedProps> = () => {
                 ₦{booking.amount} / day
               </p>
               <p className="text-sm text-gray-600">
-                {/* Total for 3 days: ₦{total.toLocaleString()} */}
+                {/* Total for 3 days: ₦{total.toLocaleString()} //////////////////////////////////////////////////////////////*/}
               </p>
-
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="mt-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-2 rounded-3xl transition-all shadow-sm"
-              >
-                Rent this Vehicle
-              </motion.button>
+                <Link
+                      href={`/services/carrentals/booking-summary/Checkout`}>
+                      <motion.button
+                       whileHover={{ scale: 1.05 }}
+                       whileTap={{ scale: 0.95 }}
+                       className="mt-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-2 rounded-3xl transition-all shadow-sm"
+                      >
+                      Rent this Vehicle
+                      </motion.button>
+                  </Link>
             </div>
           </div>
         </section>
@@ -141,7 +140,7 @@ export const BookingSummaryPage: React.FC<CombinedProps> = () => {
           <div>
             <h4 className="font-semibold text-gray-900">Return</h4>
             <p>
-              {booking.dropOffDate} @ {booking.dropOffTime} <br />
+              {booking.dropOffDate} @  <br />
               <span className="text-gray-500">
                 Location: {booking.dropOffLocation}
               </span>

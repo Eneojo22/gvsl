@@ -39,11 +39,7 @@ export default Sightseeing
 
 
 
-
-
-export function DirectionAwareHoverprop() {
-//   const imageUrl =
-    // "";bg-gradient-to-t from-black/70 via-black/40 to-transparent 
+function DirectionAwareHoverprop() {
   return (
    <div className="mb-20">
   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 inset-0">
@@ -95,5 +91,6 @@ export function DirectionAwareHoverprop() {
 
 
 }
+
 
 

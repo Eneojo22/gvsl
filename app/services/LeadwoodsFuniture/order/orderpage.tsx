@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 
 export default function OrderPage() {
   const { cartItems, clearCart } = useCart();
+  console.log(cartItems)
   const [form, setForm] = useState({ name: "", email: "", phone: "", note: "", address:"" });
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -40,7 +41,8 @@ export default function OrderPage() {
 if (!response.ok) {
   console.error("Backend error:", response.status, data);
   alert(data.error || JSON.stringify(data));
-} else {
+} 
+else {
   console.log("Order created:", data);
   clearCart();
   router.push(
@@ -57,6 +59,7 @@ if (!response.ok) {
   };
 
   const total = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 text-black">

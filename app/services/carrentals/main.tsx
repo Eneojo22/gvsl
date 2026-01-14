@@ -43,6 +43,8 @@ function HeroSection() {
           description="Book your car rental and explore with freedom. Premium, affordable rental cars for city drives and scenic road trips — your journey, your pace."
           imageUrl="/image/freedrive.jpg"
         />
+
+        
         <ServiceCard
           title="Sightseeing Packages"
           description="Sightseeing packages for iconic sights & hidden gems. Curated by locals, our tours uncover the best your destination has to offer — beyond the guidebooks."
@@ -70,7 +72,7 @@ function HeroSection() {
   );
 }
 
-// ✅ Service card
+//  Service card
 type ServiceCardProps = {
   title: string;
   description: string;
@@ -114,7 +116,7 @@ export function CarRentalCard() {
   const [dropOffLocation, setDropOffLocation] = useState("");
   const [pickUpDate, setPickUpDate] = useState("");
   const [dropOffDate, setDropOffDate] = useState("");
-  const [dropOffTime, setDropOffTime] = useState("");
+  // const [dropOffTime, setDropOffTime] = useState("");
   const [selectedCar, setSelectedCar] = useState<Car>(carTypes[0]);
   // const [ bookingcarIng,SetBookingcarImage] = useState("")
   // ✅ handle car change
@@ -135,7 +137,7 @@ export function CarRentalCard() {
       pickUpDate,
       dropOffLocation,
       dropOffDate,
-      dropOffTime,
+      // dropOffTime,
     };
 
     setBooking(newBooking);
@@ -235,12 +237,12 @@ export function CarRentalCard() {
           className="flex-1 p-3 rounded-full border"
           onChange={(e) => setDropOffDate(e.target.value)}
         />
-        <input
+        {/* <input
           value={dropOffTime}
           type="time"
           className="flex-1 p-3 rounded-full border"
           onChange={(e) => setDropOffTime(e.target.value)}
-        />
+        /> */}
       </div>
 
       {/* Rent Button */}

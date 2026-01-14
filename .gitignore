@@ -3,7 +3,10 @@
 # dependencies
 # dependencies
 /node_modules
-
+.next
+.env
+.env.local
+dist
 # build output
 # /.next
 # /out

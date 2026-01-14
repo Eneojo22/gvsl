@@ -13,7 +13,7 @@ carImage:string;
   pickUpLocation: string;
   pickUpDate: string;
 //   pickUpTime:string;
-  dropOffTime:string
+  // dropOffTime:string
   dropOffLocation: string;
   dropOffDate: string;
 //   dropUpTime: string;
@@ -29,7 +29,7 @@ const CarContext = createContext<CarContextType | undefined>(undefined);
 export function CarProvider({ children }: { children: React.ReactNode }) {
   const [booking, setBooking] = useState<Booking | null>(null);
     useEffect(() => {
-    const saved = localStorage.getItem("cart");
+    const saved = localStorage.getItem("bookingData");
     if (saved) {
       setBooking(JSON.parse(saved));
     }
@@ -38,7 +38,7 @@ export function CarProvider({ children }: { children: React.ReactNode }) {
   // ✅ Save to localStorage when booking changes
   useEffect(() => {
     if (booking) {
-      localStorage.setItem("cart", JSON.stringify(booking));
+      localStorage.setItem("bookingData", JSON.stringify(booking));
     }
   }, [booking]);
   return (
