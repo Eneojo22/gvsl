@@ -1,5 +1,5 @@
 "use client";
-import { useCart } from "../cartContext";
+import { useCart } from "../../cartContext";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -46,7 +46,7 @@ else {
   console.log("Order created:", data);
   clearCart();
   router.push(
-    `/services/LeadwoodsFuniture/order/order-success?orderId=${data.order.order_number}`
+    `/services/LeadwoodsFuniture/leadwoods-funitures/order/order-success?orderId=${data.order.order_number}`
   );
 }
 
