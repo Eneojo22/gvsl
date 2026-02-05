@@ -52,18 +52,8 @@ export default function Navbar() {
       { name: "Chauffeur Services", href: "/services/carrentals" },
     ],
   },
-  {
-    href: "#",
-    label: "RESOURCES ",
-    dropdown: [
-      { name: "Tips for succeeding in any african country", href: "/resources/item1" },
-      { name: "successful landing  in nigerial ", href: "/resources/item2" },
-      { name: "Businesses to do in Nigeria as a Forenig investor", href: "/resources/item2" },
-      { name: "Hiding Gems in africa", href: "/resources/item2" },
-    ],
-  },
   { href: "/location", label: <><FaMapMarkerAlt className="inline mr-1" /> LOCATIONS</> },
-  { href: "/contactUs", label: <><FaPhoneAlt className="inline mr-1" /> CONTACT US</> },
+  // { href: "/contactUs", label: <><FaPhoneAlt className="inline mr-1" /> CONTACT US</> },
 ];
 
   const normalizePath = (path: string) => path.startsWith('/') ? path : '/' + path
