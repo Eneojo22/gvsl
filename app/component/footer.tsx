@@ -60,8 +60,8 @@ export function Footer() {
           <address className="not-italic  space-y-2">
             {/* <p>123 Relocation Avenue</p> */}
             <p>90, Allen Avenue Ikeja Lagos</p>
-            <p>Email: info@gvssupport.com</p>
-            <p>Phone: +234 800 123 4567</p>
+            <p>Email: info@gvss.ng</p>
+            <p>Phone: +234 8137167298</p>
           </address>
         </div>
       </div>

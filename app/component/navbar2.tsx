@@ -39,7 +39,7 @@ export default function Navbar() {
     ],
   },
   {
-    href: "/services",
+    href: "services",
     label: "SERVICES",
     // highlight: true,
     dropdown: [
@@ -63,7 +63,7 @@ export default function Navbar() {
     ],
   },
   { href: "/location", label: <><FaMapMarkerAlt className="inline mr-1" /> LOCATIONS</> },
-  { href: "/component/contactUs", label: <><FaPhoneAlt className="inline mr-1" /> CONTACT US</> },
+  { href: "/contactUs", label: <><FaPhoneAlt className="inline mr-1" /> CONTACT US</> },
 ];
 
   const normalizePath = (path: string) => path.startsWith('/') ? path : '/' + path
@@ -84,13 +84,14 @@ export default function Navbar() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="flex items-center"
         >
+          <Link href="/">
           <Image
             src="/image/G___V_SUPPORT_SERVICE_ltd__7_-removebg-preview.png"
             height={50}
             width={80}
             alt="GVSS Logo"
             className="object-contain"
-          />
+          /></Link>
           </motion.div>
         <h1
           className={`md:text-3xl font-bold tracking-tight  ${montserrat.className} 

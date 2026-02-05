@@ -114,7 +114,10 @@ interface HeroProps {
           <h1 className="text-2xl font-bold text-[#dd5500] md:mb-2 m-4 ">Nigeria</h1>
           <p className='text-[#413f3f] text-sm  md:h-90 m-4 p-4'>
             {/* Overview <br /> */}
-            Nigeria, officially the Federal Republic of Nigeria, is a sovereign state in West Africa. It is the most populous country in Africa and the sixth most populous in the world, with over 200 million people. Nigeria is a federal republic comprising 36 states and the Federal Capital Territory, where the capital city, Abuja, is located. Lagos is the largest city and the country’s major financial hub. Bordered by Benin to the west, Niger to the north, Chad to the northeast, and Cameroon to the east, Nigeria also has a southern coastline along the Gulf of Guinea in the Atlantic Ocean. <br /> <br />
+            Nigeria, officially the Federal Republic of Nigeria, is a sovereign state in West Africa. It is the most populous country in Africa and the sixth most populous in the world,
+             with over 200 million people. Nigeria is a federal republic comprising 36 states and the Federal Capital Territory, 
+             where the capital city, Abuja, is located. Lagos is the largest city and the country’s major financial hub. Bordered by Benin to the west, 
+             Niger to the north, Chad to the northeast, and Cameroon to the east, Nigeria also has a southern coastline along the Gulf of Guinea in the Atlantic Ocean. <br /> <br />
             Nigeria is a member of the United Nations, the African Union, OPEC, the Commonwealth of Nations, and ECOWAS (Economic Community of West African States). It is a culturally diverse nation with over 250 ethnic groups, and it is widely known as the "Giant of Africa" due to its large economy and influence on the continent.
           </p>
           {/* <p className="text-gray-700 mb-4">
@@ -200,7 +203,7 @@ function Housing(){
 return(
        <div className="w-full max-w-5xl mx-auto   mt-10 rounded-lg p-6 bg-white  ">
   <h1 className="text-2xl font-light text-[#dd5500] mb-4 text-center">
-    Housing in Nigeria: Premier Accommodation Solutions with Lead Homes
+    Housing in Nigeria: Premier Accommodation Solutions with Leadwood Homes
   </h1>
 
   <p className="text-[#333333] text-base leading-relaxed text-justify">
@@ -213,7 +216,7 @@ return(
     <Link href={'../services/ourapartment/'} className='hover:text-orange-500'><strong>Discover Leadwoods Homes Properties</strong></Link> – Your gateway to world-class accommodation in Nigeria.
     <br /><br />
     For personalized consultations or property viewings, contact our GVSS Housing team at 
-    <span className="text-[#dd5500] font-medium"> leadwoodshomes@gvss.ng </span> 
+    <span className="text-[#dd5500] font-medium"> leadwoodsupport@gvss.ng </span> 
   </p>
 </div>
 )}
