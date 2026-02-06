@@ -203,12 +203,11 @@ export default function Herowood() {
           </p>
 
           <div className="flex space-x-4">
+            <Link href={`/services/LeadwoodsFuniture/leadwoods-funitures/`}>
             <button className="px-6 py-3 rounded-full border border-white text-white font-medium hover:bg-white hover:text-[#dd5500] transition duration-300">
               Explore Collection
             </button>
-            <button className="px-6 py-3 rounded-full bg-[#dd5500] text-white font-medium hover:bg-gray-200 hover:text-black transition duration-300">
-              Get Quote
-            </button>
+            </Link>
           </div>
         </div>
 
@@ -230,7 +229,7 @@ export default function Herowood() {
 
       {/* CONTENT */}
       <GVRelocationSection
-        title="Leadwoods Furniture Solutions for Modern Living"
+        title="Leadwood Furnitures Solutions for Modern Living"
         image="/image/leadswood picture/yevhen-ptashnyk-TGhaRbUwbxI-unsplash.jpg"
         imageAlt="Leadwoods Furniture"
         intro={[
@@ -254,7 +253,7 @@ export default function Herowood() {
             ],
           },
           {
-            heading: "How Leadwoods Simplifies Your Setup",
+            heading: "How Leadwood Simplifies Your Setup",
             paragraphs: [
               "Whether you’re relocating staff, preparing serviced apartments, or furnishing your personal home, Leadwoods keeps the process smooth and professional.",
               "We deliver, install, arrange, and support your furniture—no heavy lifting, no delays, no confusion.",

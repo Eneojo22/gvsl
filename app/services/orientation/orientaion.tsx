@@ -11,7 +11,7 @@ import { TracingBeam } from "../../component/uiforcomponent/tracing-beam";
 export function TracingBm() {
   return (
     <div className="pt-30 ">
-      <TracingBeam className="">
+      
       <div className="max-w-2xl mx-auto antialiased pt-4 text-black relative">
         {Content.map((item, index) => (
           <div key={`content-${index}`} className="mb-10">
@@ -38,7 +38,7 @@ export function TracingBm() {
           </div>
         ))}
       </div>
-    </TracingBeam></div>
+    </div>
     
   );
 }

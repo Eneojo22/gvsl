@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { HiMenu, HiX, HiPlus } from "react-icons/hi";
 import { Montserrat } from 'next/font/google';
-import { FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
+import { FaMapMarkerAlt} from "react-icons/fa";
 const montserrat = Montserrat({
   weight: '700',
   subsets: ['latin'],
@@ -45,14 +45,14 @@ export default function Navbar() {
     dropdown: [
       { name: "Orientation", href: "/services/orientation" },
       { name: "Airport Meet and Greet", href: "/services/airportmeetandgreet" },
-      { name: "LeadsWoods Home", href: "/services/ourapartment" },
-      { name: "LeadsWoods Furniture", href: "/services/LeadwoodsFuniture" },
-      { name: "Settling-in", href: "/services/Settling-in" },
+      { name: "LeadWood Homes", href: "/services/ourapartment" },
+      { name: "LeadWood Furnitures", href: "/services/LeadwoodsFuniture" },
+      // { name: "Settling-in", href: "/services/Settling-in" },
       { name: "Departure Services", href: "/services/departureservices" },
       { name: "Chauffeur Services", href: "/services/carrentals" },
     ],
   },
-  { href: "/location", label: <><FaMapMarkerAlt className="inline mr-1" /> LOCATIONS</> },
+  { href: "/location", label: <><FaMapMarkerAlt className="inline mr-1" /> LOCATIONSs</> },
   // { href: "/contactUs", label: <><FaPhoneAlt className="inline mr-1" /> CONTACT US</> },
 ];
 
