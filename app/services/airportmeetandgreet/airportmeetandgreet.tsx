@@ -14,8 +14,8 @@ const Airportmeetandgreet = () => {
         />
       </div>
       <div className="w-full p-10 mt-10">
-        <div className="text-[#333333] w-200 m-auto p-7">
-          <div className="text-4xl font-bold m-3">Airport Meet and Greet</div>
+        <div className="text-[#333333]  md:m-auto  ">
+          <div className=" md:text-4xl text-2xl  font-bold md:m-3">Airport Meet and Greet</div>
           The first moments in a new country can set the tone for your entire experience. At G&V Support Services,
           we believe your arrival should be as welcoming and stress-free as possible.
           Our Airport Meet & Greet service is designed to take the burden off your shoulders,

@@ -67,15 +67,13 @@ const Content = [
     description: (
       <>
         <div>Cultural Insight: We provide a deep understanding of local Nigerian culture, customs, and social norms to help you feel at home faster.
-
+ 
             Neighborhood Information: We give you the inside scoop on the best neighborhoods, their unique characteristics, and what they offer in terms of lifestyle and amenities.
 
             Housing Options: We provide an overview of housing options that fit your preferences and can even arrange viewings of sample accommodations.
 
             Education and Schools: We help you navigate the local school system, offering information on reputable schools for your children.
             </div>
-          
-        
       </>
     ),
     // badge: "Changelog",
