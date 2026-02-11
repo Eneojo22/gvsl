@@ -39,7 +39,7 @@ export default function Navbar() {
     ],
   },
   {
-    href: "services",
+    href: "/",
     label: "SERVICES",
     // highlight: true,
     dropdown: [
@@ -52,7 +52,7 @@ export default function Navbar() {
       { name: "Chauffeur Services", href: "/services/carrentals" },
     ],
   },
-  { href: "/location", label: <><FaMapMarkerAlt className="inline mr-1" /> LOCATIONSs</> },
+  { href: "/location", label: <><FaMapMarkerAlt className="inline mr-1" /> LOCATIONS</> },
   // { href: "/contactUs", label: <><FaPhoneAlt className="inline mr-1" /> CONTACT US</> },
 ];
 
