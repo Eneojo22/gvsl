@@ -24,7 +24,7 @@ const Company = () => {
             <div className='w-full text-center p-6 md:text-5xl text-3xl font-bold'>Meet Our team</div>
             
             <div>
-             <CompanyInfo name='Godwin Akuetiemhe' workTitle='Managing Director' image='/image/picpic.jpg'  
+             <CompanyInfo name=' Gospel Akuetiemhe' workTitle='Managing Director' image='/image/picpic.jpg'  
              details='Godwin Akuetiemhe is the Managing Director of G&V Support Services, providing strategic leadership and driving the company’s vision for growth and excellence. With a wealth of experience and a results-driven mindset, he ensures that GVSS delivers outstanding value to clients while fostering innovation, efficiency, and long-term success.'
             />
           
