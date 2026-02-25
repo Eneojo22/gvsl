@@ -191,7 +191,7 @@ export default function Herowood() {
 
         <div className="relative z-10 flex flex-col items-center justify-center text-center h-full px-4">
           <p className="text-sm uppercase tracking-widest text-white">
-            Leadwoods by G&V Support Services
+            Leadwood by G&V Support Services
           </p>
 
           <h1 className="text-5xl md:text-6xl font-bold text-white my-4">
