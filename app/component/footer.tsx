@@ -68,7 +68,7 @@ export function Footer() {
 
       {/* Copyright */}
       <div className=" border-neutral-800 font-bold text-shadow-amber-50  mt-8 pt-8 text-center text-[#000] text-sm">
-        <p>© {new Date().getFullYear()} GVS Support Services Limited. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} G&V Support Services Limited. All rights reserved.</p>
         <div className="flex justify-center space-x-4 mt-2">
           <Link href="/privacy" className="hover:text-[#2c0606]">
             Privacy Policy
