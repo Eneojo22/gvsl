@@ -233,21 +233,21 @@ export default function Herowood() {
         image="/image/leadswood picture/yevhen-ptashnyk-TGhaRbUwbxI-unsplash.jpg"
         imageAlt="Leadwoods Furniture"
         intro={[
-          "Leadwoods by G&V Support Services provides smart, stylish, and flexible furniture solutions for individuals, expatriates, businesses, and serviced apartments across Nigeria.",
+          "Leadwood by G&V Support Services provides smart, stylish, and flexible furniture solutions for individuals, expatriates, businesses, and serviced apartments across Nigeria.",
           "We remove the stress of furnishing by handling selection, delivery, installation, and support so you can focus on living, working, and growing comfortably.",
         ]}
         sections={[
           {
-            heading: "Why Choose Leadwoods When Setting Up in Nigeria?",
+            heading: "Why Choose Leadwood When Setting Up in Nigeria?",
             paragraphs: [
               "Relocating or setting up a new space comes with enough challenges; furniture should not be one of them. Shipping, buying, and assembling furniture can be expensive, slow, and frustrating.",
-              "Leadwoods offers flexible furniture rental and supply solutions that save time, reduce costs, and allow you to move into a fully functional space without stress.",
+              "Leadwood offers flexible furniture rental and supply solutions that save time, reduce costs, and allow you to move into a fully functional space without stress.",
             ],
           },
           {
-            heading: "What Makes Leadwoods Different",
+            heading: "What Makes Leadwood Different",
             paragraphs: [
-              "Finding fully furnished properties is often difficult. Leadwoods helps you turn any apartment, office, studio, or serviced residence into a ready-to-use space.",
+              "Finding fully furnished properties is often difficult. Leadwood helps you turn any apartment, office, studio, or serviced residence into a ready-to-use space.",
               "Backed by G&V Support Services, we manage everything from furniture selection to delivery, installation, maintenance, and removal with flexible terms.",
               "Our collections cover living rooms, bedrooms, dining spaces, home offices, corporate setups, and short-stay apartments.",
             ],
@@ -255,9 +255,9 @@ export default function Herowood() {
           {
             heading: "How Leadwood Simplifies Your Setup",
             paragraphs: [
-              "Whether you’re relocating staff, preparing serviced apartments, or furnishing your personal home, Leadwoods keeps the process smooth and professional.",
+              "Whether you’re relocating staff, preparing serviced apartments, or furnishing your personal home, Leadwood keeps the process smooth and professional.",
               "We deliver, install, arrange, and support your furniture—no heavy lifting, no delays, no confusion.",
-              "With Leadwoods by G&V Support Services, your space is ready before you even settle in.",
+              "With Leadwood by G&V Support Services, your space is ready before you even settle in.",
             ],
           },
         ]}
@@ -285,7 +285,7 @@ export default function Herowood() {
 
       {/* SUPPORT FEATURES */}
       <SupportFeatures
-        heading="Why Choose Leadwoods?"
+        heading="Why Choose Leadwood?"
         subHeading="Our key benefits"
         features={features}
       />
