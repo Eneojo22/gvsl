@@ -138,9 +138,9 @@ const IconGrid = ({ title, items }: IconGridProps) => {
 
 const SupportFeatures = ({ heading, subHeading, features }: SupportFeaturesProps) => {
   return (
-    <section className="max-w-6xl mx-auto px-4 py-16">
+    <section className="max-w-6xl mx-auto px-4 py-16 text-black">
       <div className="mb-10 text-center">
-        <h2 className="text-3xl font-bold">{heading}</h2>
+        <h2 className="text-3xl font-bold text-black">{heading}</h2>
         {subHeading && <p className="text-gray-700 mt-2">{subHeading}</p>}
       </div>
 
@@ -229,7 +229,7 @@ export default function Herowood() {
 
       {/* CONTENT */}
       <GVRelocationSection
-        title="Leadwood Furnitures Solutions for Modern Living"
+        title="Leadwood Furnitures Solutions for Modern Living "
         image="/image/leadswood picture/yevhen-ptashnyk-TGhaRbUwbxI-unsplash.jpg"
         imageAlt="Leadwoods Furniture"
         intro={[
