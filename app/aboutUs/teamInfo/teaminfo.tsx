@@ -29,7 +29,7 @@ const Company = () => {
             />
           
             <CompanyInfo name='Abiodun Akuetiemhe' workTitle='Human Resources' image='/image/picpic.jpg'
-             details='Abiodun Akuetiemhe is the Human Resources Manager at G&V Support Services, dedicated to building a strong workforce and fostering a positive organizational culture. With expertise in recruitment, employee relations, and staff development, she ensures that GVSS attracts, nurtures, and retains top talent to drive the company’s mission and success.'
+             details='Abiodun Akuetiemhe is the Director Admin & Human Resources at G&V Support Services, dedicated to building a strong workforce and fostering a positive organizational culture. With expertise in recruitment, employee relations, and staff development, she ensures that GVSS attracts, nurtures, and retains top talent to drive the company’s mission and success.'
             /> 
             <CompanyInfo name='Wisdom Ugwu ' workTitle='Accountant' image='/image/wisdompic.jpg'
              details='Wisdom Ugwu is the Accountant at G&V Support Services, bringing expertise in financial reporting, auditing, and tax compliance. With a strong eye for detail and commitment to accuracy, he ensures transparency and efficiency across all financial operations, helping GVSS maintain solid financial health and compliance with industry standards.'
