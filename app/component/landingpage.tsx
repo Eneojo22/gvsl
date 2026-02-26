@@ -39,7 +39,7 @@ const heroMessages: HeroMessage[] = [
   }
   ,
   {
-    title: "Our Luxirous Funitures ",
+    title: "Our Luxurious  Funitures ",
     description: "We give you the best funitures for your Apartment.",
     cta: "Leadwoods Funitures",
     ctaLink: "/services/funitures",

@@ -59,7 +59,7 @@ export default function HeroSearch() {
         </section>
     <div className="max-w-7xl mx-auto py-10 border-b">
       <div className="flex flex-col w-full justify-center items-center p-5">
-        <p className="text-2xl font-bold mb-2">Our Top apartment rentals at Leadwoods Homes</p>
+        <p className="text-2xl font-bold mb-2">Our Top apartment rentals at Leadwood Homes</p>
       <p>Guests agree: these apartments are highly rated for location, cleanliness, and more.</p>
        <div className="flex items-center mt-8">
       <input
