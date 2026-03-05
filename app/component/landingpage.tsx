@@ -36,14 +36,14 @@ const heroMessages: HeroMessage[] = [
     title: "Our Apartment Solutions",
     description:
       "Find your ideal apartment with expert local guidance and support.",
-    cta: "Leadwoods Homes",
+    cta: "Leadwood Homes",
     ctaLink: "/services/ourapartment",
     image: "/image/chad-peltola-Rch8oP-O5sU-unsplash.jpg",
   },
   {
     title: "Our Luxurious Furniture",
     description: "We provide premium furniture options for your apartment.",
-    cta: "Leadwoods Furniture",
+    cta: "Leadwood Furniture",
     ctaLink: "/services/LeadwoodsFuniture",
     image: "/image/chad-peltola-Rch8oP-O5sU-unsplash.jpg",
   },
