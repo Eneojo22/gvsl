@@ -71,15 +71,7 @@ const History = () => { return (
   </p>
 </div>
 
-<div className="pt-10 pb-5 md:w-2/3 text-sm/7">
-  <span className="text-[18px] font-bold text-[#dd5500]">Purpose</span>
-  <p>
-    To deliver exceptional relocation experiences that create lasting, positive memories of Nigeria’s vibrant culture and opportunities. At G&V, it’s not just about what we do—it’s about how we make you feel.
-  </p>
 
-  <span className="text-[18px] font-bold text-[#dd5500]">Vision</span>
-  <p>To be the premier expatriate relocation and mobility service provider of choice in Nigeria.</p>
-</div>
 
 <div className="pt-10 md:w-2/3 text-sm/7">
   <span className="text-[18px] font-bold text-[#dd5500]">Our Core Values</span>
