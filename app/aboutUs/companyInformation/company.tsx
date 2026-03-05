@@ -39,23 +39,36 @@ const History = () => { return (
   </p>
 </div>
 
-<div className="pt-10 md:w-2/3 text-sm/7">
+<div className="pt-10 md:w-2/3 text-sm/7 space-y-4">
   <span className="text-[18px] font-bold text-[#dd5500]">Our Divisions</span>
-  <p className="pt-3 text-sm/7">
-    G&V Support Services Limited operates through three specialized divisions, each designed to meet the unique needs of expatriates and their employers:
+
+  <p>
+    G&V Support Services Limited operates through three specialized divisions, each designed to meet the unique needs of expatriates and their employers.
   </p>
 
-  <ul className="pt-3 list-disc text-sm/7 md:w-2/3">
-    <li>
-      <b>Mobility Division:</b> Provides end-to-end relocation support, including orientation, home search, school search, settling-in, departure services, cultural training, and our signature Car Rental and Lease Management—ensuring seamless mobility for expatriates in Nigeria.
-    </li>
-    <li>
-      <b>Immigration Division:</b> Manages the full spectrum of visa and immigration services, navigating Nigeria’s regulatory requirements to secure timely approvals for expatriates and their families.
-    </li>
-    <li>
-      <b>Research Division:</b> Collects and analyzes data on housing, schooling, vehicle costs, and cost of living across Lagos, Abuja, Edo, Rivers, Imo, Delta, and Akwa Ibom States—providing global HR teams with actionable insights for informed decision-making.
-    </li>
-  </ul>
+  <p>
+    <b>Mobility Division:</b> Provides end-to-end relocation support, including orientation, home and school searches, settling-in services, departure services, cultural training, car rental, and our signature lease management services, ensuring seamless mobility for expatriates in Nigeria.
+  </p>
+
+  <p>
+    <b>Immigration Division:</b> Manages the full spectrum of visa and immigration services, navigating Nigeria’s regulatory requirements to secure timely approvals for expatriates and their families.
+  </p>
+
+  <p>
+    <b>Research Division:</b> Collects and analyzes data on housing, schooling, vehicle costs, and the cost of living across Lagos, Abuja, Edo, Rivers, Imo, Delta, and Akwa Ibom States, providing global HR departments with actionable insights for informed decision-making.
+  </p>
+
+  <span className="text-[18px] font-bold text-[#dd5500]">Purpose</span>
+
+  <p>
+    To deliver exceptional relocation experiences that create lasting, positive memories of Nigeria’s vibrant culture and opportunities. At G&V, it’s not just about what we do—it’s about how we make you feel.
+  </p>
+
+  <span className="text-[18px] font-bold text-[#dd5500]">Vision</span>
+
+  <p>
+    To be the premier expatriate relocation and mobility service provider of choice in Nigeria.
+  </p>
 </div>
 
 <div className="pt-10 pb-5 md:w-2/3 text-sm/7">
