@@ -9,7 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import React from "react";
 import { LoaderThree } from "./component/uiforcomponent/loader";
 import Navbar from "./component/navbar2";
-import { CartProvider } from "./services/LeadwoodsFuniture/cartContext";
+import { CartProvider } from "./services/LeadwoodFunitures/cartContext";
 
 const poppins = Poppins({
   subsets: ["latin"],

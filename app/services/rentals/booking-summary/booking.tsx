@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { UseCarContextForInput } from "@/app/services/carrentals/gettingcarinputfromclient";
+import { UseCarContextForInput } from "@/app/services/rentals/gettingcarinputfromclient";
 import {carTypes } from "../chooseAvehicle";
 import Link from "next/link";
 

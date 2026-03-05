@@ -1,6 +1,6 @@
 // import Image from "next/image";
 "use client";
-import { InfiniteMovingCard } from "../LeadwoodsFuniture/infinite";
+import { InfiniteMovingCard } from "../LeadwoodFunitures/infinite";
 import Image from "next/image";
 import { useState } from "react";
 import properties from "./apartmentData";

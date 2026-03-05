@@ -1,6 +1,6 @@
 "use client";
 
-import { UseCarContextForInput } from "@/app/services/carrentals/gettingcarinputfromclient";
+import { UseCarContextForInput } from "@/app/services/rentals/gettingcarinputfromclient";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState } from "react";
