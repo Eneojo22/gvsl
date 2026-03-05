@@ -48,12 +48,14 @@ const Content = [
     title: "Our Approach to Orientation & Area Tours",
     description: (
       <>
-       <p>At G&V Support Services, we know that every relocation journey is unique. 
-        A one-size-fits-all approach simply doesn't work. We understand that each individual and family h
-        as a different set of needs and anxieties when moving to a new country. That's why our Destination Consultants, 
-        with their first-hand experience of living in Nigeria,
-         are dedicated to crafting a tailored orientation experience just for you.
-         </p>
+       <p>
+At G&V Support Services, we understand that every relocation journey is unique. 
+A one-size-fits-all approach simply does not work. Each individual and family 
+has different needs, expectations, and concerns when moving to a new country. 
+That is why our Destination Consultants, with their first-hand experience of 
+living in Nigeria, are dedicated to creating a personalized orientation 
+experience tailored specifically for you.
+</p>
         
       
       </>
@@ -66,14 +68,23 @@ const Content = [
     title: "Cultural Insight",
     description: (
       <>
-        <div>Cultural Insight: We provide a deep understanding of local Nigerian culture, customs, and social norms to help you feel at home faster.
- 
-            Neighborhood Information: We give you the inside scoop on the best neighborhoods, their unique characteristics, and what they offer in terms of lifestyle and amenities.
+       <div className="space-y-3">
+  <p>
+    <strong>Cultural Insight:</strong> We provide a deep understanding of Nigerian culture, customs, and social norms to help you adapt quickly and feel at home.
+  </p>
 
-            Housing Options: We provide an overview of housing options that fit your preferences and can even arrange viewings of sample accommodations.
+  <p>
+    <strong>Neighborhood Information:</strong> We offer valuable insights into the best neighborhoods, highlighting their unique characteristics and the lifestyle and amenities they provide.
+  </p>
 
-            Education and Schools: We help you navigate the local school system, offering information on reputable schools for your children.
-            </div>
+  <p>
+    <strong>Housing Options:</strong> We present a range of housing options that match your preferences and can also arrange viewings of selected accommodations.
+  </p>
+
+  <p>
+    <strong>Education and Schools:</strong> We guide you through the local education system, providing information on reputable schools and helping you find the best options for your children.
+  </p>
+</div>
       </>
     ),
     // badge: "Changelog",
