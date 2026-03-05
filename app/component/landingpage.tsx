@@ -19,32 +19,33 @@ const heroMessages: HeroMessage[] = [
   {
     title: "Your Journey Starts Here",
     description:
-      "At G&V Support Services Limited, we transform relocation challenges into smooth, effortless experiences.",
-    cta: "Explore Our Services",
+      "G&V Support Services Limited turns relocation complexity into a smooth, well-coordinated experience—from arrival to settling in.",
+    cta: "Explore Services",
     ctaLink: "/services/airportmeetandgreet",
     image: "/image/chad-peltola-Rch8oP-O5sU-unsplash.jpg",
   },
   {
-    title: "Seamless Relocation",
+    title: "Seamless Arrival Support",
     description:
-      "From airport pickup to settling in, we handle every detail of your move.",
+      "Airport Meet & Greet, immigration guidance, and direct transfer to your accommodation—handled with care and precision.",
     cta: "Airport Meet and Greet",
     ctaLink: "/services/airportmeetandgreet",
     image: "/image/chad-peltola-Rch8oP-O5sU-unsplash.jpg",
   },
   {
-    title: "Our Apartment Solutions",
+    title: "Apartments",
     description:
-      "Find your ideal apartment with expert local guidance and support.",
+      "Secure the right home faster with trusted local guidance, shortlisted options, and coordinated viewings.",
     cta: "Leadwood Homes",
-    ctaLink: "/services/ourapartment",
+    ctaLink: "/services/apartments",
     image: "/image/chad-peltola-Rch8oP-O5sU-unsplash.jpg",
   },
   {
-    title: "Our Luxurious Furniture",
-    description: "We provide premium furniture options for your apartment.",
+    title: "Furniture",
+    description:
+      "Premium furniture solutions to help you set up comfortably—quickly, professionally, and to your taste.",
     cta: "Leadwood Furniture",
-    ctaLink: "/services/LeadwoodsFuniture",
+    ctaLink: "/services/leadwoodfurniture",
     image: "/image/chad-peltola-Rch8oP-O5sU-unsplash.jpg",
   },
 ];
@@ -168,33 +169,31 @@ export const projects = [
   {
     title: "Leadwood Homes",
     description:
-      "Through our partnership with Leadwood Homes, we offer luxurious homes designed for comfort and elegance, featuring modern amenities and secure locations.",
+      "Access premium apartments and housing options through our partnership with Leadwood Homes—secure locations, modern amenities, and flexible choices.",
     link: "/services/apartments",
   },
   {
     title: "Leadwood Furniture",
     description:
-      "Our homes are crafted from nature's finest woods, using sustainably sourced, high-quality materials that balance durability with beauty.",
+      "Premium furniture options to help you settle in comfortably—selected for quality, style, and durability.",
     link: "/services/leadwoodfurniture",
   },
   {
     title: "Airport Meet and Greet",
     description:
-      "We warmly welcome clients with personalized airport support, from customs assistance to seamless transportation and local onboarding.",
+      "Personalized arrival support—from immigration guidance and luggage assistance to a smooth transfer to your accommodation.",
     link: "/services/airportmeetandgreet",
   },
   {
     title: "Car Rental Services",
     description:
-      "Our car rental service provides reliable transportation with well-maintained vehicles and professional drivers across Nigeria.",
+      "Reliable transportation with well-maintained vehicles and professional drivers, available across Nigeria.",
     link: "/services/carrentals",
   },
   {
     title: "Orientation",
     description:
-      "Our orientation program covers local customs, legal basics, safety guidance, and community resources to help clients settle confidently.",
+      "A tailored onboarding experience covering local culture, safety guidance, and practical settling-in support.",
     link: "/services/orientation",
   },
 ];
-
-export default Landingpage;
