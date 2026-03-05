@@ -24,24 +24,34 @@ const Company = () => {
             <div className='w-full text-center p-6 md:text-5xl text-3xl font-bold'>Meet Our team</div>
             
             <div>
-             <CompanyInfo name=' Gospel Akuetiemhe' workTitle='Managing Director' image='/image/picpic.jpg'  
-             details='Godwin Akuetiemhe is the Managing Director of G&V Support Services, providing strategic leadership and driving the company’s vision for growth and excellence. With a wealth of experience and a results-driven mindset, he ensures that GVSS delivers outstanding value to clients while fostering innovation, efficiency, and long-term success.'
-            />
-          
-            <CompanyInfo name='Abiodun Akuetiemhe' workTitle='Human Resources' image='/image/picpic.jpg'
-             details='Abiodun Akuetiemhe is the Director Admin & Human Resources at G&V Support Services, dedicated to building a strong workforce and fostering a positive organizational culture. With expertise in recruitment, employee relations, and staff development, she ensures that GVSS attracts, nurtures, and retains top talent to drive the company’s mission and success.'
-            /> 
-            <CompanyInfo name='Wisdom Ugwu ' workTitle='Accountant' image='/image/wisdompic.jpg'
-             details='Wisdom Ugwu is the Accountant at G&V Support Services, bringing expertise in financial reporting, auditing, and tax compliance. With a strong eye for detail and commitment to accuracy, he ensures transparency and efficiency across all financial operations, helping GVSS maintain solid financial health and compliance with industry standards.'
-            />  
-            <CompanyInfo name='oluwakemi Adesanwo ' workTitle='Facility Supervisor' image='/image/kemipic.jpg'  
-            details='Oluwakemi Adesanwo is the Facility Supervisor at G&V Support Services, responsible for overseeing day-to-day facility operations and ensuring a safe, efficient, and well-organized work environment. With strong attention to detail and a commitment to excellence, she supports GVSS in maintaining smooth operations that drive productivity and organizational success.'
-            />  
+             <CompanyInfo 
+  name="Gospel Akuetiemhe" 
+  workTitle="Managing Director" 
+  image="/image/picpic.jpg"  
+  details="Gospel Akuetiemhe is the Managing Director of G&V Support Services limited, where he provides strategic leadership and drives the company’s vision for growth and operational excellence. With extensive industry experience and a results-oriented mindset, he ensures that GVSS consistently delivers exceptional value to its clients while fostering innovation, efficiency, and sustainable long-term success."
+/>
+
+<CompanyInfo 
+  name="Abiodun Akuetiemhe" 
+  workTitle="Director, Administration & Human Resources" 
+  image="/image/picpic.jpg"
+  details="Abiodun Akuetiemhe serves as the Director of Administration and Human Resources. She is dedicated to building a strong workforce and cultivating a positive organizational culture. With expertise in recruitment, employee relations, and staff development, she ensures that GVSS attracts, develops, and retains top talent to support the company’s mission and long-term growth."
+/>
+
+<CompanyInfo 
+  name="Wisdom Ugwu" 
+  workTitle="Accountant" 
+  image="/image/wisdompic.jpg"
+  details="Wisdom Ugwu is the Accountant at G&V Support Services, bringing strong expertise in financial reporting, auditing, and tax compliance. With keen attention to detail and a commitment to financial accuracy, he oversees the company’s financial operations, ensuring transparency, efficiency, and compliance with industry regulations."
+/>
+
+<CompanyInfo 
+  name="Oluwakemi Adesanwo" 
+  workTitle="Facility Supervisor" 
+  image="/image/kemipic.jpg"  
+  details="Oluwakemi Adesanwo is the Facility Supervisor at G&V Support Services, responsible for overseeing daily facility operations and ensuring a safe, efficient, and well-organized environment. With a strong focus on operational excellence and attention to detail, she plays a key role in maintaining smooth facility management processes that support productivity and organizational effectiveness."
+/>
             </div>
-           
-
-
-        
          </div>
   )
 }

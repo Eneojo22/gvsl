@@ -46,7 +46,7 @@ export default function Navbar() {
       { name: "Orientation", href: "/services/orientation" },
       { name: "Airport Meet and Greet", href: "/services/airportmeetandgreet" },
       { name: "LeadWood Homes", href: "/services/ourapartment" },
-      { name: "LeadWood Furnitures", href: "/services/LeadwoodsFuniture" },
+      { name: "LeadWood Furniture", href: "/services/LeadwoodsFuniture" },
       // { name: "Settling-in", href: "/services/Settling-in" },
       { name: "Departure Services", href: "/services/departureservices" },
       { name: "Chauffeur Services", href: "/services/carrentals" },
@@ -64,7 +64,7 @@ export default function Navbar() {
         isScrolled ? " bg-[#000000] " : "bg-transparent font-bold  "
       }`}
     >
-      <div className=" mx-auto px-6 py-4 flex justify-between  items-center relative\">
+      <div className=" mx-auto px-6 py-4 flex justify-between items-center relative">
         {/* Logo */}
         <div className="flex items-center ">
 
@@ -124,9 +124,9 @@ export default function Navbar() {
           ))}
           <div className="border">
             <Link
-                  href="/book-appointment"
+                  href="/services/contactUs"
                   className="bg-white text-[#dd5500] font-bold px-4 py-4 rounded shadow-lg hover:shadow-xl hover:bg-gray-100 transition-all duration-300">
-            Book Appointment
+            Contact Us
             </Link>
           </div>
         </div>

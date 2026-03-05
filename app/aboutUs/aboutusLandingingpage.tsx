@@ -25,7 +25,7 @@ const Messages: HeroMessage[] = [
     title: "Our Team",
     description: "Take a Look at our wonderful and extraordinary team who work seamlessly to make you feel comfortable and warming.",
     cta: "Our Teams",
-    ctaLink: "aboutUs",
+    ctaLink: "/aboutUs/teamInfo",
     // teamInfo",
      image: "/image/immigration.jpg"
     // image: "/image/meetgreet.jpg"
@@ -34,16 +34,16 @@ const Messages: HeroMessage[] = [
     title: "Our Events",
     description: "Find your perfect home with our expert guidance and support.",
     cta: "The Main Events",
-    ctaLink: "aboutUs/Event",
+    ctaLink: "/aboutUs/Event",
      image: "/image/immigration.jpg"
     // image: "/image/"
   }
   ,
   {
     title: "Our Testimonials ",
-    description: "We give you the best funitures for your Apartment.",
+    description: "See what clients say about our relocation and support services.",
     cta: "Explore Testimonials",
-    ctaLink: "aboutUs/Testimonials",
+    ctaLink: "/aboutUs/Testimonials",
      image: "/image/immigration.jpg"
     // image: "/image/"
   }
@@ -72,30 +72,29 @@ const Section = () => {
 const currentMessage = Messages[currentMessageIndex];
   
 return(
-        <section className="text-white md:h-hdv flex  items-center relative  bg-gradient-to-r from-[#000000] to-[#ffffff]">
+        <section className="text-white min-h-screen flex items-center relative bg-gradient-to-r from-[#000000] to-[#ffffff]">
           {/* Background Image Blend */}
           <div className={`absolute inset-0 opacity-50 transition-opacity duration-1000 ${isTransitioning ? 'opacity-0' : 'opacity-50'}`}>
             <Image
               src={currentMessage.image}
               alt={currentMessage.title}
-              layout="fill"
-              objectFit="cover"
+              fill
               className="mix-blend-overlay"
               priority
             />
           </div>
     
           {/* Content */}
-          <div className="z-10 flex flex-col justify-center items-center mx-auto h-dvh text-left px-4 ">
+          <div className="z-10 flex flex-col justify-center items-center mx-auto min-h-screen text-left px-4 ">
             <h1 className="md:text-8xl text-5xl   text-center p-5 text-[#ec3700] md:text-black  font-extrabold mb-4 animate-fade">
               {currentMessage.title}
             </h1>
             <p className="text-lg  text-center text-[12px] font-bold pb-3.5 mb-6 animate-fade">
               {currentMessage.description}
             </p>
-            <button className="bg-[#000] text-[#e64201] md:text-[13] font-semibold py-3 w-70 rounded  transition animate-fade">
-             <Link href={currentMessage.ctaLink}>{currentMessage.cta} </Link> 
-            </button>
+            <Link href={currentMessage.ctaLink} className="bg-[#000] text-[#e64201] md:text-[13px] font-semibold py-3 px-6 rounded transition animate-fade">
+              {currentMessage.cta}
+            </Link>
           </div>
         </section>
 )

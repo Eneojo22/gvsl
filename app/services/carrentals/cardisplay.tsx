@@ -104,15 +104,13 @@ function DisplayDifferentCar(){
     
       const currentMessage =CarDisplay[currentMessageIndex];
     return(
-         <section className="  flex  items-center relative   ">
+         <section className="flex items-center relative">
           {/* Background Image Blend */}
-          <div className={`text-black h-50 w-50  md:h-100   duration-1000 ${isTransitioning && 'opacity-100' }`}>
+          <div className={`text-black h-50 w-50 md:h-100 duration-1000 relative ${isTransitioning && 'opacity-100' }`}>
             <Image
               src={currentMessage.imageUrl}
               alt={currentMessage.name}
-            //   layout="fill"
-              objectFit="cover  "
-              className="bg-cover"
+              className="object-cover"
               fill
             />
           </div>
