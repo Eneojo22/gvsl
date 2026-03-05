@@ -107,12 +107,7 @@ export default async function Page({
         </p>
 
         <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
-          <Link
-            href="/services/leadwoodhomes"
-            className="inline-flex items-center justify-center rounded-lg bg-[#dd5500] px-5 py-3 text-white font-semibold hover:opacity-90"
-          >
-            Go to leadwoodhomes
-          </Link>
+    
           <Link
             href="/"
             className="inline-flex items-center justify-center rounded-lg border border-gray-300 px-5 py-3 text-[#111111] font-semibold hover:bg-gray-50"
