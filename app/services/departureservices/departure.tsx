@@ -1,68 +1,66 @@
-import React from 'react'
-import { Hero } from '../airportmeetandgreet/airportmeetandgreet'
-// import { CheckCircle } from "lucide-react";
-import { BiCheckbox } from 'react-icons/bi';
+import React from "react";
+import { Hero } from "../airportmeetandgreet/airportmeetandgreet";
+import { BiCheckbox } from "react-icons/bi";
+
 const Departure = () => {
+  const departureItems = [
+    "End-of-assignment lease termination",
+    "Formal notice to landlords",
+    "Deposit refund facilitation",
+    "Coordination of property repairs and third-party services",
+    "Assistance with bank account transfers or closures",
+    "Arrangement of professional cleaning services",
+    "Inventory check-out management",
+  ];
+
   return (
-<>
-
-    <div className=' w-full  text-black mt-40 '>
+    <>
+      <div className="w-full text-black mt-40">
         <Hero
-            title=" See you Next Time"
-            // subtitle="Seamless Airport Meet & Greet"
-            image="/image/meetgreet.jpg"
-            overlayOpacity="bg-black/50"
-            height="h-[30vh]"
-              />
-            </div>
-   <div className="w-full p-10 text-black ">
-                
-            {/* <p className='text-[#333333]  border-2  '> */}
-                  
-                <p className='text-4xl font-bold m-3'> Departure Services</p>
+          title="See You Next Time"
+          image="/image/meetgreet.jpg"
+          overlayOpacity="bg-black/50"
+          height="h-[30vh]"
+        />
+      </div>
 
-            <p className=' w-200 p-2'>At G&V Support Services Limited, we understand that the end of an expatriate assignment requires as much care and attention as its beginning. Our comprehensive Departure Services ensure your assignee can stay focused on their role until their final day, while we handle the complexities of their departure.
+      <div className="w-full max-w-5xl mx-auto px-4 md:px-10 py-10 text-black">
+        <h1 className="text-3xl md:text-4xl font-bold mb-4">Departure Services</h1>
 
-                    Our dedicated Destination Consultant will create a tailored departure timeline, managing every detail with precision. From lease termination to securing deposit refunds and addressing any property damage claims, we’ve got it covered. We coordinate utility, phone, and internet disconnections, ensuring timely notice to landlords and seamless transitions.
+        <p className="text-[#333333] leading-relaxed">
+          At G&V Support Services Limited, we understand that the end of an expatriate assignment requires the same
+          level of care and attention as its beginning. Our comprehensive Departure Services allow assignees to remain
+          focused on their responsibilities through their final day, while we manage the key departure steps.
+          <br /><br />
+          Your dedicated Destination Consultant will create a tailored departure timeline and coordinate every detail
+          with precision from lease termination and deposit recovery to handling any property-related claims. We also
+          coordinate the disconnection of utilities, phone, and internet services, ensuring all required notices are
+          issued on time and the transition is smooth.
+        </p>
 
-                    G&V Departure Services Include:</p>
+        <p className="mt-6 font-semibold text-[#333333]">G&V Departure Services include:</p>
 
-            {/* </p> */}
-                
-           <Items  title='End-of-assignment lease termination'></Items>
-           <Items  title='Formal notice to landlords'></Items>
-           <Items  title='Deposit refund facilitation'></Items>
-           <Items  title='Coordination of property repairs and third-party services'></Items>
-           <Items  title='Assistance with bank account transfers or closures'></Items>
-           <Items  title='Arrangement of professional cleaning services'></Items>
-           <Items  title='Inventory check-out management'></Items>
+        <ul className="mt-4 space-y-3">
+          {departureItems.map((item) => (
+            <Items key={item} title={item} />
+          ))}
+        </ul>
+      </div>
+    </>
+  );
+};
 
-              </div>
-              
-        </>
-  )
-}
-
-export default Departure
-
+export default Departure;
 
 interface ItemsProps {
   title: string;
-  
 }
-export function Items({  title}: ItemsProps){
 
-    return(
-
-    <>
-     <ul className=" text-black  pt-6  ">
-                <li className="flex items-start">
-        <BiCheckbox className="w-5 h-5 text-amber-700 mr-2" />
-        {title}
-      </li>
-        </ul>
-    
-    
-    </>
-    )
+export function Items({ title }: ItemsProps) {
+  return (
+    <li className="flex items-start text-[#333333]">
+      <BiCheckbox className="w-5 h-5 text-amber-700 mr-2 mt-0.5" />
+      <span>{title}</span>
+    </li>
+  );
 }
