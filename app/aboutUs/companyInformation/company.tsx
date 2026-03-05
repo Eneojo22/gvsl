@@ -13,27 +13,30 @@ const History = () => { return (
     <>
     <div>
         <span className='text-[18px] font-bold text-[#dd5500] '>History</span>
-        <p className='text-[#5f5f5f] pt-3'>G&V support services limited history</p>
-        <div className="text-sm/7 md:w-2/3 pt-6">
-  G&V Support Services Limited was founded by Mr. Gospel Akuetiemhe, driven by a passion for simplifying the complexities of expatriate relocation. Recognizing the growing influx of global businesses into Nigeria, he identified an opportunity to create a service that would ease the transition for expatriates—allowing them to focus on their professional responsibilities while settling into a new environment.
-
+<div className="text-sm/7 md:w-2/3 pt-6 space-y-4">
   <p>
-    Our first major project involved supporting a group of expatriate families relocating from Korea to Nigeria. We delivered comprehensive destination services, including housing support, school searches, and vehicle rentals.
+    G&V Support Services Limited was founded by Mr. Gospel Akuetiemhe, inspired by a vision to simplify the complexities of expatriate relocation. As global businesses increasingly expanded into Nigeria, he recognized the need for reliable destination services that would help expatriates transition smoothly into their new environment, allowing them to focus on their professional responsibilities while settling comfortably into their new surroundings.
   </p>
 
-  This successful engagement laid the foundation for G&V’s growth as a leading provider of expatriate support services in Nigeria.
-
-  G&V has evolved into a trusted name in expatriate services, expanding its footprint across Lagos, Abuja, Edo, Rivers, Imo, Delta, and Akwa Ibom States.
-
-  Despite the challenges of operating in a rapidly evolving industry, G&V has remained committed to its core values and adaptive business strategies. Today, we are recognized as one of Nigeria’s leading independently run destination services providers, offering tailored solutions for multinational corporations and their expatriate employees.
-
-  Initially focused on inbound relocation services, G&V expanded into Visa and Immigration Services to address Nigeria’s complex regulatory environment.
-
   <p>
-    We have also introduced our Car Rental and Lease Management Services, partnering with trusted providers to offer expatriates reliable, high-quality vehicles—from sleek sedans to spacious SUVs—tailored to their needs.
+    One of the company’s earliest milestones was supporting a group of expatriate families relocating from Korea to Nigeria. Through this project, G&V delivered comprehensive destination services including housing support, school searches, and vehicle rentals, ensuring a seamless relocation experience for the families involved.
   </p>
 
-  Today, G&V Support Services Limited is a comprehensive expatriate solutions provider, delivering exceptional services that ensure smooth transitions for assignees across Nigeria’s key economic hubs.
+  <p>
+    This successful engagement laid the foundation for G&V’s growth and reputation as a trusted provider of expatriate support services in Nigeria. Over time, the company expanded its reach and operations across major economic hubs including Lagos, Abuja, Edo, Rivers, Imo, Delta, and Akwa Ibom States.
+  </p>
+
+  <p>
+    Despite operating in a rapidly evolving industry, G&V has remained committed to its core values and adaptable business strategies. Today, the company is recognized as one of Nigeria’s leading independently run destination service providers, delivering tailored relocation solutions for multinational corporations and their expatriate employees.
+  </p>
+
+  <p>
+    While the company initially focused on inbound relocation services, G&V has since expanded its offerings to include Visa and Immigration Services to help clients navigate Nigeria’s complex regulatory environment. The company has also introduced Car Rental and Lease Management Services, partnering with trusted providers to offer expatriates reliable, high-quality vehicles ranging from executive sedans to spacious SUVs.
+  </p>
+
+  <p>
+    Today, G&V Support Services Limited stands as a comprehensive expatriate solutions provider, committed to delivering exceptional services that ensure smooth transitions for international assignees across Nigeria’s key economic regions.
+  </p>
 </div>
 
 <div className="pt-10 md:w-2/3 text-sm/7">

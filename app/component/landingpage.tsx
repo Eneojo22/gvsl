@@ -166,31 +166,31 @@ export function CardHoverEffect() {
 
 export const projects = [
   {
-    title: "Leadwoods Home",
+    title: "Leadwood Homes",
     description:
-      "Through our partnership with Leads Woods Homes, we offer luxurious homes designed for comfort and elegance with modern amenities and secure locations.",
-    link: "/services/ourapartment",
+      "Through our partnership with Leadwood Homes, we offer luxurious homes designed for comfort and elegance, featuring modern amenities and secure locations.",
+    link: "/services/apartments",
   },
   {
-    title: "LeadWoods Furniture",
+    title: "Leadwood Furniture",
     description:
       "Our homes are crafted from nature's finest woods, using sustainably sourced, high-quality materials that balance durability with beauty.",
-    link: "/services/LeadwoodsFuniture",
+    link: "/services/leadwoodfurniture",
   },
   {
     title: "Airport Meet and Greet",
     description:
-      "We warmly welcome clients with personalized airport support, from customs assistance to smooth transport and local onboarding.",
+      "We warmly welcome clients with personalized airport support, from customs assistance to seamless transportation and local onboarding.",
     link: "/services/airportmeetandgreet",
   },
   {
-    title: "Our Car Rental Services",
+    title: "Car Rental Services",
     description:
       "Our car rental service provides reliable transportation with well-maintained vehicles and professional drivers across Nigeria.",
     link: "/services/carrentals",
   },
   {
-    title: "Our Orientation",
+    title: "Orientation",
     description:
       "Our orientation program covers local customs, legal basics, safety guidance, and community resources to help clients settle confidently.",
     link: "/services/orientation",
