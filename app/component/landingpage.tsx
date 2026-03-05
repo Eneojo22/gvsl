@@ -197,3 +197,5 @@ export const projects = [
     link: "/services/orientation",
   },
 ];
+
+export default Landingpage;
