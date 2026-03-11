@@ -1,36 +1,23 @@
 "use client";
+
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
-import Link from "next/link";
 import Image from "next/image";
-import { HiMenu, HiX, HiPlus } from "react-icons/hi";
-import { Montserrat } from 'next/font/google';
-import { FaMapMarkerAlt} from "react-icons/fa";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Montserrat } from "next/font/google";
+import { useEffect, useState } from "react";
+import { FaMapMarkerAlt } from "react-icons/fa";
+import { HiMenu, HiPlus, HiX } from "react-icons/hi";
+
 const montserrat = Montserrat({
-  weight: '700',
-  subsets: ['latin'],
+  weight: "700",
+  subsets: ["latin"],
 });
 
-
-export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
- const [openDropdown, setOpenDropdown] = useState<number | null>(null);
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  const toggleMenu = () => setMenuOpen(!menuOpen);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const navLinks = [
+const navLinks = [
   {
     href: "/aboutUs",
-    label: "ABOUT US ",
+    label: "ABOUT US",
     dropdown: [
       { name: "Company Information", href: "/aboutUs/companyInformation" },
       { name: "Team Info", href: "/aboutUs/teamInfo" },
@@ -41,78 +28,102 @@ export default function Navbar() {
   {
     href: "/",
     label: "SERVICES",
-    // highlight: true,
     dropdown: [
       { name: "Orientation", href: "/services/orientation" },
       { name: "Airport Meet and Greet", href: "/services/airportmeetandgreet" },
       { name: "LeadWood Homes", href: "/services/leadwoodhomes" },
       { name: "LeadWood Furniture", href: "/services/LeadwoodFunitures" },
-      // { name: "Settling-in", href: "/services/Settling-in" },
       { name: "Departure Services", href: "/services/departureservices" },
       { name: "Chauffeur Services", href: "/services/rentals" },
     ],
   },
-  { href: "/location", label: <><FaMapMarkerAlt className="inline mr-1" /> LOCATIONS</> },
-  // { href: "/contactUs", label: <><FaPhoneAlt className="inline mr-1" /> CONTACT US</> },
+  {
+    href: "/location",
+    label: (
+      <>
+        <FaMapMarkerAlt className="inline mr-1" />
+        LOCATIONS
+      </>
+    ),
+  },
 ];
 
-  const normalizePath = (path: string) => path.startsWith('/') ? path : '/' + path
-// bg-[#ff3131]
+export default function Navbar() {
+  const pathname = usePathname();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<number | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    setMenuOpen(false);
+    setOpenDropdown(null);
+  }, [pathname]);
+
+  const normalizePath = (path: string) => (path.startsWith("/") ? path : `/${path}`);
+  const navTextColor = isScrolled ? "text-white" : "text-black";
+
   return (
     <nav
-      className={`fixed top-0  left-0 w-full z-50  transition-colors duration-300 ${
-        isScrolled ? " bg-[#000000] " : "bg-transparent font-bold  "
+      className={`fixed top-0 left-0 z-50 w-full transition-colors duration-300 ${
+        isScrolled ? "bg-black/95 shadow-lg backdrop-blur" : "bg-transparent"
       }`}
     >
-      <div className=" mx-auto px-6 py-4 flex justify-between items-center relative">
-        {/* Logo */}
-        <div className="flex items-center ">
-
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="flex items-center"
-        >
-          <Link href="/">
-          <Image
-            src="/image/G___V_SUPPORT_SERVICE_ltd__7_-removebg-preview.png"
-            height={50}
-            width={80}
-            alt="GVSS Logo"
-            className="object-contain"
-          /></Link>
+      <div className="mx-auto flex items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+        <div className="flex min-w-0 flex-1 items-center">
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="flex items-center"
+          >
+            <Link href="/" className="shrink-0">
+              <Image
+                src="/image/G___V_SUPPORT_SERVICE_ltd__7_-removebg-preview.png"
+                height={50}
+                width={80}
+                alt="GVSS Logo"
+                className="h-12 w-auto object-contain sm:h-14"
+              />
+            </Link>
           </motion.div>
-        <h1
-          className={`md:text-3xl font-bold tracking-tight  ${montserrat.className} 
-          ${isScrolled ? "" : "text-[#000000] font-bold"
-                }`}>
-                  <span className="text-[#dd5500]">G&V Support</span> Services Limited
-          </h1>
+
+          <Link
+            href="/"
+            className={`ml-2 min-w-0 text-sm font-bold leading-tight tracking-tight sm:ml-3 sm:text-base lg:text-lg xl:text-2xl ${montserrat.className} ${navTextColor}`}
+          >
+            <span className="text-[#dd5500]">G&V Support</span>
+            <span className="hidden sm:inline"> Services Limited</span>
+          </Link>
         </div>
 
-        {/* Desktop Nav */}
-        <div className="hidden md:flex space-x-6 text-sm">
-         {navLinks.map(({ href, label, dropdown }, index) => (
-        <div key={`${href}-${index}`} className="relative group text-[#000000]">
-
-              {/* <Link key={i} href={normalizePath(href)}></Link> */}
-              <Link href={normalizePath(href)}
-                className={`hover:text-[#cf6c3d] ${ "font-bold "}
-                ${isScrolled ? "text-[#ffffff] font-bold":""}
-                
-                `}
+        <div className="hidden items-center gap-5 text-sm xl:flex 2xl:gap-7">
+          {navLinks.map(({ href, label, dropdown }, index) => (
+            <div key={`${href}-${index}`} className="group relative">
+              <Link
+                href={normalizePath(href)}
+                className={`font-bold transition-colors hover:text-[#cf6c3d] ${navTextColor}`}
               >
                 {label}
               </Link>
-                    {/* THIS IS FOR THE DROPDOWN */}
+
               {dropdown && (
-                <ul className="absolute left-0 mt-2 bg-white shadow-lg rounded-md w-58 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-in-out z-50">
-                  {dropdown.map((item, i) => (
-                    <li key={i}>
+                <ul className="invisible absolute left-0 mt-2 w-60 translate-y-2 rounded-md bg-white py-2 opacity-0 shadow-lg transition-all duration-300 ease-in-out group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                  {dropdown.map((item) => (
+                    <li key={item.href}>
                       <Link
                         href={item.href}
-                        className="block px-4 py-2 hover:text-[#cf6c3d] text-[#000000]"
+                        className="block px-4 py-2 text-black transition-colors hover:text-[#cf6c3d]"
                       >
                         {item.name}
                       </Link>
@@ -122,75 +133,74 @@ export default function Navbar() {
               )}
             </div>
           ))}
-          <div className="border">
-            <Link
-                  href="/services/contactUs"
-                  className="bg-white text-[#dd5500] font-bold px-4 py-4 rounded shadow-lg hover:shadow-xl hover:bg-gray-100 transition-all duration-300">
+
+          <Link
+            href="/contact-us"
+            className="rounded-md bg-white px-4 py-3 font-bold text-[#dd5500] shadow-lg transition-all duration-300 hover:bg-gray-100 hover:shadow-xl"
+          >
             Contact Us
-            </Link>
-          </div>
+          </Link>
         </div>
-        
-        {/* Mobile Menu Toggle */}
-        <div className="md:hidden">
+
+        <div className="xl:hidden">
           <button
-            onClick={toggleMenu}
+            onClick={() => setMenuOpen((previous) => !previous)}
             aria-label="Toggle menu"
+            aria-expanded={menuOpen}
             className="text-[#dd5500] transition-transform duration-300 ease-in-out"
           >
             {menuOpen ? (
-              <HiX size={28} className="rotate-90 transition-transform duration-300"/>
+              <HiX size={30} className="rotate-90 transition-transform duration-300" />
             ) : (
-              <HiMenu size={28} className="scale-110 transition-transform duration-300"/>
+              <HiMenu size={30} className="scale-110 transition-transform duration-300" />
             )}
           </button>
         </div>
       </div>
 
-      {/* Mobile Dropdown Menu */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${
+        className={`overflow-hidden transition-all duration-500 ease-in-out xl:hidden ${
           menuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="flex flex-col text-sm px-6 py-4 bg-white shadow-lg">
-          {/* {navLinks.map(({ href, label, highlight, dropdown }, idx) => (
-            <div key={href} className="border-b border-gray-200 py-2"> */}
-              {navLinks.map(({ href, label,  dropdown }, idx) => (
-                <div key={`${href}-${idx}`} className="border-b border-gray-200 py-2">
-
-              <div className="flex justify-between items-center text-black">
+        <div className="space-y-1 bg-white px-4 py-4 shadow-lg sm:px-6">
+          {navLinks.map(({ href, label, dropdown }, index) => (
+            <div key={`${href}-${index}`} className="border-b border-gray-200 py-2">
+              <div className="flex items-center justify-between gap-3 text-black">
                 <Link
-                  href={href}
-                  className={`${"font-medium"}`}>
+                  href={normalizePath(href)}
+                  className="font-medium"
+                  onClick={() => setMenuOpen(false)}
+                >
                   {label}
                 </Link>
-                    {dropdown && (
-                      <button
-                        onClick={() =>
-                          setOpenDropdown(openDropdown === idx ? null : idx)
-                        }
-   
-                        className="text-black transform transition-transform duration-300"
-                      >
-                        <HiPlus
-                          size={20}
-                          className={`transition-transform duration-300 ease-in-out ${
-                            openDropdown === idx ? "rotate-45" : "rotate-0"
-                          }`}
-                        />
-                      </button>
-)}
+
+                {dropdown && (
+                  <button
+                    onClick={() =>
+                      setOpenDropdown((current) => (current === index ? null : index))
+                    }
+                    aria-label={`Toggle ${typeof label === "string" ? label : "menu"} submenu`}
+                    className="text-black transition-transform duration-300"
+                  >
+                    <HiPlus
+                      size={20}
+                      className={`transition-transform duration-300 ease-in-out ${
+                        openDropdown === index ? "rotate-45" : "rotate-0"
+                      }`}
+                    />
+                  </button>
+                )}
               </div>
 
-              {/* Centered Dropdown */}
-              {dropdown && openDropdown === idx && (
-                <ul className="mt-2  rounded-md p-2  transition-all duration-300 ease-in-out">
-                  {dropdown.map((item, i) => (
-                    <li key={i}>
+              {dropdown && openDropdown === index && (
+                <ul className="mt-2 rounded-md p-2 transition-all duration-300 ease-in-out">
+                  {dropdown.map((item) => (
+                    <li key={item.href}>
                       <Link
                         href={item.href}
-                        className="block  py-2 hover:bg-gray-200 text-black"
+                        className="block py-2 text-black transition-colors hover:text-[#cf6c3d]"
+                        onClick={() => setMenuOpen(false)}
                       >
                         {item.name}
                       </Link>
@@ -200,15 +210,16 @@ export default function Navbar() {
               )}
             </div>
           ))}
+
+          <Link
+            href="/contact-us"
+            className="mt-3 inline-flex w-full items-center justify-center rounded-md bg-[#dd5500] px-4 py-3 font-semibold text-white transition-colors hover:bg-[#c54400]"
+            onClick={() => setMenuOpen(false)}
+          >
+            Contact Us
+          </Link>
         </div>
       </div>
     </nav>
   );
 }
-
-
-
- {/* Tablet Menu Toggle */}
-      //   <div className="md:hidden">
-    
-      // </div>

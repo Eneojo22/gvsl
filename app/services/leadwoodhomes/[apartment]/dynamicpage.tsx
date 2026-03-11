@@ -1,56 +1,93 @@
+"use client";
 
-// import { properties } from "/services/properties/apartmentData";
-import Link from "next/link";
-import properties from "../apartmentData";
 import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+
+import fallbackProperties from "../apartmentData";
 
 type Props = {
   apartmentId: string;
 };
 
 export default function Settlings({ apartmentId }: Props) {
-  const apartment = properties.find((p) => p.id.toLocaleString() === apartmentId);
-//  go an error here because i was compare a number to a string this is the error This comparison appears to be unintentional because the types
- if (!apartment) {
-    return <div>Apartment not found <Link href={'/'}>Go back to our Apartment</Link></div>;
+  const fallbackApartment =
+    fallbackProperties.find((property) => String(property.id) === apartmentId) ?? null;
+  const [apartment, setApartment] = useState(fallbackApartment);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let mounted = true;
+
+    async function loadApartment() {
+      try {
+        const response = await fetch(`/api/homes/${apartmentId}`, { cache: "no-store" });
+        const data = await response.json();
+
+        if (mounted && response.ok) {
+          setApartment(data.home);
+        }
+      } finally {
+        if (mounted) {
+          setLoading(false);
+        }
+      }
+    }
+
+    void loadApartment();
+
+    return () => {
+      mounted = false;
+    };
+  }, [apartmentId]);
+
+  if (loading && !apartment) {
+    return <div className="mt-36 text-lg">Loading apartment...</div>;
   }
- 
+
+  if (!apartment) {
+    return (
+      <div className="mt-36 text-center text-lg">
+        Apartment not found. <Link href="/services/leadwoodhomes">Go back to listings</Link>
+      </div>
+    );
+  }
+
   return (
     <div>
-        <h2 className="mt-35 text-3xl font-semibold p-2">{apartment.title}</h2>
-        <div className="relative sm:w-full h-84">           
-          <Image
-              src={apartment.image}
-              alt={apartment.title}
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div className="md:p-4">
-                         <p className="text-[#cf6c3d] font-semibold">{apartment.type}</p>
-                       <p className="text-gray-600 text-sm mt-2 line-clamp-2">
-                           {apartment.description}
-                         </p>
+      <h2 className="mt-35 p-2 text-3xl font-semibold">{apartment.title}</h2>
+      <div className="relative h-84 sm:w-full">
+        <Image
+          src={apartment.image || "/image/homes.jpg"}
+          alt={apartment.title}
+          fill
+          className="object-cover"
+        />
+      </div>
+      <div className="md:p-4">
+        <p className="font-semibold text-[#cf6c3d]">{apartment.type}</p>
+        <p className="mt-2 text-sm text-gray-600">{apartment.description}</p>
+        <p className="mt-4 text-xl font-bold text-black">N{apartment.price.toLocaleString()}</p>
+      </div>
 
-             <p className="text-xl font-bold text-black mt-4">
-                         ₦{apartment.price.toLocaleString()}
-                             </p>
-            </div>
+      <div className="mt-4 flex flex-wrap gap-3 text-sm text-gray-700">
+        <span>{apartment.features.bedrooms} Beds</span>
+        <span>{apartment.features.bathrooms} Baths</span>
+        <span>{apartment.features.toilets} Toilets</span>
+        <span>{apartment.features.parkingSpaces} Parking</span>
+      </div>
 
-      <div className="flex flex-wrap gap-3 text-sm text-gray-700 mt-4">
-               <span>🛏 {apartment.features.bedrooms} Beds</span>
-               <span>🛁 {apartment.features.bathrooms} Baths</span>
-               <span>🚽 {apartment.features.toilets} Toilets</span>
-               <span>🚗 {apartment.features.parkingSpaces} Parking</span>
-             </div>
-              <Link href="https://wa.me/2348137167298" target="_blank">
-      <button className="border text-lg rounded-3xl p-4 mt-7 font-extrabold px-10 bg-[#000] text-[#ffffff]">Book Inspection Now</button>
-      <div><p className="text-sm md:text-lg text-gray-600 mt-2">
-        Please click the button below to schedule your inspection. We encourage you to book promptly, as availability is limited. </p></div>
-    </Link>
-    <div>
-              {/* <p>NB: </p> */}
-             </div>
+      <Link href="https://wa.me/2348137167298" target="_blank">
+        <button className="mt-7 rounded-3xl bg-[#000] px-10 p-4 text-lg font-extrabold text-[#ffffff]">
+          Book Inspection Now
+        </button>
+        <div>
+          <p className="mt-2 text-sm text-gray-600 md:text-lg">
+            Please click the button below to schedule your inspection. We encourage you
+            to book promptly, as availability is limited.
+          </p>
+        </div>
+      </Link>
     </div>
   );
 }

@@ -1,5 +1,12 @@
 "use client";
+
 import { useState } from "react";
+
+const contactHighlights = [
+  "Reliable relocation support tailored to each client",
+  "Fast response from a local team that knows the terrain",
+  "24/7 assistance for urgent arrival and transition needs",
+];
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -7,143 +14,233 @@ export default function ContactForm() {
     lastName: "",
     email: "",
     company: "",
-    role: "",
+    interest: "",
     message: "",
     agree: false,
   });
+  const [submitMessage, setSubmitMessage] = useState<{
+    type: "success" | "error" | "info";
+    text: string;
+  } | null>(null);
+  const [submitting, setSubmitting] = useState(false);
 
- const handleChange = (
-  e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-) => {
-  const { name, value, type } = e.currentTarget;
-  const checked = (e.currentTarget as HTMLInputElement).checked;
-  setFormData((prev) => ({
-    ...prev,
-    [name]: type === "checkbox" ? checked : value,
-  }));
-};
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    // Add API call here
+  const handleChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    const { name, value, type } = event.currentTarget;
+    const checked = (event.currentTarget as HTMLInputElement).checked;
+
+    setFormData((previous) => ({
+      ...previous,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  };
+
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    setSubmitting(true);
+    setSubmitMessage(null);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error ?? "Unable to submit your message.");
+      }
+
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        company: "",
+        interest: "",
+        message: "",
+        agree: false,
+      });
+      setSubmitMessage({
+        type: "success",
+        text: "Your message has been received. The admin team can now reply from the dashboard.",
+      });
+    } catch (error) {
+      setSubmitMessage({
+        type: "error",
+        text:
+          error instanceof Error ? error.message : "Unable to submit your message right now.",
+      });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
-    <div className="min-h-screen  text-black flex items-center justify-center px-6 py-12">
-      <div className="max-w-6xl w-full grid md:grid-cols-2 gap-10">
-        {/* Left Section */}
-        <div>
-          <h2 className="text-sm uppercase text-black">Contact Us</h2>
-          <h1 className="text-3xl font-bold mt-2">Get in Touch with Us</h1>
-          <p className="mt-4 text-black text-sm">
-            We’re here to help. Whether you’re interested in learning more about
-            our services or need support, we’re happy to assist you.
-          </p>
-
-          <ul className="mt-6 space-y-3 text-black">
-            <li>✅ Reliable </li>
-            <li>✅ Good Customer service</li>
-            {/* <li>✅ Reliable Security</li> */}
-            <li>✅ 24/7  availiability  </li>
-            {/* <li>✅ Seamless Integration</li> */}
-          </ul>
-
-          <div className="mt-8 text-sm">
-            <p><span className="font-semibold">Phone:</span> +234-8137167298</p>
-            <p><span className="font-semibold">Email:</span> ife.folorunsho@gvss.ng</p>
-            <p>
-              <span className="font-semibold">Location:</span> 90, Allen Avenue Ikeja Lagos 
+    <main className="min-h-screen bg-[#f7f2ed] px-4 pb-16 pt-28 text-black sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-6xl overflow-hidden rounded-[2rem] bg-white shadow-[0_25px_80px_rgba(0,0,0,0.08)]">
+        <div className="grid gap-0 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="bg-[#111111] px-6 py-10 text-white sm:px-8 lg:px-10">
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#dd5500]">
+              Contact Us
             </p>
-          </div>
-        </div>
+            <h1 className="mt-4 max-w-xl text-3xl font-bold leading-tight sm:text-4xl">
+              Let&apos;s help you settle in with confidence.
+            </h1>
+            <p className="mt-4 max-w-xl text-sm leading-7 text-white/80 sm:text-base">
+              Whether you need relocation support, housing assistance, airport meet and
+              greet, or chauffeur services, our team is ready to guide you.
+            </p>
 
-        {/* Right Section */}
-        <form onSubmit={handleSubmit} className="bg-gray-900 p-6 rounded-2xl shadow-lg space-y-4">
-          <div className="flex gap-4">
-            <input
-              type="text"
-                name="firstName"
-                placeholder="First Name"
-                value={formData.firstName}
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <p className="text-sm font-semibold text-[#dd5500]">Call us</p>
+                <a href="tel:+2348137167298" className="mt-2 block text-lg font-semibold">
+                  +234 813 716 7298
+                </a>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <p className="text-sm font-semibold text-[#dd5500]">Email us</p>
+                <a href="mailto:info@gvss.ng" className="mt-2 block text-lg font-semibold">
+                  info@gvss.ng
+                </a>
+              </div>
+            </div>
+
+            <div className="mt-4 rounded-2xl border border-white/10 bg-white/5 p-4">
+              <p className="text-sm font-semibold text-[#dd5500]">Visit us</p>
+              <p className="mt-2 text-base font-medium">
+                90, Allen Avenue, Ikeja, Lagos
+              </p>
+            </div>
+
+            <ul className="mt-8 space-y-3">
+              {contactHighlights.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-sm text-white/85">
+                  <span className="mt-1 h-2 w-2 rounded-full bg-[#dd5500]" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="px-6 py-10 sm:px-8 lg:px-10">
+            <h2 className="text-2xl font-bold text-[#111111]">Send us a message</h2>
+            <p className="mt-2 text-sm leading-6 text-[#4a4a4a]">
+              Fill in your details and we&apos;ll get back to you as soon as possible.
+            </p>
+
+            {submitMessage && (
+              <div
+                className={`mt-4 rounded-2xl border px-4 py-3 text-sm ${
+                  submitMessage.type === "error"
+                    ? "border-red-200 bg-red-50 text-red-700"
+                    : "border-emerald-200 bg-emerald-50 text-emerald-700"
+                }`}
+              >
+                {submitMessage.text}
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} className="mt-8 space-y-4">
+              <div className="grid gap-4 sm:grid-cols-2">
+                <input
+                  type="text"
+                  name="firstName"
+                  placeholder="First Name"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  required
+                  className="w-full rounded-xl border border-[#ded6ce] bg-[#faf7f3] px-4 py-3 text-sm text-black outline-none transition focus:border-[#dd5500]"
+                />
+                <input
+                  type="text"
+                  name="lastName"
+                  placeholder="Last Name"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                  className="w-full rounded-xl border border-[#ded6ce] bg-[#faf7f3] px-4 py-3 text-sm text-black outline-none transition focus:border-[#dd5500]"
+                />
+              </div>
+
+              <input
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                value={formData.email}
                 onChange={handleChange}
                 required
-              className="w-1/2 p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring focus:ring-gray-600"
-            />
-            <input
-              type="text"
-              name="lastName"
-              placeholder="Last Name"
-              value={formData.lastName}
-              onChange={handleChange}
-              className="w-1/2 p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring focus:ring-gray-600"
-            />
-          </div>
+                className="w-full rounded-xl border border-[#ded6ce] bg-[#faf7f3] px-4 py-3 text-sm text-black outline-none transition focus:border-[#dd5500]"
+              />
 
-          <input
-            type="email"
-            name="email"
-            placeholder="Email Address"
-            value={formData.email}
-            onChange={handleChange}
-            className="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring focus:ring-gray-600"
-          />
-
-          <input
-            type="text"
-            name="company"
-            placeholder="Company Name"
-            value={formData.company}
-            onChange={handleChange}
-            className="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring focus:ring-gray-600"
-          />
-
-         <select
-         name="role"
-         value={formData.role}
-          onChange={handleChange}
-          className="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring focus:ring-gray-600"
-        >
-          <option value="" disabled hidden>
-           Which best describes you?
-          </option>
-          <option value="investor">Investor</option>
-          <option value="tourist">Tourist</option>
-          <option value="business">Business Owner</option>
-          <option value="student">Student</option>
-        </select>
-
-          <textarea
-            name="message"
-            placeholder="Write your message..."
-            value={formData.message}
-            onChange={handleChange}
-            className="w-full h-28 p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring focus:ring-gray-600"
-          />
-
-          <label className="flex items-center space-x-2 text-sm">
-           <input
-            type="checkbox"
-            name="agree"
-            checked={formData.agree}
+              <input
+                type="text"
+                name="company"
+                placeholder="Company Name"
+                value={formData.company}
                 onChange={handleChange}
-            className="w-4 h-4 accent-[#dd5500] bg-gray-800 border-gray-700 rounded"
-          />
-            <span className="text-white">
-              I agree to GVSSL <a href="#" className="text-[#dd5500] "> Terms of Use </a> and{" "}
-              <a href="#" className="text-[#dd5500]">Privacy Policy</a>
-            </span>
-          </label>
+                className="w-full rounded-xl border border-[#ded6ce] bg-[#faf7f3] px-4 py-3 text-sm text-black outline-none transition focus:border-[#dd5500]"
+              />
 
-          <button
-            type="submit"
-          disabled={!formData.agree}
-         className={`w-full font-semibold py-3 rounded-lg transition 
-            ${formData.agree ? "bg-[#dd5500] text-white hover:bg-[#c54400]" : "bg-gray-600 text-gray-300 cursor-not-allowed"}`}
-        >
-  Submit
-</button>
-        </form>
-      </div>
-    </div>
+              <select
+                name="interest"
+                value={formData.interest}
+                onChange={handleChange}
+                required
+                className="w-full rounded-xl border border-[#ded6ce] bg-[#faf7f3] px-4 py-3 text-sm text-black outline-none transition focus:border-[#dd5500]"
+              >
+                <option value="" disabled>
+                  Which service are you interested in?
+                </option>
+                <option value="relocation">Relocation Support</option>
+                <option value="airport-meet-and-greet">Airport Meet and Greet</option>
+                <option value="leadwood-homes">Leadwood Homes</option>
+                <option value="leadwood-furniture">Leadwood Furniture</option>
+                <option value="chauffeur-services">Chauffeur Services</option>
+                <option value="other">Other</option>
+              </select>
+
+              <textarea
+                name="message"
+                placeholder="Tell us a little about what you need."
+                value={formData.message}
+                onChange={handleChange}
+                required
+                className="h-32 w-full rounded-xl border border-[#ded6ce] bg-[#faf7f3] px-4 py-3 text-sm text-black outline-none transition focus:border-[#dd5500]"
+              />
+
+              <label className="flex items-start gap-3 text-sm text-[#4a4a4a]">
+                <input
+                  type="checkbox"
+                  name="agree"
+                  checked={formData.agree}
+                  onChange={handleChange}
+                  className="mt-1 h-4 w-4 rounded border-[#ded6ce] accent-[#dd5500]"
+                />
+                <span>
+                  I agree to be contacted about my enquiry and understand that G&V
+                  Support Services Limited will use this information to respond.
+                </span>
+              </label>
+
+              <button
+                type="submit"
+                disabled={!formData.agree || submitting}
+                className={`inline-flex w-full items-center justify-center rounded-xl px-4 py-3 text-sm font-semibold transition ${
+                  formData.agree
+                    ? "bg-[#dd5500] text-white hover:bg-[#c54400]"
+                    : "cursor-not-allowed bg-[#d8d0c7] text-[#6a625a]"
+                }`}
+              >
+                {submitting ? "Sending..." : "Send Message"}
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }

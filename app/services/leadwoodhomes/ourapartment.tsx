@@ -2,7 +2,7 @@
 "use client";
 import { InfiniteMovingCard } from "../LeadwoodFunitures/infinite";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import properties from "./apartmentData";
 import Link from "next/link";
 
@@ -10,7 +10,32 @@ export default function HeroSearch() {
   // const [location, setLocation] = useState("Lagos, Nigeria");
   
  const [query, setQuery] = useState("");
-  const filteredProperties = properties.filter((product) =>
+  const [listings, setListings] = useState(properties);
+
+  useEffect(() => {
+    let mounted = true;
+
+    async function loadListings() {
+      try {
+        const response = await fetch("/api/homes", { cache: "no-store" });
+        const data = await response.json();
+
+        if (mounted && response.ok && Array.isArray(data.homes)) {
+          setListings(data.homes);
+        }
+      } catch {
+        // Keep seeded fallback data if the API is unavailable.
+      }
+    }
+
+    void loadListings();
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  const filteredProperties = listings.filter((product) =>
     product.title.toLowerCase().includes(query.toLowerCase())
   );
 
@@ -80,7 +105,7 @@ export default function HeroSearch() {
      <div className="">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 m-10 sm:p-4">
       {filteredProperties.map((property) => (
-        <Link key={property.id} href={`/services/ourapartment/${property.id}`} className="rounded-lg sm:shadow-md overflow-hidden bg-white block"
+        <Link key={property.id} href={`/services/leadwoodhomes/${property.id}`} className="rounded-lg sm:shadow-md overflow-hidden bg-white block"
         >
           {/* Title */}
           <h2 className="text-lg font-semibold p-2">{property.title}</h2>

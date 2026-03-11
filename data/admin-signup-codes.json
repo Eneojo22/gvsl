@@ -1,0 +1,11 @@
+[
+  {
+    "email": "victor.ejiga@gvss.ng",
+    "fullName": "ejiga victor eneojo",
+    "passwordHash": "116a8ae053b372d40c3a9d99858bc377fd76ab9a634a4a5c0d38cd4bd7d2d0cce103f3003a81adcc1063a0f230bab81d2a2b415cc1b13b3e39cc493c863feb2e",
+    "passwordSalt": "f649e471b6fd2551e0f252a970bec887",
+    "code": "842680",
+    "expiresAt": "2026-03-11T15:30:10.210Z",
+    "requestedAt": "2026-03-11T15:20:10.279Z"
+  }
+]

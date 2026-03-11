@@ -1,0 +1,151 @@
+{
+  "homes": [
+    {
+      "id": 1,
+      "title": "Luxury 6-Bedroom Duplex with BQ",
+      "type": "Detached duplex for rent",
+      "description": "Spacious 6-bedroom duplex with a private boys' quarters in Ikeja GRA, designed for family living with premium finishes.",
+      "price": 25000000,
+      "location": "Ikeja GRA, Lagos",
+      "image": "/image/homes.jpg",
+      "features": {
+        "bedrooms": 6,
+        "bathrooms": 6,
+        "toilets": 7,
+        "parkingSpaces": 5
+      },
+      "createdAt": "2026-03-11T00:00:00.000Z",
+      "updatedAt": "2026-03-11T00:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "title": "Modern 2-Bedroom Apartment",
+      "type": "Apartment for rent",
+      "description": "A fully serviced 2-bedroom apartment in Ikeja with reliable power, water, and strong residential security.",
+      "price": 3500000,
+      "location": "Ikeja, Lagos",
+      "image": "/image/homes.jpg",
+      "features": {
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "toilets": 3,
+        "parkingSpaces": 1
+      },
+      "createdAt": "2026-03-11T00:00:00.000Z",
+      "updatedAt": "2026-03-11T00:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "title": "Furnished 3-Bedroom Terrace Duplex",
+      "type": "Terrace duplex for rent",
+      "description": "Fully furnished 3-bedroom terrace duplex in Lekki Phase 1 with modern interiors and shared leisure amenities.",
+      "price": 7000000,
+      "location": "Lekki Phase 1, Lagos",
+      "image": "/image/homes.jpg",
+      "features": {
+        "bedrooms": 3,
+        "bathrooms": 4,
+        "toilets": 4,
+        "parkingSpaces": 2
+      },
+      "createdAt": "2026-03-11T00:00:00.000Z",
+      "updatedAt": "2026-03-11T00:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "title": "Executive 1-Bedroom Shortlet",
+      "type": "Serviced shortlet apartment",
+      "description": "Well-finished 1-bedroom shortlet apartment for business travelers and short stays, with housekeeping and Wi-Fi included.",
+      "price": 150000,
+      "location": "Victoria Island, Lagos",
+      "image": "/image/homes.jpg",
+      "features": {
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "toilets": 2,
+        "parkingSpaces": 1
+      },
+      "createdAt": "2026-03-11T00:00:00.000Z",
+      "updatedAt": "2026-03-11T00:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "title": "Affordable 4-Bedroom Semi-Detached Duplex",
+      "type": "Semi-detached duplex for rent",
+      "description": "Comfortable 4-bedroom semi-detached duplex with ample parking and easy access to key business districts.",
+      "price": 5000000,
+      "location": "Ogudu GRA, Lagos",
+      "image": "/image/homes.jpg",
+      "features": {
+        "bedrooms": 4,
+        "bathrooms": 4,
+        "toilets": 5,
+        "parkingSpaces": 2
+      },
+      "createdAt": "2026-03-11T00:00:00.000Z",
+      "updatedAt": "2026-03-11T00:00:00.000Z"
+    }
+  ],
+  "furniture": [
+    {
+      "id": 1,
+      "name": "Riga Dining Set",
+      "category": "Dining",
+      "price": 23100000,
+      "image": "/image/Leadwoods-furniture/furniture-1.jpg",
+      "description": "Premium dining set for corporate apartments and executive homes.",
+      "createdAt": "2026-03-11T00:00:00.000Z",
+      "updatedAt": "2026-03-11T00:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "name": "Nova Dining Set",
+      "category": "Dining",
+      "price": 23750000,
+      "image": "/image/Leadwoods-furniture/furniture-2.jpg",
+      "description": "Refined dining option for elegant residential and short-stay spaces.",
+      "createdAt": "2026-03-11T00:00:00.000Z",
+      "updatedAt": "2026-03-11T00:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "name": "Moon Dining Set",
+      "category": "Dining",
+      "price": 21200000,
+      "image": "/image/Leadwoods-furniture/furniture-3.jpg",
+      "description": "A clean, modern dining collection built for everyday durability.",
+      "createdAt": "2026-03-11T00:00:00.000Z",
+      "updatedAt": "2026-03-11T00:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "name": "Classic Sofa Set",
+      "category": "Living Room",
+      "price": 15000000,
+      "image": "/image/funitures.jpg",
+      "description": "Comfortable sofa arrangement for homes, lounges, and serviced apartments.",
+      "createdAt": "2026-03-11T00:00:00.000Z",
+      "updatedAt": "2026-03-11T00:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "name": "Executive Bedroom Package",
+      "category": "Bedroom",
+      "price": 18500000,
+      "image": "/image/new chairs.jpg",
+      "description": "Complete bedroom setup with a calm, polished finish for premium living.",
+      "createdAt": "2026-03-11T00:00:00.000Z",
+      "updatedAt": "2026-03-11T00:00:00.000Z"
+    },
+    {
+      "id": 6,
+      "name": "Short-Stay Apartment Bundle",
+      "category": "Apartment Package",
+      "price": 26500000,
+      "image": "/image/aprteee.jpg",
+      "description": "A ready-to-install package for furnished apartments and relocation housing.",
+      "createdAt": "2026-03-11T00:00:00.000Z",
+      "updatedAt": "2026-03-11T00:00:00.000Z"
+    }
+  ]
+}

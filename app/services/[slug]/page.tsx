@@ -47,7 +47,7 @@ function SettlingIn() {
 
               <div className="mt-6 flex flex-col sm:flex-row gap-3">
                 <Link
-                  href="/contact"
+                  href="/contact-us"
                   className="inline-flex items-center justify-center rounded-lg bg-[#dd5500] px-5 py-3 text-white font-semibold hover:opacity-90"
                 >
                   Contact Us

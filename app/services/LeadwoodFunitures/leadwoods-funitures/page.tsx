@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { products } from "../product";
@@ -15,10 +15,34 @@ export default function Page() {
 
 function FunituresItemsDisplay() {
   const [query, setQuery] = useState("");
+  const [catalog, setCatalog] = useState(products);
   const { cartItems, addToCart, increaseQty, decreaseQty, removeFromCart } =
     useCart();
 
-  const filteredProducts = products.filter((product) =>
+  useEffect(() => {
+    let mounted = true;
+
+    async function loadFurniture() {
+      try {
+        const response = await fetch("/api/furniture", { cache: "no-store" });
+        const data = await response.json();
+
+        if (mounted && response.ok && Array.isArray(data.furniture)) {
+          setCatalog(data.furniture);
+        }
+      } catch {
+        // Keep seeded fallback data if the API is unavailable.
+      }
+    }
+
+    void loadFurniture();
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  const filteredProducts = catalog.filter((product) =>
     product.name.toLowerCase().includes(query.toLowerCase())
   );
   const total = cartItems.reduce(

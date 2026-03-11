@@ -46,7 +46,7 @@ export function Footer() {
             <FooterLink href="/aboutUs/teamInfo" text="Our Team" />
             <FooterLink href="/aboutUs/Event" text="Events" />
             <FooterLink href="/aboutUs/Testimonials" text="Testimonials" />
-            <FooterLink href="/services/contactUs" text="Contact Us" />
+            <FooterLink href="/contact-us" text="Contact Us" />
           </ul>
         </div>
 
@@ -63,7 +63,7 @@ export function Footer() {
       <div className="border-neutral-800 font-bold text-shadow-amber-50 mt-8 pt-8 text-center text-[#000] text-sm">
         <p>© {new Date().getFullYear()} G&V Support Services Limited. All rights reserved.</p>
         <div className="flex justify-center space-x-4 mt-2">
-          <Link href="/services/contactUs" className="hover:text-[#2c0606]">
+          <Link href="/contact-us" className="hover:text-[#2c0606]">
             Contact
           </Link>
           <Link href="/aboutUs" className="hover:text-[#270101]">

@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Navbar from "./navbar2";
 import { HoverEffect } from "./uiforcomponent/sectionsumary";
 import { CardsCarousel } from "./courasel";
 
@@ -63,9 +62,6 @@ const packages = [
 const Landingpage = () => {
   return (
     <div>
-      <nav>
-        <Navbar />
-      </nav>
       <HeroSection />
       <CardHoverEffect />
       <CardsCarousel />

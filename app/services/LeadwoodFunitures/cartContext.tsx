@@ -25,9 +25,6 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  // console.log("Adding item...", item);
-
-console.log("Rendered with items:", cartItems);
 
   //  Load cart from localStorage when app starts
   useEffect(() => {

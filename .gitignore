@@ -58,3 +58,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local CMS uploads
+/public/uploads/*
+!/public/uploads/.gitkeep
+!/public/uploads/furniture/
+!/public/uploads/furniture/.gitkeep
+!/public/uploads/homes/
+!/public/uploads/homes/.gitkeep
