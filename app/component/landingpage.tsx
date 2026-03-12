@@ -148,6 +148,7 @@ const Landingpage = () => {
       <HeroSection />
       <BrandSearchSection />
       <StatsSection />
+      <SuccessStory />
       <CardHoverEffect />
       <CardsCarousel />
       <OurSponsors />
@@ -155,7 +156,111 @@ const Landingpage = () => {
   );
 };
 
+function SuccessStory() {
+  const [story, setStory] = useState<SuccessStory | null>(null);
+
+  useEffect(() => {
+    let active = true;
+
+    fetch("/api/success")
+      .then((res) => res.json())
+      .then((data) => {
+        if (!active) return;
+        setStory(data);
+      })
+      .catch(() => {
+        // keep defaults if the API is not available
+        setStory({
+          title: "From arrival to life in Lagos: A smooth, stress-free journey",
+          highlight:
+            "We helped a family relocate from Amsterdam with a fully coordinated move, housing search, and cultural orientation. Everything was ready on day one.",
+          details:
+            "Our team booked airport meet-and-greet, handled immigration support, lined up school viewings, and arranged furniture delivery — all within two weeks. The family moved into their new home confidently and hit the ground running.",
+          ctaLabel: "Read more testimonials",
+          ctaLink: "/aboutUs/Testimonials",
+        });
+      });
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  if (!story) {
+    return null;
+  }
+
+  return (
+    <section className="bg-[#fff8f2] px-4 py-16 text-black">
+      <div className="mx-auto max-w-6xl">
+        <div className="grid gap-10 lg:grid-cols-2">
+          <div className="rounded-3xl border border-[#ead9cb] bg-white p-10 shadow-sm">
+            <p className="text-sm font-semibold uppercase tracking-[0.26em] text-[#c8612b]">
+              Success story
+            </p>
+            <h2 className="mt-4 text-3xl font-semibold text-slate-900">
+              {story.title}
+            </h2>
+            <p className="mt-6 text-base leading-relaxed text-[#5a473a]">
+              {story.highlight}
+            </p>
+            <p className="mt-4 text-sm leading-relaxed text-[#5a473a]">
+              {story.details}
+            </p>
+            <Link
+              href={story.ctaLink}
+              className="mt-8 inline-flex items-center justify-center rounded-full bg-[#dd5500] px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#c54800]"
+            >
+              {story.ctaLabel}
+            </Link>
+          </div>
+
+          <div className="flex items-center justify-center">
+            <div className="relative h-80 w-full max-w-md">
+              <div className="absolute -left-10 -top-8 h-14 w-14 rounded-full bg-[#dd5500]/20" />
+              <div className="absolute -right-10 -bottom-8 h-16 w-16 rounded-full bg-[#c54800]/20" />
+              <div className="absolute left-8 top-16 h-24 w-24 rounded-full bg-[#fac7b0]/40" />
+              <div className="relative h-full w-full overflow-hidden rounded-3xl border border-[#ead9cb] bg-[#fffaf4] shadow-sm">
+                <Image
+                  src="/image/meetgreet.jpg"
+                  alt="Success story"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
 function StatsSection() {
+  const [statsData, setStatsData] = useState<StatsItem[]>(defaultStats);
+
+  useEffect(() => {
+    let active = true;
+
+    fetch("/api/stats")
+      .then((res) => res.json())
+      .then((data: StatsItem[]) => {
+        if (!active) return;
+        if (Array.isArray(data) && data.length > 0) {
+          setStatsData(data);
+        }
+      })
+      .catch(() => {
+        // keep defaults if API is not available
+      });
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
   return (
     <section className="bg-[#fcf7f1] px-4 py-16 text-black">
       <div className="mx-auto max-w-6xl">
@@ -173,7 +278,7 @@ function StatsSection() {
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {stats.map((stat, index) => (
+          {statsData.map((stat, index) => (
             <motion.div
               key={stat.label}
               initial={{ opacity: 0, y: 16 }}
@@ -313,9 +418,36 @@ const HeroSection: React.FC = () => {
       </div>
 
       <div className="z-10 mx-auto flex min-h-screen flex-col items-center justify-center px-4 text-left">
-        <h1 className="animate-fade p-5 text-center text-5xl font-extrabold text-black md:text-8xl md:text-white">
-          {currentMessage.title}
-        </h1>
+        <div className="relative inline-flex items-center">
+          <h1 className="animate-fade p-5 text-center text-5xl font-extrabold text-black md:text-8xl md:text-white">
+            {currentMessage.title}
+          </h1>
+
+          <motion.div
+            className="absolute -left-8 -top-6"
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <Sparkles className="h-7 w-7 text-[#f7d3aa]" />
+          </motion.div>
+
+          <motion.div
+            className="absolute -right-8 -top-4"
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <Star className="h-7 w-7 text-[#ffb74d]" />
+          </motion.div>
+
+          <motion.div
+            className="absolute -right-10 bottom-6"
+            animate={{ y: [0, -8, 0] }}
+            transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <MapPin className="h-6 w-6 text-[#ff8f00]" />
+          </motion.div>
+        </div>
+
         <p className="animate-fade mb-6 max-w-3xl pb-3.5 text-center text-lg">
           {currentMessage.description}
         </p>

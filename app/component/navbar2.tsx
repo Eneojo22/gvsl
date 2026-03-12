@@ -96,15 +96,25 @@ export default function Navbar() {
                 className="h-12 w-auto object-contain sm:h-14"
               />
             </Link>
-          </motion.div>
 
-          <Link
-            href="/"
-            className={`ml-2 min-w-0 text-sm font-bold leading-tight tracking-tight sm:ml-3 sm:text-base lg:text-lg xl:text-2xl ${montserrat.className} ${navTextColor}`}
-          >
-            <span className="text-[#dd5500]">G&V Support</span>
-            <span className=" sm:inline text-[#ffffff]"> Services Limited</span>
-          </Link>
+            <Link
+              href="/"
+              className={`ml-3 min-w-0 text-sm font-bold leading-tight tracking-tight sm:text-base lg:text-lg xl:text-2xl ${montserrat.className} ${navTextColor}`}
+            >
+              <span className="text-[#dd5500]">G&V Support</span>
+              <span className="sm:inline-flex items-center gap-2 text-[#ffffff]">
+                Services Limited
+                <span className="relative h-8 w-8">
+                  <Image
+                    src="/svg/ramadan-badge.svg"
+                    alt="Ramadan badge"
+                    fill
+                    className="object-contain"
+                  />
+                </span>
+              </span>
+            </Link>
+          </motion.div>
         </div>
 
         <div className="hidden items-center gap-5 text-sm xl:flex 2xl:gap-7">
