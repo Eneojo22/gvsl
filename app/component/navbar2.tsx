@@ -32,7 +32,7 @@ const navLinks = [
       { name: "Orientation", href: "/services/orientation" },
       { name: "Airport Meet and Greet", href: "/services/airportmeetandgreet" },
       { name: "LeadWood Homes", href: "/services/leadwoodhomes" },
-      { name: "LeadWood Furniture", href: "/services/LeadwoodFunitures" },
+      { name: "LeadWood Furniture", href: "/services/leadwoodfurniture" },
       { name: "Departure Services", href: "/services/departureservices" },
       { name: "Chauffeur Services", href: "/services/rentals" },
     ],

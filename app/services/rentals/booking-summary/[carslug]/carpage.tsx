@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { djangoApiUrl } from "@/app/lib/django-api";
 
 
   
@@ -44,9 +45,9 @@ export const CarPage: React.FC<CarPageProps> = ({ car }) => {
 
     setLoading(true);
     try {
-      const response = await fetch(`http://127.0.0.1:8000/car-orders/create-car-order/`, {
+      const response = await fetch(djangoApiUrl("/car-orders/create-car-order/"), {
         method: "POST",
-        headers: {    },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           customer_name: formData.name,
           customer_email: formData.email,

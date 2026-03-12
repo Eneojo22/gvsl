@@ -6,6 +6,7 @@ import { useState } from "react";
 import { UseCarContextForInput } from "../../gettingcarinputfromclient";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { djangoApiUrl } from "@/app/lib/django-api";
 
 const CheckoutPage = () => {
   const { booking } = UseCarContextForInput();
@@ -29,7 +30,7 @@ const CheckoutPage = () => {
 
     setLoading(true);
     try {
-      const response = await fetch(`http://127.0.0.1:8000/car-orders/create-car-order/`, {
+      const response = await fetch(djangoApiUrl("/car-orders/create-car-order/"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

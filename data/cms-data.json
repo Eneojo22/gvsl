@@ -108,16 +108,6 @@
       "updatedAt": "2026-03-11T00:00:00.000Z"
     },
     {
-      "id": 3,
-      "name": "Moon Dining Set",
-      "category": "Dining",
-      "price": 21200000,
-      "image": "/image/Leadwoods-furniture/furniture-3.jpg",
-      "description": "A clean, modern dining collection built for everyday durability.",
-      "createdAt": "2026-03-11T00:00:00.000Z",
-      "updatedAt": "2026-03-11T00:00:00.000Z"
-    },
-    {
       "id": 4,
       "name": "Classic Sofa Set",
       "category": "Living Room",

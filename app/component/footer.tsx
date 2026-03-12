@@ -6,8 +6,8 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="bg-[#dfdede] text-black py-12 px-4 md:px-8 mt-20">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="bg-[#fff] text-black py-12 px-4 md:px-8 mt-20">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 text-center md:grid-cols-4 gap-8">
         <div className="space-y-4">
           <div className="flex items-center">
             <Image

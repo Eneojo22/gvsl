@@ -164,7 +164,7 @@ function FunituresItemsDisplay() {
         <span>₦{total.toLocaleString()}</span>
       </p>
 
-      <Link href="/services/LeadwoodsFuniture/leadwoods-funitures/order" className="block w-full mt-4">
+      <Link href="/services/leadwoodfurniture/leadwoods-funitures/order" className="block w-full mt-4">
   <button
     className="w-full bg-black text-white py-2 rounded-md hover:bg-gray-800 transition"
   >

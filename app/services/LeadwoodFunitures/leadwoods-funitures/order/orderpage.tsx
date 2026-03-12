@@ -2,6 +2,7 @@
 import { useCart } from "../../cartContext";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { djangoApiUrl } from "@/app/lib/django-api";
 
 export default function OrderPage() {
   const { cartItems, clearCart } = useCart();
@@ -23,7 +24,7 @@ export default function OrderPage() {
     setLoading(true);
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/orders/create-order/", {
+      const response = await fetch(djangoApiUrl("/orders/create-order/"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -46,7 +47,7 @@ else {
   console.log("Order created:", data);
   clearCart();
   router.push(
-    `/services/LeadwoodsFuniture/leadwoods-funitures/order/order-success?orderId=${data.order.order_number}`
+    `/services/leadwoodfurniture/leadwoods-funitures/order/order-success?orderId=${data.order.order_number}`
   );
 }
 

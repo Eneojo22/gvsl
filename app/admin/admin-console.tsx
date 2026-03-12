@@ -509,7 +509,7 @@ export default function AdminConsole() {
                 onChange={(event) =>
                   setSignupForm((current) => ({ ...current, email: event.target.value }))
                 }
-                placeholder="Official mail (name@gvss.ng)"
+                placeholder="Admin email (name@gmail.com)"
                 className="w-full rounded-xl border px-4 py-3"
               />
               <input

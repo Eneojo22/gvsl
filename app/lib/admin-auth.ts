@@ -21,8 +21,32 @@ function normalizeEmail(email: string) {
   return email.trim().toLowerCase();
 }
 
-function ensureOfficialEmail(email: string) {
-  return /^[^\s@]+@gvss\.ng$/i.test(email.trim());
+function isValidEmail(email: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/i.test(email.trim());
+}
+
+function getAllowedAdminEmailDomains() {
+  return (process.env.ADMIN_ALLOWED_EMAIL_DOMAINS ?? "")
+    .split(",")
+    .map((domain) => domain.trim().toLowerCase())
+    .filter(Boolean);
+}
+
+function isAllowedAdminEmail(email: string) {
+  const normalizedEmail = normalizeEmail(email);
+
+  if (!isValidEmail(normalizedEmail)) {
+    return false;
+  }
+
+  const allowedDomains = getAllowedAdminEmailDomains();
+
+  if (!allowedDomains.length) {
+    return true;
+  }
+
+  const emailDomain = normalizedEmail.split("@")[1];
+  return allowedDomains.includes(emailDomain);
 }
 
 function hashPassword(password: string, salt = randomBytes(16).toString("hex")) {
@@ -105,8 +129,16 @@ function validateSignupInput(input: {
     throw new Error("Full name is required.");
   }
 
-  if (!ensureOfficialEmail(input.email)) {
-    throw new Error("Only official @gvss.ng email addresses can create admin accounts.");
+  if (!isAllowedAdminEmail(input.email)) {
+    const allowedDomains = getAllowedAdminEmailDomains();
+
+    if (allowedDomains.length) {
+      throw new Error(
+        `Only email addresses from ${allowedDomains.join(", ")} can create admin accounts.`
+      );
+    }
+
+    throw new Error("Enter a valid email address to create an admin account.");
   }
 
   if (input.password.length < 8) {

@@ -203,7 +203,7 @@ export default function Herowood() {
           </p>
 
           <div className="flex space-x-4">
-            <Link href={`/services/LeadwoodsFuniture/leadwoods-funitures/`}>
+            <Link href="/services/leadwoodfurniture/leadwoods-funitures">
             <button className="px-6 py-3 rounded-full border border-white text-white font-medium hover:bg-white hover:text-[#dd5500] transition duration-300">
               Explore Collection
             </button>
@@ -220,7 +220,7 @@ export default function Herowood() {
           Let’s create a space you’ll love living in.
         </p>
 
-        <Link href="/services/LeadwoodsFuniture/leadwoods-funitures/">
+        <Link href="/services/leadwoodfurniture/leadwoods-funitures">
           <button className="bg-white text-black py-3 px-6 border-4 rounded-full text-lg hover:bg-[#dd5500] hover:text-white transition duration-300">
             Get Started
           </button>
