@@ -33,8 +33,8 @@ export function Footer() {
           <ul className="space-y-2">
             <FooterLink href="/services/orientation" text="Orientation" />
             <FooterLink href="/services/airportmeetandgreet" text="Airport Meet & Greet" />
-            <FooterLink href="/services/ourapartment" text="Leadwood Homes" />
-            <FooterLink href="/services/carrentals" text="Chauffeur Services" />
+            <FooterLink href="/services/leadwoodhomes" text="Leadwood Homes" />
+            <FooterLink href="/services/rentals" text="Chauffeur Services" />
             <FooterLink href="/services/departureservices" text="Departure Services" />
           </ul>
         </div>

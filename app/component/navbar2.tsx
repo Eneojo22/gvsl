@@ -103,7 +103,7 @@ export default function Navbar() {
             className={`ml-2 min-w-0 text-sm font-bold leading-tight tracking-tight sm:ml-3 sm:text-base lg:text-lg xl:text-2xl ${montserrat.className} ${navTextColor}`}
           >
             <span className="text-[#dd5500]">G&V Support</span>
-            <span className="hidden sm:inline"> Services Limited</span>
+            <span className=" sm:inline text-[#ffffff]"> Services Limited</span>
           </Link>
         </div>
 
