@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { getHomeListingById, getHomeListings } from "@/app/lib/cms-store";
+import { siteUrl } from "@/app/lib/seo";
 
 import ApartmentDetailPage from "./dynamicpage";
 
@@ -31,6 +32,14 @@ export async function generateMetadata({
   return {
     title: `${home.title} | Leadwood Homes`,
     description: `${home.type} in ${home.location} with ${home.features.bedrooms} bedrooms and ${home.features.parkingSpaces} parking spaces.`,
+    alternates: {
+      canonical: `/services/leadwoodhomes/${home.id}`,
+    },
+    openGraph: {
+      title: `${home.title} | Leadwood Homes`,
+      description: `${home.type} in ${home.location} with ${home.features.bedrooms} bedrooms and ${home.features.parkingSpaces} parking spaces.`,
+      url: `${siteUrl}/services/leadwoodhomes/${home.id}`,
+    },
   };
 }
 

@@ -12,14 +12,14 @@ export function Footer() {
           <div className="flex items-center">
             <Image
               src="/image/G___V_SUPPORT_SERVICE_ltd__7_-removebg-preview.png"
-              alt="GVS Support Services"
+              alt="G&V Support Services logo"
               width={120}
               height={40}
               className="h-20 w-auto"
             />
           </div>
           <p className="text-[#000] text-sm">
-            Your trusted partner for seamless relocation and settling-in services worldwide.
+            Your trusted partner for relocation, housing, apartments, and furniture support in Nigeria.
           </p>
           <div className="flex space-x-4">
             <SocialIcon href="https://www.linkedin.com/in/g-v-support-services-025a84376/" icon="linkedin" />

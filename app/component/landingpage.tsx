@@ -3,8 +3,9 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { HoverEffect } from "./uiforcomponent/sectionsumary";
+
 import { CardsCarousel } from "./courasel";
+import { HoverEffect } from "./uiforcomponent/sectionsumary";
 
 interface HeroMessage {
   title: string;
@@ -18,7 +19,7 @@ const heroMessages: HeroMessage[] = [
   {
     title: "Your Journey Starts Here",
     description:
-      "G&V Support Services Limited turns relocation complexity into a smooth, well-coordinated experience—from arrival to settling in.",
+      "G&V Support Services Limited turns relocation complexity into a smooth, well-coordinated experience from arrival to housing, furniture setup, and settling in.",
     cta: "Explore Services",
     ctaLink: "/services/airportmeetandgreet",
     image: "/image/chad-peltola-Rch8oP-O5sU-unsplash.jpg",
@@ -26,23 +27,23 @@ const heroMessages: HeroMessage[] = [
   {
     title: "Seamless Arrival Support",
     description:
-      "Airport Meet & Greet, immigration guidance, and direct transfer to your accommodation—handled with care and precision.",
+      "Airport Meet & Greet, immigration guidance, and direct transfer to your accommodation, handled with care and precision.",
     cta: "Airport Meet and Greet",
     ctaLink: "/services/airportmeetandgreet",
     image: "/image/chad-peltola-Rch8oP-O5sU-unsplash.jpg",
   },
   {
-    title: "Apartments",
+    title: "Houses and Apartments",
     description:
-      "Secure the right home faster with trusted local guidance, shortlisted options, and coordinated viewings.",
+      "Secure the right house or apartment faster with trusted local guidance, shortlisted options, and coordinated viewings through Leadwood Homes.",
     cta: "Leadwood Homes",
-    ctaLink: "/services/apartments",
+    ctaLink: "/services/leadwoodhomes",
     image: "/image/chad-peltola-Rch8oP-O5sU-unsplash.jpg",
   },
   {
     title: "Furniture",
     description:
-      "Premium furniture solutions to help you set up comfortably—quickly, professionally, and to your taste.",
+      "Premium furniture solutions for homes, apartments, and serviced spaces, delivered quickly and professionally through Leadwood Furniture.",
     cta: "Leadwood Furniture",
     ctaLink: "/services/leadwoodfurniture",
     image: "/image/chad-peltola-Rch8oP-O5sU-unsplash.jpg",
@@ -59,10 +60,44 @@ const packages = [
   { imageUrl: "/image/download (3).png" },
 ];
 
+export const projects = [
+  {
+    title: "Leadwood Homes",
+    description:
+      "Access premium houses, apartments, and housing options through our partnership with Leadwood Homes, with secure locations and flexible choices.",
+    link: "/services/leadwoodhomes",
+  },
+  {
+    title: "Leadwood Furniture",
+    description:
+      "Premium furniture options for homes and apartments, selected for quality, style, and durability.",
+    link: "/services/leadwoodfurniture",
+  },
+  {
+    title: "Airport Meet and Greet",
+    description:
+      "Personalized arrival support from immigration guidance and luggage assistance to a smooth transfer to your accommodation.",
+    link: "/services/airportmeetandgreet",
+  },
+  {
+    title: "Car Rental Services",
+    description:
+      "Reliable transportation with well-maintained vehicles and professional drivers, available across Nigeria.",
+    link: "/services/rentals",
+  },
+  {
+    title: "Orientation",
+    description:
+      "A tailored onboarding experience covering local culture, safety guidance, and practical settling-in support.",
+    link: "/services/orientation",
+  },
+];
+
 const Landingpage = () => {
   return (
     <div>
       <HeroSection />
+      <BrandSearchSection />
       <CardHoverEffect />
       <CardsCarousel />
       <OurSponsors />
@@ -70,22 +105,74 @@ const Landingpage = () => {
   );
 };
 
+const BrandSearchSection = () => {
+  return (
+    <section className="bg-[#fcf7f1] px-4 py-16 text-black">
+      <div className="mx-auto max-w-6xl rounded-[32px] border border-[#ead9cb] bg-white p-8 shadow-[0_18px_50px_-28px_rgba(74,37,15,0.2)] md:p-12">
+        <p className="text-sm font-semibold uppercase tracking-[0.26em] text-[#c8612b]">
+          G&amp;V Support Services
+        </p>
+        <h2 className="mt-4 text-3xl font-semibold leading-tight md:text-4xl">
+          Housing, furniture, and relocation support in Nigeria.
+        </h2>
+        <p className="mt-5 max-w-4xl text-base leading-7 text-[#5a473a]">
+          G&amp;V Support Services Limited, also searched as G and V Support
+          Services or GandV, helps clients with houses, apartments, furniture,
+          airport meet and greet, orientation, and departure support in Nigeria.
+          Through Leadwood Homes and Leadwood Furniture, we connect housing and
+          furnishing needs under one trusted brand.
+        </p>
+
+        <div className="mt-8 grid gap-4 md:grid-cols-3">
+          <Link
+            href="/services/leadwoodhomes"
+            className="rounded-[24px] border border-[#ead9cb] bg-[#fff8f2] px-5 py-5 transition hover:border-[#dd5500] hover:bg-white"
+          >
+            <p className="text-lg font-semibold">Leadwood Homes</p>
+            <p className="mt-2 text-sm leading-6 text-[#5a473a]">
+              Browse houses and apartments supported by G&amp;V.
+            </p>
+          </Link>
+          <Link
+            href="/services/leadwoodfurniture"
+            className="rounded-[24px] border border-[#ead9cb] bg-[#fff8f2] px-5 py-5 transition hover:border-[#dd5500] hover:bg-white"
+          >
+            <p className="text-lg font-semibold">Leadwood Furniture</p>
+            <p className="mt-2 text-sm leading-6 text-[#5a473a]">
+              Explore furniture solutions for homes, apartments, and offices.
+            </p>
+          </Link>
+          <Link
+            href="/contact-us"
+            className="rounded-[24px] border border-[#ead9cb] bg-[#fff8f2] px-5 py-5 transition hover:border-[#dd5500] hover:bg-white"
+          >
+            <p className="text-lg font-semibold">Contact G&amp;V</p>
+            <p className="mt-2 text-sm leading-6 text-[#5a473a]">
+              Talk to our team about housing, furniture, or relocation support.
+            </p>
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const OurSponsors = () => {
   return (
-    <section className="bg-white py-10 mb-12">
-      <h2 className="text-center text-black text-3xl font-semibold mb-8">Our Partners</h2>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-7 gap-6 px-6 md:px-12">
+    <section className="mb-12 bg-white py-10">
+      <h2 className="mb-8 text-center text-3xl font-semibold text-black">Our Partners</h2>
+      <div className="grid grid-cols-2 gap-6 px-6 sm:grid-cols-3 md:grid-cols-7 md:px-12">
         {packages.map((sponsor, index) => (
           <div
             key={index}
-            className="flex items-center justify-center bg-white p-4 rounded-lg transition"
+            className="flex items-center justify-center rounded-lg bg-white p-4 transition"
           >
             <Image
               src={sponsor.imageUrl}
               alt={`Partner logo ${index + 1}`}
               width={200}
               height={100}
-              className="w-full h-20 md:h-24 object-contain"
+              className="h-20 w-full object-contain md:h-24"
             />
           </div>
         ))}
@@ -120,7 +207,7 @@ const HeroSection: React.FC = () => {
   const currentMessage = heroMessages[currentMessageIndex];
 
   return (
-    <section className="text-white min-h-screen flex items-center relative bg-gradient-to-r from-[#000000] to-[#868585]">
+    <section className="relative flex min-h-screen items-center bg-gradient-to-r from-[#000000] to-[#868585] text-white">
       <div
         className={`absolute inset-0 transition-opacity duration-1000 ${
           isTransitioning ? "opacity-0" : "opacity-50"
@@ -135,16 +222,16 @@ const HeroSection: React.FC = () => {
         />
       </div>
 
-      <div className="z-10 flex flex-col justify-center items-center mx-auto min-h-screen text-left px-4">
-        <h1 className="md:text-8xl text-5xl text-center p-5 text-black md:text-white font-extrabold mb-4 animate-fade">
+      <div className="z-10 mx-auto flex min-h-screen flex-col items-center justify-center px-4 text-left">
+        <h1 className="animate-fade p-5 text-center text-5xl font-extrabold text-black md:text-8xl md:text-white">
           {currentMessage.title}
         </h1>
-        <p className="text-lg text-center pb-3.5 mb-6 animate-fade max-w-3xl">
+        <p className="animate-fade mb-6 max-w-3xl pb-3.5 text-center text-lg">
           {currentMessage.description}
         </p>
         <Link
           href={currentMessage.ctaLink}
-          className="bg-white text-[#c93e08] text-lg md:text-2xl font-semibold p-3 md:py-5 md:px-10 rounded transition animate-fade hover:bg-[#f3f3f3]"
+          className="animate-fade rounded bg-white p-3 text-lg font-semibold text-[#c93e08] transition hover:bg-[#f3f3f3] md:px-10 md:py-5 md:text-2xl"
         >
           {currentMessage.cta}
         </Link>
@@ -155,43 +242,10 @@ const HeroSection: React.FC = () => {
 
 export function CardHoverEffect() {
   return (
-    <div className="md:min-h-screen border-2 px-8">
+    <div className="border-2 px-8 md:min-h-screen">
       <HoverEffect items={projects} />
     </div>
   );
 }
-
-export const projects = [
-  {
-    title: "Leadwood Homes",
-    description:
-      "Access premium apartments and housing options through our partnership with Leadwood Homes—secure locations, modern amenities, and flexible choices.",
-    link: "/services/apartments",
-  },
-  {
-    title: "Leadwood Furniture",
-    description:
-      "Premium furniture options to help you settle in comfortably—selected for quality, style, and durability.",
-    link: "/services/leadwoodfurniture",
-  },
-  {
-    title: "Airport Meet and Greet",
-    description:
-      "Personalized arrival support—from immigration guidance and luggage assistance to a smooth transfer to your accommodation.",
-    link: "/services/airportmeetandgreet",
-  },
-  {
-    title: "Car Rental Services",
-    description:
-      "Reliable transportation with well-maintained vehicles and professional drivers, available across Nigeria.",
-    link: "/services/carrentals",
-  },
-  {
-    title: "Orientation",
-    description:
-      "A tailored onboarding experience covering local culture, safety guidance, and practical settling-in support.",
-    link: "/services/orientation",
-  },
-];
 
 export default Landingpage;
