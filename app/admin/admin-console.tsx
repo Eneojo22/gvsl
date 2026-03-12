@@ -2,24 +2,42 @@
 
 import { useEffect, useState } from "react";
 
-import type { AdminViewer, ContactMessage, FurnitureItem, HomeListing } from "@/app/lib/cms-types";
+import {
+  homeGallerySections,
+  type AdminViewer,
+  type ContactMessage,
+  type FurnitureItem,
+  type HomeGallerySectionKey,
+  type HomeListing,
+} from "@/app/lib/cms-types";
 
 type AuthMode = "login" | "signup" | "verify";
 type Tab = "homes" | "furniture" | "contacts";
 type Notice = { type: "success" | "error" | "info"; message: string } | null;
 
-const emptyHomeForm = {
-  title: "",
-  type: "",
-  description: "",
-  price: "",
-  location: "",
-  bedrooms: "",
-  bathrooms: "",
-  toilets: "",
-  parkingSpaces: "",
-  imageFile: null as File | null,
-};
+function createEmptyHomeGalleryFiles(): Record<HomeGallerySectionKey, File[]> {
+  return {
+    livingRoom: [],
+    bedroom: [],
+    toilet: [],
+  };
+}
+
+function createEmptyHomeForm() {
+  return {
+    title: "",
+    type: "",
+    description: "",
+    price: "",
+    location: "",
+    bedrooms: "",
+    bathrooms: "",
+    toilets: "",
+    parkingSpaces: "",
+    imageFile: null as File | null,
+    galleryFiles: createEmptyHomeGalleryFiles(),
+  };
+}
 
 const emptyFurnitureForm = {
   name: "",
@@ -49,7 +67,7 @@ export default function AdminConsole() {
   });
   const [pendingSignupEmail, setPendingSignupEmail] = useState("");
   const [verificationCode, setVerificationCode] = useState("");
-  const [homeForm, setHomeForm] = useState(emptyHomeForm);
+  const [homeForm, setHomeForm] = useState(createEmptyHomeForm);
   const [homeFileKey, setHomeFileKey] = useState(0);
   const [editingHomeId, setEditingHomeId] = useState<number | null>(null);
   const [furnitureForm, setFurnitureForm] = useState(emptyFurnitureForm);
@@ -59,6 +77,7 @@ export default function AdminConsole() {
   const [homes, setHomes] = useState<HomeListing[]>([]);
   const [furniture, setFurniture] = useState<FurnitureItem[]>([]);
   const [messages, setMessages] = useState<ContactMessage[]>([]);
+  const editingHome = homes.find((home) => home.id === editingHomeId) ?? null;
 
   useEffect(() => {
     void loadSession();
@@ -117,7 +136,7 @@ export default function AdminConsole() {
   }
 
   function resetHomeForm() {
-    setHomeForm(emptyHomeForm);
+    setHomeForm(createEmptyHomeForm());
     setEditingHomeId(null);
     setHomeFileKey((value) => value + 1);
   }
@@ -245,6 +264,12 @@ export default function AdminConsole() {
         formData.append("image", homeForm.imageFile);
       }
 
+      homeGallerySections.forEach((section) => {
+        homeForm.galleryFiles[section.key].forEach((file) => {
+          formData.append(section.fieldName, file);
+        });
+      });
+
       const response = await fetch(
         editingHomeId ? `/api/admin/homes/${editingHomeId}` : "/api/admin/homes",
         {
@@ -341,11 +366,11 @@ export default function AdminConsole() {
     const data = await response.json();
 
     if (!response.ok) {
-      setNotice({ type: "error", message: data.error ?? "Unable to delete image." });
+      setNotice({ type: "error", message: data.error ?? "Unable to clear photos." });
       return;
     }
 
-    setNotice({ type: "success", message: "Home image deleted." });
+    setNotice({ type: "success", message: "Home photos cleared." });
     await loadDashboard();
   }
 
@@ -409,6 +434,7 @@ export default function AdminConsole() {
       toilets: String(home.features.toilets),
       parkingSpaces: String(home.features.parkingSpaces),
       imageFile: null,
+      galleryFiles: createEmptyHomeGalleryFiles(),
     });
     setHomeFileKey((value) => value + 1);
   }
@@ -644,19 +670,171 @@ export default function AdminConsole() {
               </div>
 
               <form className="space-y-3" onSubmit={handleHomeSubmit}>
-                <input type="text" placeholder="Title" value={homeForm.title} onChange={(event) => setHomeForm((current) => ({ ...current, title: event.target.value }))} className="w-full rounded-xl border px-4 py-3" />
-                <input type="text" placeholder="Type" value={homeForm.type} onChange={(event) => setHomeForm((current) => ({ ...current, type: event.target.value }))} className="w-full rounded-xl border px-4 py-3" />
-                <textarea placeholder="Description" value={homeForm.description} onChange={(event) => setHomeForm((current) => ({ ...current, description: event.target.value }))} className="h-28 w-full rounded-xl border px-4 py-3" />
-                <input type="number" placeholder="Price" value={homeForm.price} onChange={(event) => setHomeForm((current) => ({ ...current, price: event.target.value }))} className="w-full rounded-xl border px-4 py-3" />
-                <input type="text" placeholder="Location" value={homeForm.location} onChange={(event) => setHomeForm((current) => ({ ...current, location: event.target.value }))} className="w-full rounded-xl border px-4 py-3" />
+                <input
+                  type="text"
+                  placeholder="Title"
+                  value={homeForm.title}
+                  onChange={(event) =>
+                    setHomeForm((current) => ({ ...current, title: event.target.value }))
+                  }
+                  className="w-full rounded-xl border px-4 py-3"
+                />
+                <input
+                  type="text"
+                  placeholder="Type"
+                  value={homeForm.type}
+                  onChange={(event) =>
+                    setHomeForm((current) => ({ ...current, type: event.target.value }))
+                  }
+                  className="w-full rounded-xl border px-4 py-3"
+                />
+                <textarea
+                  placeholder="Description"
+                  value={homeForm.description}
+                  onChange={(event) =>
+                    setHomeForm((current) => ({ ...current, description: event.target.value }))
+                  }
+                  className="h-28 w-full rounded-xl border px-4 py-3"
+                />
+                <input
+                  type="number"
+                  placeholder="Price"
+                  value={homeForm.price}
+                  onChange={(event) =>
+                    setHomeForm((current) => ({ ...current, price: event.target.value }))
+                  }
+                  className="w-full rounded-xl border px-4 py-3"
+                />
+                <input
+                  type="text"
+                  placeholder="Location"
+                  value={homeForm.location}
+                  onChange={(event) =>
+                    setHomeForm((current) => ({ ...current, location: event.target.value }))
+                  }
+                  className="w-full rounded-xl border px-4 py-3"
+                />
                 <div className="grid grid-cols-2 gap-3">
-                  <input type="number" placeholder="Beds" value={homeForm.bedrooms} onChange={(event) => setHomeForm((current) => ({ ...current, bedrooms: event.target.value }))} className="rounded-xl border px-4 py-3" />
-                  <input type="number" placeholder="Baths" value={homeForm.bathrooms} onChange={(event) => setHomeForm((current) => ({ ...current, bathrooms: event.target.value }))} className="rounded-xl border px-4 py-3" />
-                  <input type="number" placeholder="Toilets" value={homeForm.toilets} onChange={(event) => setHomeForm((current) => ({ ...current, toilets: event.target.value }))} className="rounded-xl border px-4 py-3" />
-                  <input type="number" placeholder="Parking" value={homeForm.parkingSpaces} onChange={(event) => setHomeForm((current) => ({ ...current, parkingSpaces: event.target.value }))} className="rounded-xl border px-4 py-3" />
+                  <input
+                    type="number"
+                    placeholder="Beds"
+                    value={homeForm.bedrooms}
+                    onChange={(event) =>
+                      setHomeForm((current) => ({ ...current, bedrooms: event.target.value }))
+                    }
+                    className="rounded-xl border px-4 py-3"
+                  />
+                  <input
+                    type="number"
+                    placeholder="Baths"
+                    value={homeForm.bathrooms}
+                    onChange={(event) =>
+                      setHomeForm((current) => ({ ...current, bathrooms: event.target.value }))
+                    }
+                    className="rounded-xl border px-4 py-3"
+                  />
+                  <input
+                    type="number"
+                    placeholder="Toilets"
+                    value={homeForm.toilets}
+                    onChange={(event) =>
+                      setHomeForm((current) => ({ ...current, toilets: event.target.value }))
+                    }
+                    className="rounded-xl border px-4 py-3"
+                  />
+                  <input
+                    type="number"
+                    placeholder="Parking"
+                    value={homeForm.parkingSpaces}
+                    onChange={(event) =>
+                      setHomeForm((current) => ({
+                        ...current,
+                        parkingSpaces: event.target.value,
+                      }))
+                    }
+                    className="rounded-xl border px-4 py-3"
+                  />
                 </div>
-                <input key={homeFileKey} type="file" accept="image/*" onChange={(event) => setHomeForm((current) => ({ ...current, imageFile: event.target.files?.[0] ?? null }))} className="w-full rounded-xl border px-4 py-3" />
-                <button type="submit" disabled={savingHome} className="rounded-xl bg-[#dd5500] px-5 py-3 font-semibold text-white">
+
+                <div className="rounded-2xl bg-[#f8efe8] px-4 py-4 text-sm text-[#5b4739]">
+                  <p className="font-semibold text-[#1c140d]">Apartment photos</p>
+                  <p className="mt-2 leading-6">
+                    Upload one cover image, then add multiple room photos for the living room,
+                    bedroom/rest room, and toilet. When editing a listing, newly uploaded room
+                    photos are added to the existing gallery.
+                  </p>
+                  {editingHome ? (
+                    <p className="mt-2 text-xs text-[#6d5646]">
+                      Current room photos:{" "}
+                      {homeGallerySections
+                        .map(
+                          (section) =>
+                            `${section.label} ${editingHome.gallery[section.key].length}`
+                        )
+                        .join(" | ")}
+                    </p>
+                  ) : null}
+                </div>
+
+                <div className="space-y-2">
+                  <label className="block text-sm font-semibold text-[#1c140d]">
+                    Cover photo
+                  </label>
+                  <input
+                    key={`${homeFileKey}-cover`}
+                    type="file"
+                    accept="image/*"
+                    onChange={(event) =>
+                      setHomeForm((current) => ({
+                        ...current,
+                        imageFile: event.target.files?.[0] ?? null,
+                      }))
+                    }
+                    className="w-full rounded-xl border px-4 py-3"
+                  />
+                  <p className="text-xs text-[#666]">
+                    {editingHome?.image ? "Cover photo already added." : "No cover photo yet."}{" "}
+                    {homeForm.imageFile ? `New file: ${homeForm.imageFile.name}` : ""}
+                  </p>
+                </div>
+
+                {homeGallerySections.map((section) => (
+                  <div key={section.key} className="space-y-2">
+                    <label className="block text-sm font-semibold text-[#1c140d]">
+                      {section.label} photos
+                    </label>
+                    <input
+                      key={`${homeFileKey}-${section.key}`}
+                      type="file"
+                      accept="image/*"
+                      multiple
+                      onChange={(event) =>
+                        setHomeForm((current) => ({
+                          ...current,
+                          galleryFiles: {
+                            ...current.galleryFiles,
+                            [section.key]: Array.from(event.target.files ?? []),
+                          },
+                        }))
+                      }
+                      className="w-full rounded-xl border px-4 py-3"
+                    />
+                    <p className="text-xs text-[#666]">
+                      {editingHome
+                        ? `${editingHome.gallery[section.key].length} current photo(s). `
+                        : ""}
+                      {homeForm.galleryFiles[section.key].length > 0
+                        ? `${homeForm.galleryFiles[section.key].length} new file(s) selected.`
+                        : "No new files selected."}
+                    </p>
+                  </div>
+                ))}
+
+                <button
+                  type="submit"
+                  disabled={savingHome}
+                  className="rounded-xl bg-[#dd5500] px-5 py-3 font-semibold text-white"
+                >
                   {savingHome ? "Saving..." : editingHomeId ? "Update listing" : "Create listing"}
                 </button>
               </form>
@@ -671,10 +849,22 @@ export default function AdminConsole() {
                   <p className="mt-3 text-sm font-semibold">
                     Beds {home.features.bedrooms} | Baths {home.features.bathrooms} | Toilets {home.features.toilets} | Parking {home.features.parkingSpaces}
                   </p>
+                  <p className="mt-2 text-sm text-[#666]">
+                    Cover photo {home.image ? "set" : "not set"} | Room photos{" "}
+                    {homeGallerySections.reduce(
+                      (total, section) => total + home.gallery[section.key].length,
+                      0
+                    )}
+                  </p>
+                  <p className="mt-2 text-sm text-[#666]">
+                    {homeGallerySections
+                      .map((section) => `${section.label} ${home.gallery[section.key].length}`)
+                      .join(" | ")}
+                  </p>
                   <p className="mt-3 font-bold">N{home.price.toLocaleString()}</p>
                   <div className="mt-4 flex flex-wrap gap-2">
                     <button onClick={() => startEditingHome(home)} className="rounded-full bg-black px-4 py-2 text-sm font-semibold text-white">Edit</button>
-                    <button onClick={() => void deleteHomeImage(home.id)} className="rounded-full border px-4 py-2 text-sm font-semibold">Delete image</button>
+                    <button onClick={() => void deleteHomeImage(home.id)} className="rounded-full border px-4 py-2 text-sm font-semibold">Clear photos</button>
                     <button onClick={() => void deleteHome(home.id)} className="rounded-full border border-red-200 px-4 py-2 text-sm font-semibold text-red-600">Delete listing</button>
                   </div>
                 </article>

@@ -1,4 +1,4 @@
-import type { HomeListing } from "@/app/lib/cms-types";
+import { homeGallerySections, type HomeListing } from "@/app/lib/cms-types";
 
 export const leadwoodBasePath = "/services/leadwoodhomes";
 
@@ -101,6 +101,25 @@ export function getHomeFeatureLabels(home: HomeListing) {
     pluralize(home.features.parkingSpaces, "Parking Bay", "Parking Bays"),
     home.location,
   ];
+}
+
+export function getPrimaryHomeImage(home: Pick<HomeListing, "image" | "gallery">) {
+  return (
+    home.image ??
+    home.gallery.livingRoom[0] ??
+    home.gallery.bedroom[0] ??
+    home.gallery.toilet[0] ??
+    "/image/homes.jpg"
+  );
+}
+
+export function getHomeGallerySections(home: Pick<HomeListing, "gallery">) {
+  return homeGallerySections
+    .map((section) => ({
+      ...section,
+      images: home.gallery[section.key],
+    }))
+    .filter((section) => section.images.length > 0);
 }
 
 export function buildLeadwoodStats(homes: HomeListing[]) {

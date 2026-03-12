@@ -1,18 +1,13 @@
-import React from 'react'
-import { TracingBm } from './orientaion'
-// import Tracing, { TracingTemplate } from './orientaion'
+import type { Metadata } from "next";
 
-const page = () => {
-  return (
+import OrientationPage from "./orientaion";
 
+export const metadata: Metadata = {
+  title: "Orientation and Area Tours | G&V Support Services",
+  description:
+    "Structured orientation and area tour support to help relocating clients understand neighborhoods, housing, schools, and everyday life in Nigeria.",
+};
 
-    <>
-    {/* <h1>Hello</h1> */}
-    <TracingBm/>
-    {/* <Tracing /> */}
-        {/* <h1>Hello</h1> */}
-    </>
-  )
+export default function Page() {
+  return <OrientationPage />;
 }
-
-export default page

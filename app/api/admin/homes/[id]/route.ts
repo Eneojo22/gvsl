@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { ADMIN_SESSION_COOKIE, getAdminViewerBySessionToken } from "@/app/lib/admin-auth";
+import { createEmptyHomeListingGallery, homeGallerySections } from "@/app/lib/cms-types";
 import {
   deleteHomeListing,
   getHomeListingById,
   parseHomeFormData,
+  saveHomeGalleryImages,
   saveHomeImage,
   updateHomeListing,
 } from "@/app/lib/cms-store";
@@ -44,10 +46,20 @@ export async function PATCH(
     const parsed = parseHomeFormData(formData);
     let nextImage = existingListing.image;
 
-    if (parsed.imageFile instanceof File && parsed.imageFile.size > 0) {
+    if (parsed.imageFile) {
       nextImage = await saveHomeImage(parsed.imageFile);
       await deletePublicUpload(existingListing.image);
     }
+
+    const uploadedGallery = await saveHomeGalleryImages(parsed.galleryFiles);
+    const nextGallery = createEmptyHomeListingGallery();
+
+    homeGallerySections.forEach((section) => {
+      nextGallery[section.key] = [
+        ...existingListing.gallery[section.key],
+        ...uploadedGallery[section.key],
+      ];
+    });
 
     const home = await updateHomeListing(listingId, {
       title: parsed.title || existingListing.title,
@@ -56,6 +68,7 @@ export async function PATCH(
       price: parsed.price || existingListing.price,
       location: parsed.location || existingListing.location,
       image: nextImage,
+      gallery: nextGallery,
       features: {
         bedrooms: parsed.features.bedrooms || existingListing.features.bedrooms,
         bathrooms: parsed.features.bathrooms || existingListing.features.bathrooms,

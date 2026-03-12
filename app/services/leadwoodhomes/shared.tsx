@@ -9,6 +9,7 @@ import {
   getHomeCollection,
   getHomeFeatureLabels,
   getHomeFocus,
+  getPrimaryHomeImage,
   getPricingCadence,
   leadwoodBasePath,
 } from "./listing-utils";
@@ -61,7 +62,7 @@ export function LeadwoodListingCard({
     <article className="group flex h-full flex-col overflow-hidden rounded-[28px] border border-[#ead9cb] bg-white shadow-[0_18px_50px_-24px_rgba(74,37,15,0.35)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_-24px_rgba(74,37,15,0.45)]">
       <div className="relative aspect-[4/3] overflow-hidden">
         <Image
-          src={home.image ?? "/image/homes.jpg"}
+          src={getPrimaryHomeImage(home)}
           alt={home.title}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

@@ -16,8 +16,10 @@ import {
   buildApartmentHighlights,
   formatHomePrice,
   getAudienceLabel,
+  getHomeGallerySections,
   getHomeCollection,
   getInspectionLink,
+  getPrimaryHomeImage,
   getPricingCadence,
   leadwoodBasePath,
 } from "../listing-utils";
@@ -33,6 +35,7 @@ export default function ApartmentDetailPage({
   relatedHomes,
 }: ApartmentDetailPageProps) {
   const highlights = buildApartmentHighlights(apartment);
+  const gallerySections = getHomeGallerySections(apartment);
   const facts = [
     {
       label: "Bedrooms",
@@ -61,7 +64,7 @@ export default function ApartmentDetailPage({
       <section className="relative isolate overflow-hidden bg-[#120b06]">
         <div className="absolute inset-0">
           <Image
-            src={apartment.image ?? "/image/homes.jpg"}
+            src={getPrimaryHomeImage(apartment)}
             alt={apartment.title}
             fill
             priority
@@ -174,6 +177,81 @@ export default function ApartmentDetailPage({
                 layout before they ever reach out. That makes this page a stronger handoff from the
                 landing page into a real property decision.
               </p>
+            </div>
+
+            <div className="rounded-[32px] border border-[#ead9cb] bg-white p-8 shadow-[0_18px_50px_-28px_rgba(74,37,15,0.35)]">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#cf6c3d]">
+                    Room gallery
+                  </p>
+                  <h2 className="mt-3 text-3xl font-semibold text-[#1c140d]">
+                    Walk through the apartment before inspection.
+                  </h2>
+                </div>
+                <p className="text-sm text-[#6d5646]">
+                  Living room, bedroom/rest room, and toilet photos can be grouped here.
+                </p>
+              </div>
+
+              {gallerySections.length > 0 ? (
+                <div className="mt-8 space-y-8">
+                  {gallerySections.map((section) => (
+                    <div
+                      key={section.key}
+                      className="rounded-[28px] border border-[#ead9cb] bg-[#fff8f2] p-5"
+                    >
+                      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                        <div>
+                          <h3 className="text-xl font-semibold text-[#1c140d]">{section.label}</h3>
+                          <p className="mt-1 text-sm text-[#6d5646]">
+                            {section.images.length} photo{section.images.length === 1 ? "" : "s"}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="mt-5 grid gap-4 md:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)]">
+                        <div className="relative min-h-[280px] overflow-hidden rounded-[24px] bg-[#f2ece4]">
+                          <Image
+                            src={section.images[0]}
+                            alt={`${apartment.title} ${section.label}`}
+                            fill
+                            className="object-cover object-center"
+                          />
+                        </div>
+
+                        <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2">
+                          {section.images.slice(1).map((image, index) => (
+                            <div
+                              key={`${section.key}-${index}-${image}`}
+                              className="relative min-h-[132px] overflow-hidden rounded-[20px] bg-[#f2ece4]"
+                            >
+                              <Image
+                                src={image}
+                                alt={`${apartment.title} ${section.label} view ${index + 2}`}
+                                fill
+                                className="object-cover object-center"
+                              />
+                            </div>
+                          ))}
+
+                          {section.images.length === 1 ? (
+                            <div className="flex min-h-[132px] items-center rounded-[20px] border border-dashed border-[#d7bca9] bg-white px-4 py-5 text-sm leading-6 text-[#6d5646]">
+                              More {section.label.toLowerCase()} photos can be added from the admin
+                              dashboard whenever they are ready.
+                            </div>
+                          ) : null}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="mt-8 rounded-[28px] border border-dashed border-[#d7bca9] bg-[#fff8f2] px-5 py-6 text-sm leading-7 text-[#6d5646]">
+                  Leadwood Homes can add grouped room photos from the admin dashboard so visitors
+                  can inspect the living room, bedroom/rest room, and toilet before reaching out.
+                </div>
+              )}
             </div>
 
             <div className="rounded-[32px] border border-[#ead9cb] bg-[#fff8f2] p-8 shadow-[0_18px_50px_-28px_rgba(74,37,15,0.25)]">

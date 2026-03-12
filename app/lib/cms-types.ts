@@ -1,3 +1,39 @@
+export const homeGalleryFieldNames = {
+  livingRoom: "livingRoomImages",
+  bedroom: "bedroomImages",
+  toilet: "toiletImages",
+} as const;
+
+export const homeGallerySections = [
+  {
+    key: "livingRoom",
+    label: "Living room",
+    fieldName: homeGalleryFieldNames.livingRoom,
+  },
+  {
+    key: "bedroom",
+    label: "Bedroom / rest room",
+    fieldName: homeGalleryFieldNames.bedroom,
+  },
+  {
+    key: "toilet",
+    label: "Toilet",
+    fieldName: homeGalleryFieldNames.toilet,
+  },
+] as const;
+
+export type HomeGallerySectionKey = (typeof homeGallerySections)[number]["key"];
+
+export type HomeListingGallery = Record<HomeGallerySectionKey, string[]>;
+
+export function createEmptyHomeListingGallery(): HomeListingGallery {
+  return {
+    livingRoom: [],
+    bedroom: [],
+    toilet: [],
+  };
+}
+
 export interface HomeListingFeatures {
   bedrooms: number;
   bathrooms: number;
@@ -13,6 +49,7 @@ export interface HomeListing {
   price: number;
   location: string;
   image: string | null;
+  gallery: HomeListingGallery;
   features: HomeListingFeatures;
   createdAt: string;
   updatedAt: string;

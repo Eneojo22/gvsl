@@ -1,4 +1,4 @@
-import type { CmsContent } from "./cms-types";
+import { createEmptyHomeListingGallery, type CmsContent } from "./cms-types";
 
 const seededAt = "2026-03-11T00:00:00.000Z";
 
@@ -13,6 +13,7 @@ export const seedCmsContent: CmsContent = {
       price: 25000000,
       location: "Ikeja GRA, Lagos",
       image: "/image/homes.jpg",
+      gallery: createEmptyHomeListingGallery(),
       features: {
         bedrooms: 6,
         bathrooms: 6,
@@ -31,6 +32,7 @@ export const seedCmsContent: CmsContent = {
       price: 3500000,
       location: "Ikeja, Lagos",
       image: "/image/homes.jpg",
+      gallery: createEmptyHomeListingGallery(),
       features: {
         bedrooms: 2,
         bathrooms: 2,
@@ -49,6 +51,7 @@ export const seedCmsContent: CmsContent = {
       price: 7000000,
       location: "Lekki Phase 1, Lagos",
       image: "/image/homes.jpg",
+      gallery: createEmptyHomeListingGallery(),
       features: {
         bedrooms: 3,
         bathrooms: 4,
@@ -66,7 +69,20 @@ export const seedCmsContent: CmsContent = {
         "Well-finished 1-bedroom shortlet apartment for business travelers and short stays, with housekeeping and Wi-Fi included.",
       price: 150000,
       location: "Victoria Island, Lagos",
-      image: "/image/homes.jpg",
+      image: "/image/Apartment-picture/third.jpg",
+      gallery: {
+        livingRoom: [
+          "/image/Apartment-picture/third.jpg",
+          "/image/Apartment-picture/WhatsApp Image 2025-07-24 at 12.22.37_9ee5d8ea.jpg",
+          "/image/Apartment-picture/WhatsApp Image 2025-07-24 at 12.22.38_f11256d7.jpg",
+        ],
+        bedroom: [
+          "/image/Apartment-picture/WhatsApp Image 2025-07-24 at 12.22.39_53643f7e.jpg",
+          "/image/Apartment-picture/WhatsApp Image 2025-07-24 at 12.22.39_98a08ab4.jpg",
+          "/image/Apartment-picture/WhatsApp Image 2025-07-24 at 12.22.40_21e5d63d.jpg",
+        ],
+        toilet: ["/image/Apartment-picture/WhatsApp Image 2025-07-24 at 12.22.39_63a37a0c.jpg"],
+      },
       features: {
         bedrooms: 1,
         bathrooms: 1,
@@ -85,6 +101,7 @@ export const seedCmsContent: CmsContent = {
       price: 5000000,
       location: "Ogudu GRA, Lagos",
       image: "/image/homes.jpg",
+      gallery: createEmptyHomeListingGallery(),
       features: {
         bedrooms: 4,
         bathrooms: 4,

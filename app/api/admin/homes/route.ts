@@ -5,6 +5,7 @@ import {
   createHomeListing,
   getHomeListings,
   parseHomeFormData,
+  saveHomeGalleryImages,
   saveHomeImage,
 } from "@/app/lib/cms-store";
 
@@ -46,9 +47,11 @@ export async function POST(request: NextRequest) {
 
     let image: string | null = null;
 
-    if (parsed.imageFile instanceof File && parsed.imageFile.size > 0) {
+    if (parsed.imageFile) {
       image = await saveHomeImage(parsed.imageFile);
     }
+
+    const gallery = await saveHomeGalleryImages(parsed.galleryFiles);
 
     const home = await createHomeListing({
       title: parsed.title,
@@ -58,6 +61,7 @@ export async function POST(request: NextRequest) {
       location: parsed.location,
       features: parsed.features,
       image,
+      gallery,
     });
 
     return NextResponse.json({ home }, { status: 201 });

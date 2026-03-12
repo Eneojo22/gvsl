@@ -8,9 +8,12 @@ import type {
   ContactMessage,
   ContactReply,
   FurnitureItem,
+  HomeGallerySectionKey,
   HomeListing,
   HomeListingFeatures,
+  HomeListingGallery,
 } from "./cms-types";
+import { createEmptyHomeListingGallery, homeGallerySections } from "./cms-types";
 import { deletePublicUpload, readJsonFile, saveUploadFile, writeJsonFile } from "./local-store";
 
 const CMS_CONTENT_FILE = "cms-data.json";
@@ -34,8 +37,67 @@ function getNextNumericId(items: Array<{ id: number }>) {
   return items.reduce((highestId, item) => Math.max(highestId, item.id), 0) + 1;
 }
 
+function normalizeHomeGallery(gallery?: Partial<HomeListingGallery> | null): HomeListingGallery {
+  const emptyGallery = createEmptyHomeListingGallery();
+
+  return {
+    livingRoom:
+      gallery?.livingRoom?.filter(
+        (image): image is string => typeof image === "string" && image.length > 0
+      ) ?? emptyGallery.livingRoom,
+    bedroom:
+      gallery?.bedroom?.filter(
+        (image): image is string => typeof image === "string" && image.length > 0
+      ) ?? emptyGallery.bedroom,
+    toilet:
+      gallery?.toilet?.filter(
+        (image): image is string => typeof image === "string" && image.length > 0
+      ) ?? emptyGallery.toilet,
+  };
+}
+
+function normalizeHomeListing(
+  home: Omit<HomeListing, "gallery"> & { gallery?: Partial<HomeListingGallery> | null }
+): HomeListing {
+  return {
+    ...home,
+    gallery: normalizeHomeGallery(home.gallery),
+  };
+}
+
+function collectHomeMediaPaths(home: Pick<HomeListing, "image" | "gallery">) {
+  const mediaPaths = new Set<string>();
+
+  if (home.image) {
+    mediaPaths.add(home.image);
+  }
+
+  homeGallerySections.forEach((section) => {
+    home.gallery[section.key].forEach((image) => mediaPaths.add(image));
+  });
+
+  return Array.from(mediaPaths);
+}
+
+async function deleteHomeMediaUploads(home: Pick<HomeListing, "image" | "gallery">) {
+  await Promise.all(collectHomeMediaPaths(home).map((image) => deletePublicUpload(image)));
+}
+
+function getFormFile(entry: FormDataEntryValue | null) {
+  return entry instanceof File && entry.size > 0 ? entry : null;
+}
+
+function getFormFiles(entries: FormDataEntryValue[]) {
+  return entries.filter((entry): entry is File => entry instanceof File && entry.size > 0);
+}
+
 export async function getCmsContent(): Promise<CmsContent> {
-  return readJsonFile<CmsContent>(CMS_CONTENT_FILE, seedCmsContent);
+  const content = await readJsonFile<CmsContent>(CMS_CONTENT_FILE, seedCmsContent);
+
+  return {
+    ...content,
+    homes: content.homes.map((home) => normalizeHomeListing(home)),
+  };
 }
 
 async function saveCmsContent(content: CmsContent) {
@@ -60,6 +122,7 @@ export async function createHomeListing(input: {
   location: string;
   features: HomeListingFeatures;
   image: string | null;
+  gallery: HomeListingGallery;
 }) {
   const content = await getCmsContent();
   const timestamp = new Date().toISOString();
@@ -73,6 +136,7 @@ export async function createHomeListing(input: {
     location: input.location,
     features: input.features,
     image: input.image,
+    gallery: normalizeHomeGallery(input.gallery),
     createdAt: timestamp,
     updatedAt: timestamp,
   };
@@ -85,7 +149,9 @@ export async function createHomeListing(input: {
 
 export async function updateHomeListing(
   id: number,
-  updates: Partial<Omit<HomeListing, "id" | "createdAt">>
+  updates: Partial<Omit<HomeListing, "id" | "createdAt" | "gallery">> & {
+    gallery?: Partial<HomeListingGallery>;
+  }
 ) {
   const content = await getCmsContent();
   const currentListing = content.homes.find((home) => home.id === id);
@@ -98,6 +164,13 @@ export async function updateHomeListing(
     ...currentListing,
     ...updates,
     image: updates.image === undefined ? currentListing.image : updates.image,
+    gallery:
+      updates.gallery === undefined
+        ? currentListing.gallery
+        : normalizeHomeGallery({
+            ...currentListing.gallery,
+            ...updates.gallery,
+          }),
     features: {
       ...currentListing.features,
       ...(updates.features ?? {}),
@@ -119,7 +192,7 @@ export async function deleteHomeListing(id: number) {
     return false;
   }
 
-  await deletePublicUpload(currentListing.image);
+  await deleteHomeMediaUploads(currentListing);
   content.homes = content.homes.filter((home) => home.id !== id);
   await saveCmsContent(content);
 
@@ -133,8 +206,11 @@ export async function deleteHomeListingImage(id: number) {
     return null;
   }
 
-  await deletePublicUpload(currentListing.image);
-  return updateHomeListing(id, { image: null });
+  await deleteHomeMediaUploads(currentListing);
+  return updateHomeListing(id, {
+    image: null,
+    gallery: createEmptyHomeListingGallery(),
+  });
 }
 
 export async function getFurnitureItems() {
@@ -217,6 +293,22 @@ export async function saveHomeImage(file: File) {
   return saveUploadFile(file, "homes");
 }
 
+export async function saveHomeGalleryImages(
+  galleryFiles: Record<HomeGallerySectionKey, File[]>
+): Promise<HomeListingGallery> {
+  const gallery = createEmptyHomeListingGallery();
+
+  await Promise.all(
+    homeGallerySections.map(async (section) => {
+      gallery[section.key] = await Promise.all(
+        galleryFiles[section.key].map((file) => saveHomeImage(file))
+      );
+    })
+  );
+
+  return gallery;
+}
+
 export async function saveFurnitureImage(file: File) {
   return saveUploadFile(file, "furniture");
 }
@@ -289,7 +381,18 @@ export function parseHomeFormData(formData: FormData) {
       toilets: numberOrZero(formData.get("toilets")?.toString()),
       parkingSpaces: numberOrZero(formData.get("parkingSpaces")?.toString()),
     },
-    imageFile: formData.get("image"),
+    imageFile: getFormFile(formData.get("image")),
+    galleryFiles: homeGallerySections.reduce<Record<HomeGallerySectionKey, File[]>>(
+      (gallery, section) => ({
+        ...gallery,
+        [section.key]: getFormFiles(formData.getAll(section.fieldName)),
+      }),
+      {
+        livingRoom: [],
+        bedroom: [],
+        toilet: [],
+      }
+    ),
   };
 }
 
