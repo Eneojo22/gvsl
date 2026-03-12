@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { Sparkles, Star, MapPin } from "lucide-react";
 
 import { CardsCarousel } from "./courasel";
 import { HoverEffect } from "./uiforcomponent/sectionsumary";
@@ -93,17 +95,104 @@ export const projects = [
   },
 ];
 
+const defaultStats = [
+  {
+    value: "300+",
+    label: "Relocations completed",
+    description: "Supporting families and executives across Nigeria.",
+  },
+  {
+    value: "10+",
+    label: "Years of experience",
+    description: "Delivering dependable support since day one.",
+  },
+  {
+    value: "98%",
+    label: "Customer satisfaction",
+    description: "Trusted by clients for consistent, people-first service.",
+  },
+  {
+    value: "6+",
+    label: "Cities covered",
+    description: "Active presence across Nigeria’s major hubs.",
+  },
+  {
+    value: "15+",
+    label: "Team members",
+    description: "Experienced local specialists working together for you.",
+  },
+  {
+    value: "< 24h",
+    label: "Avg response time",
+    description: "Fast answers when you need them most.",
+  },
+];
+
+export type StatsItem = {
+  value: string;
+  label: string;
+  description: string;
+};
+
+export type SuccessStory = {
+  title: string;
+  highlight: string;
+  details: string;
+  ctaLabel: string;
+  ctaLink: string;
+};
+
 const Landingpage = () => {
   return (
     <div>
       <HeroSection />
       <BrandSearchSection />
+      <StatsSection />
       <CardHoverEffect />
       <CardsCarousel />
       <OurSponsors />
     </div>
   );
 };
+
+function StatsSection() {
+  return (
+    <section className="bg-[#fcf7f1] px-4 py-16 text-black">
+      <div className="mx-auto max-w-6xl">
+        <div className="mb-10 text-center">
+          <p className="text-sm font-semibold uppercase tracking-[0.26em] text-[#c8612b]">
+            Quick facts
+          </p>
+          <h2 className="mt-4 text-3xl font-semibold md:text-4xl">
+            Numbers that matter
+          </h2>
+          <p className="mx-auto mt-4 max-w-3xl text-base leading-7 text-[#5a473a]">
+            These numbers reflect our commitment to timely support, strong local
+            partnerships, and a growing network of satisfied clients.
+          </p>
+        </div>
+
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {stats.map((stat, index) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.45, delay: index * 0.09 }}
+              className="rounded-3xl border border-[#ead9cb] bg-white p-8 text-center shadow-sm"
+            >
+              <p className="text-4xl font-semibold text-[#dd5500]">{stat.value}</p>
+              <p className="mt-2 text-lg font-semibold text-[#1f1f1f]">{stat.label}</p>
+              <p className="mt-2 text-sm leading-relaxed text-[#5a473a]">{stat.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 
 const BrandSearchSection = () => {
   return (
@@ -220,6 +309,7 @@ const HeroSection: React.FC = () => {
           className="object-cover mix-blend-overlay"
           priority
         />
+        <div className="absolute inset-0 bg-[url('/svg/african-pattern.svg')] bg-repeat opacity-20" />
       </div>
 
       <div className="z-10 mx-auto flex min-h-screen flex-col items-center justify-center px-4 text-left">
