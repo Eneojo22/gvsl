@@ -104,12 +104,12 @@ export default function Navbar() {
               <span className="text-[#dd5500]">G&V Support</span>
               <span className="sm:inline-flex items-center gap-2 text-[#ffffff]">
                 Services Limited
-                <span className="relative h-8 w-8">
+                <span className="relative h-7 w-7 shrink-0 rounded-full bg-black/20 p-1 shadow-[0_0_0_8px_rgba(255,213,79,0.24)] transition-transform duration-300 hover:scale-110">
                   <Image
                     src="/svg/ramadan-badge.svg"
                     alt="Ramadan badge"
                     fill
-                    className="object-contain"
+                    className="object-contain rotate-6"
                   />
                 </span>
               </span>
