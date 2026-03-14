@@ -70,6 +70,7 @@ export default function LeadwoodHomesLanding({ homes }: LeadwoodHomesLandingProp
   const featuredHomes = homes.slice(0, 3);
   const stats = buildLeadwoodStats(homes);
   const collections = buildHomeCollections(homes).slice(0, 4);
+  const ikejaHomes = homes.filter((home) => home.location.toLowerCase().includes("ikeja"));
 
   return (
     <div className="bg-[#fcf8f4] text-[#1c140d]">
@@ -246,6 +247,62 @@ export default function LeadwoodHomesLanding({ homes }: LeadwoodHomesLandingProp
             {featuredHomes.map((home) => (
               <LeadwoodListingCard key={home.id} home={home} />
             ))}
+          </div>
+
+          <div className="mt-12 rounded-[28px] border border-[#e8d0ba] bg-[#fffdf8] p-5 text-[#352513]">
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#a65a10]">
+                  Ikeja House Extraction Bot
+                </p>
+                <h3 className="mt-2 text-2xl font-semibold text-[#1c140d]">
+                  Smart suggestions for Ikeja perfect-fit homes
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-[#5f4a3b]">
+                  Our listing bot extracts top Ikeja options from the current inventory for faster
+                  decisions.
+                </p>
+              </div>
+              <span className="rounded-full bg-[#fff1d8] px-3 py-1 text-xs font-semibold text-[#a45f11]">
+                Auto-extracted
+              </span>
+            </div>
+
+            {ikejaHomes.length > 0 ? (
+              <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {ikejaHomes.slice(0, 3).map((home) => (
+                  <div
+                    key={home.id}
+                    className="rounded-2xl border border-[#f1dcc8] bg-white p-3 text-sm"
+                  >
+                    <div className="flex items-center justify-between">
+                      <p className="font-semibold text-[#1c140d]">{home.title}</p>
+                      <span className="rounded-full bg-[#eee4d8] px-2 py-0.5 text-xs text-[#795230]">
+                        {home.features.bedrooms}BR
+                      </span>
+                    </div>
+                    <p className="mt-1 text-xs text-[#5f4a3b]">{home.location}</p>
+                    <p className="mt-3 text-sm font-semibold text-[#7b3917]">
+                      ₦{home.price.toLocaleString()}
+                    </p>
+                    {home.airbnb ? (
+                      <p className="mt-1 text-xs text-[#5f4a3b]">Airbnb middleman available</p>
+                    ) : null}
+                    <Link
+                      href={`${leadwoodBasePath}/${home.id}`}
+                      className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-[#dd5500]"
+                    >
+                      View details <ArrowRight className="h-3 w-3" />
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="mt-3 text-sm text-[#5f4a3b]">
+                No Ikeja homes are currently available in this collection, but more will be added
+                soon.
+              </p>
+            )}
           </div>
         </div>
       </section>

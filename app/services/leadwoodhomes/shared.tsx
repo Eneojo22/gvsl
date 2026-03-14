@@ -103,8 +103,25 @@ export function LeadwoodListingCard({
           ))}
         </div>
 
-        <div className="mt-auto flex items-center justify-between gap-4">
+        <div className="flex flex-col gap-2">
           <p className="max-w-[15rem] text-sm font-medium text-[#6d5646]">{getHomeFocus(home)}</p>
+          {home.airbnb ? (
+            <div className="flex flex-wrap items-center gap-2 rounded-xl border border-[#e8d7c6] bg-[#fff9f3] p-2 text-xs font-semibold text-[#7b3e00]">
+              <span className="rounded-full bg-[#fbe9d6] px-2 py-1">Airbnb</span>
+              <a
+                href={home.airbnb.url}
+                target="_blank"
+                rel="noreferrer"
+                className="underline hover:text-[#dd5500]"
+              >
+                {home.airbnb.listingName}
+              </a>
+              <span className="text-[#60432c]">via G&V middleman</span>
+            </div>
+          ) : null}
+        </div>
+
+        <div className="mt-auto flex items-center justify-between gap-4">
           <Link
             href={href}
             className="inline-flex items-center gap-2 rounded-full bg-[#1b1209] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#dd5500]"

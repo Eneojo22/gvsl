@@ -53,6 +53,13 @@ export interface HomeListing {
   features: HomeListingFeatures;
   createdAt: string;
   updatedAt: string;
+  airbnb?: {
+    listingName: string;
+    url: string;
+    location: string;
+    ownerContact: string;
+    type: "home" | "apartment";
+  };
 }
 
 export interface FurnitureItem {
