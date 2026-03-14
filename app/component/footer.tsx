@@ -6,8 +6,8 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="bg-[#fff] text-black py-12 px-4 md:px-8 mt-20">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 text-center md:grid-cols-4 gap-8">
+    <footer className="bg-[#111827] text-slate-200 py-12 px-4 md:px-8 mt-20">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 gap-10 md:grid-cols-4 text-left">
         <div className="space-y-4">
           <div className="flex items-center">
             <Image
@@ -18,10 +18,10 @@ export function Footer() {
               className="h-20 w-auto"
             />
           </div>
-          <p className="text-[#000] text-sm">
+          <p className="text-slate-300 text-sm">
             Your trusted partner for relocation, housing, apartments, and furniture support in Nigeria.
           </p>
-          <div className="flex space-x-4">
+          <div className="mt-2 flex space-x-3">
             <SocialIcon href="https://www.linkedin.com/in/g-v-support-services-025a84376/" icon="linkedin" />
             <SocialIcon href="https://twitter.com" icon="twitter" />
             <SocialIcon href="https://instagram.com" icon="instagram" />
@@ -29,7 +29,7 @@ export function Footer() {
         </div>
 
         <div>
-          <h3 className="font-bold text-[#000] text-lg mb-4">Our Services</h3>
+          <h3 className="font-semibold text-white text-lg mb-4">Our Services</h3>
           <ul className="space-y-2">
             <FooterLink href="/services/orientation" text="Orientation" />
             <FooterLink href="/services/airportmeetandgreet" text="Airport Meet & Greet" />
@@ -40,7 +40,7 @@ export function Footer() {
         </div>
 
         <div>
-          <h3 className="font-bold text-lg mb-4 text-black">Company</h3>
+          <h3 className="font-semibold text-white text-lg mb-4">Company</h3>
           <ul className="space-y-2">
             <FooterLink href="/aboutUs" text="About Us" />
             <FooterLink href="/aboutUs/teamInfo" text="Our Team" />
@@ -51,7 +51,7 @@ export function Footer() {
         </div>
 
         <div>
-          <h3 className="font-bold text-lg mb-4">Contact Us</h3>
+          <h3 className="font-semibold text-white text-lg mb-4">Contact Us</h3>
           <address className="not-italic space-y-2">
             <p>90, Allen Avenue Ikeja Lagos</p>
             <p>Email: info@gvss.ng</p>
@@ -60,16 +60,16 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-neutral-800 font-bold text-shadow-amber-50 mt-8 pt-8 text-center text-[#000] text-sm">
+      <div className="border-t border-slate-700 mt-10 pt-6 text-center text-slate-300 text-sm">
         <p>© {new Date().getFullYear()} G&V Support Services Limited. All rights reserved.</p>
         <div className="flex justify-center space-x-4 mt-2">
-          <Link href="/contact-us" className="hover:text-[#2c0606]">
+          <Link href="/contact-us" className="hover:text-[#f8f8f8]">
             Contact
           </Link>
-          <Link href="/aboutUs" className="hover:text-[#270101]">
+          <Link href="/aboutUs" className="hover:text-[#f8f8f8]">
             About
           </Link>
-          <Link href="/location" className="hover:text-[#270101]">
+          <Link href="/location" className="hover:text-[#f8f8f8]">
             Locations
           </Link>
         </div>
