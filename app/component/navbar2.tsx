@@ -119,10 +119,10 @@ export default function Navbar() {
 
         <div className="hidden items-center gap-5 text-sm xl:flex 2xl:gap-7">
           {navLinks.map(({ href, label, dropdown }, index) => (
-            <div key={`${href}-${index}`} className="group relative">
+            <div key={`${href}-${index}`} className="group relative text-white">
               <Link
                 href={normalizePath(href)}
-                className={`font-bold transition-colors hover:text-[#cf6c3d] text-orange-100 ${navTextColor}`}
+                className={`font-bold transition-colors hover:text-[#cf6c3d] text-[#ffffff]  ${navTextColor}`}
               >
                 {label}
               </Link>
@@ -209,7 +209,7 @@ export default function Navbar() {
                     <li key={item.href}>
                       <Link
                         href={item.href}
-                        className="block py-2 text-black transition-colors hover:text-[#cf6c3d]"
+                        className="block py-2 text-black transition-colors hover:text-[#ffffff]"
                         onClick={() => setMenuOpen(false)}
                       >
                         {item.name}
