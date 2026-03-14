@@ -6,13 +6,14 @@ import {
   homeGallerySections,
   type AdminViewer,
   type ContactMessage,
+  type EventItem,
   type FurnitureItem,
   type HomeGallerySectionKey,
   type HomeListing,
 } from "@/app/lib/cms-types";
 
 type AuthMode = "login" | "signup" | "verify";
-type Tab = "homes" | "furniture" | "contacts";
+type Tab = "homes" | "furniture" | "events" | "contacts";
 type Notice = { type: "success" | "error" | "info"; message: string } | null;
 
 function createEmptyHomeGalleryFiles(): Record<HomeGallerySectionKey, File[]> {
@@ -76,7 +77,17 @@ export default function AdminConsole() {
   const [replyDrafts, setReplyDrafts] = useState<Record<string, string>>({});
   const [homes, setHomes] = useState<HomeListing[]>([]);
   const [furniture, setFurniture] = useState<FurnitureItem[]>([]);
+  const [events, setEvents] = useState<EventItem[]>([]);
   const [messages, setMessages] = useState<ContactMessage[]>([]);
+  const [eventForm, setEventForm] = useState({
+    title: "",
+    date: "",
+    location: "",
+    description: "",
+    ctaLabel: "",
+    ctaHref: "/contact-us",
+  });
+  const [editingEventId, setEditingEventId] = useState<number | null>(null);
   const editingHome = homes.find((home) => home.id === editingHomeId) ?? null;
 
   useEffect(() => {
@@ -106,29 +117,33 @@ export default function AdminConsole() {
     setLoadingDashboard(true);
 
     try {
-      const [homesResponse, furnitureResponse, contactResponse] = await Promise.all([
+      const [homesResponse, furnitureResponse, eventsResponse, contactResponse] = await Promise.all([
         fetch("/api/admin/homes", { cache: "no-store" }),
         fetch("/api/admin/furniture", { cache: "no-store" }),
+        fetch("/api/admin/events", { cache: "no-store" }),
         fetch("/api/admin/contact-messages", { cache: "no-store" }),
       ]);
 
       if (
         homesResponse.status === 401 ||
         furnitureResponse.status === 401 ||
+        eventsResponse.status === 401 ||
         contactResponse.status === 401
       ) {
         setViewer(null);
         return;
       }
 
-      const [homesData, furnitureData, contactData] = await Promise.all([
+      const [homesData, furnitureData, eventsData, contactData] = await Promise.all([
         homesResponse.json(),
         furnitureResponse.json(),
+        eventsResponse.json(),
         contactResponse.json(),
       ]);
 
       setHomes(homesData.homes ?? []);
       setFurniture(furnitureData.furniture ?? []);
+      setEvents(eventsData.events ?? []);
       setMessages(contactData.messages ?? []);
     } finally {
       setLoadingDashboard(false);
@@ -452,6 +467,75 @@ export default function AdminConsole() {
     setFurnitureFileKey((value) => value + 1);
   }
 
+  function startEditingEvent(eventItem: EventItem) {
+    setActiveTab("events");
+    setEditingEventId(eventItem.id);
+    setEventForm({
+      title: eventItem.title,
+      date: eventItem.date,
+      location: eventItem.location,
+      description: eventItem.description,
+      ctaLabel: eventItem.ctaLabel,
+      ctaHref: eventItem.ctaHref,
+    });
+  }
+
+  async function handleEventSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setNotice(null);
+
+    try {
+      const formData = new FormData();
+      formData.append("title", eventForm.title);
+      formData.append("date", eventForm.date);
+      formData.append("location", eventForm.location);
+      formData.append("description", eventForm.description);
+      formData.append("ctaLabel", eventForm.ctaLabel);
+      formData.append("ctaHref", eventForm.ctaHref);
+
+      const url = editingEventId ? `/api/admin/events/${editingEventId}` : "/api/admin/events";
+      const method = editingEventId ? "PATCH" : "POST";
+      const response = await fetch(url, { method, body: formData });
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error ?? "Unable to save event.");
+      }
+
+      setEventForm({
+        title: "",
+        date: "",
+        location: "",
+        description: "",
+        ctaLabel: "",
+        ctaHref: "/contact-us",
+      });
+      setEditingEventId(null);
+      setNotice({
+        type: "success",
+        message: editingEventId ? "Event updated." : "Event created.",
+      });
+      await loadDashboard();
+    } catch (error) {
+      setNotice({ type: "error", message: error instanceof Error ? error.message : "Unable to save event." });
+    }
+  }
+
+  async function deleteEvent(id: number) {
+    if (!window.confirm("Delete this event?")) return;
+
+    const response = await fetch(`/api/admin/events/${id}`, { method: "DELETE" });
+    const data = await response.json();
+
+    if (!response.ok) {
+      setNotice({ type: "error", message: data.error ?? "Unable to delete event." });
+      return;
+    }
+
+    setNotice({ type: "success", message: "Event deleted." });
+    await loadDashboard();
+  }
+
   function noticeClass() {
     if (!notice) return "";
     if (notice.type === "error") return "border-red-200 bg-red-50 text-red-700";
@@ -645,6 +729,12 @@ export default function AdminConsole() {
               className={`rounded-full px-4 py-2 text-sm font-semibold ${activeTab === "furniture" ? "bg-[#dd5500] text-white" : "bg-[#f2ece4]"}`}
             >
               Furniture ({furniture.length})
+            </button>
+            <button
+              onClick={() => setActiveTab("events")}
+              className={`rounded-full px-4 py-2 text-sm font-semibold ${activeTab === "events" ? "bg-[#dd5500] text-white" : "bg-[#f2ece4]"}`}
+            >
+              Events ({events.length})
             </button>
             <button
               onClick={() => setActiveTab("contacts")}
@@ -912,6 +1002,60 @@ export default function AdminConsole() {
                     <button onClick={() => startEditingFurniture(item)} className="rounded-full bg-[#dd5500] px-4 py-2 text-sm font-semibold text-white">Edit</button>
                     <button onClick={() => void deleteFurniture(item.id)} className="rounded-full border border-red-200 px-4 py-2 text-sm font-semibold text-red-600">Delete</button>
                   </div>
+                </article>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {activeTab === "events" && (
+          <section className="grid gap-6 lg:grid-cols-[360px_1fr]">
+            <div className="rounded-3xl bg-white p-6 shadow">
+              <div className="mb-4 flex items-center justify-between">
+                <h2 className="text-xl font-bold">
+                  {editingEventId ? "Edit event" : "Add event"}
+                </h2>
+                {editingEventId && (
+                  <button
+                    onClick={() => {
+                      setEditingEventId(null);
+                      setEventForm({ title: "", date: "", location: "", description: "", ctaLabel: "", ctaHref: "/contact-us" });
+                    }}
+                    className="text-sm underline"
+                  >
+                    Cancel
+                  </button>
+                )}
+              </div>
+
+              <form className="space-y-3" onSubmit={handleEventSubmit}>
+                <input type="text" placeholder="Title" value={eventForm.title} onChange={(event) => setEventForm((current) => ({ ...current, title: event.target.value }))} className="w-full rounded-xl border px-4 py-3" />
+                <input type="text" placeholder="Date" value={eventForm.date} onChange={(event) => setEventForm((current) => ({ ...current, date: event.target.value }))} className="w-full rounded-xl border px-4 py-3" />
+                <input type="text" placeholder="Location" value={eventForm.location} onChange={(event) => setEventForm((current) => ({ ...current, location: event.target.value }))} className="w-full rounded-xl border px-4 py-3" />
+                <textarea placeholder="Description" value={eventForm.description} onChange={(event) => setEventForm((current) => ({ ...current, description: event.target.value }))} className="h-28 w-full rounded-xl border px-4 py-3" />
+                <input type="text" placeholder="CTA Label" value={eventForm.ctaLabel} onChange={(event) => setEventForm((current) => ({ ...current, ctaLabel: event.target.value }))} className="w-full rounded-xl border px-4 py-3" />
+                <input type="text" placeholder="CTA Link" value={eventForm.ctaHref} onChange={(event) => setEventForm((current) => ({ ...current, ctaHref: event.target.value }))} className="w-full rounded-xl border px-4 py-3" />
+                <button type="submit" className="rounded-xl bg-[#dd5500] px-5 py-3 font-semibold text-white">
+                  {editingEventId ? "Update event" : "Create event"}
+                </button>
+              </form>
+            </div>
+
+            <div className="space-y-3">
+              {events.map((eventItem) => (
+                <article key={eventItem.id} className="rounded-3xl bg-white p-5 shadow">
+                  <div className="flex flex-wrap items-start justify-between gap-2">
+                    <div>
+                      <h3 className="text-xl font-bold">{eventItem.title}</h3>
+                      <p className="text-sm text-[#666]">{eventItem.date} • {eventItem.location}</p>
+                    </div>
+                    <div className="flex gap-2">
+                      <button onClick={() => startEditingEvent(eventItem)} className="rounded-full bg-[#dd5500] px-4 py-2 text-sm font-semibold text-white">Edit</button>
+                      <button onClick={() => void deleteEvent(eventItem.id)} className="rounded-full border border-red-200 px-4 py-2 text-sm font-semibold text-red-600">Delete</button>
+                    </div>
+                  </div>
+                  <p className="mt-2 text-sm">{eventItem.description}</p>
+                  <a href={eventItem.ctaHref} className="mt-3 inline-block text-sm font-semibold text-[#dd5500]">{eventItem.ctaLabel}</a>
                 </article>
               ))}
             </div>

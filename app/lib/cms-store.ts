@@ -7,6 +7,7 @@ import type {
   CmsContent,
   ContactMessage,
   ContactReply,
+  EventItem,
   FurnitureItem,
   HomeGallerySectionKey,
   HomeListing,
@@ -92,12 +93,15 @@ function getFormFiles(entries: FormDataEntryValue[]) {
 }
 
 export async function getCmsContent(): Promise<CmsContent> {
-  const content = await readJsonFile<CmsContent>(CMS_CONTENT_FILE, seedCmsContent);
+  const contentFromFile = await readJsonFile<Partial<CmsContent>>(CMS_CONTENT_FILE, seedCmsContent);
 
-  return {
-    ...content,
-    homes: content.homes.map((home) => normalizeHomeListing(home)),
+  const content: CmsContent = {
+    homes: (contentFromFile.homes ?? seedCmsContent.homes).map((home) => normalizeHomeListing(home)),
+    furniture: contentFromFile.furniture ?? seedCmsContent.furniture,
+    events: contentFromFile.events ?? seedCmsContent.events ?? [],
   };
+
+  return content;
 }
 
 async function saveCmsContent(content: CmsContent) {
@@ -287,6 +291,93 @@ export async function deleteFurnitureItem(id: number) {
   await saveCmsContent(content);
 
   return true;
+}
+
+export async function getEvents() {
+  const content = await getCmsContent();
+  return content.events.sort((first, second) => second.id - first.id);
+}
+
+export async function getEventById(id: number) {
+  const events = await getEvents();
+  return events.find((event) => event.id === id) ?? null;
+}
+
+export async function createEvent(input: {
+  title: string;
+  date: string;
+  location: string;
+  description: string;
+  ctaLabel: string;
+  ctaHref: string;
+}) {
+  const content = await getCmsContent();
+  const timestamp = new Date().toISOString();
+
+  const event: EventItem = {
+    id: getNextNumericId(content.events),
+    title: input.title,
+    date: input.date,
+    location: input.location,
+    description: input.description,
+    ctaLabel: input.ctaLabel,
+    ctaHref: input.ctaHref,
+    createdAt: timestamp,
+    updatedAt: timestamp,
+  };
+
+  content.events.unshift(event);
+  await saveCmsContent(content);
+
+  return event;
+}
+
+export async function updateEvent(
+  id: number,
+  updates: Partial<Omit<EventItem, "id" | "createdAt">>
+) {
+  const content = await getCmsContent();
+  const currentEvent = content.events.find((item) => item.id === id);
+
+  if (!currentEvent) {
+    return null;
+  }
+
+  const nextEvent: EventItem = {
+    ...currentEvent,
+    ...updates,
+    updatedAt: new Date().toISOString(),
+  };
+
+  content.events = content.events.map((item) => (item.id === id ? nextEvent : item));
+  await saveCmsContent(content);
+
+  return nextEvent;
+}
+
+export async function deleteEvent(id: number) {
+  const content = await getCmsContent();
+  const existingEvent = content.events.find((item) => item.id === id);
+
+  if (!existingEvent) {
+    return false;
+  }
+
+  content.events = content.events.filter((item) => item.id !== id);
+  await saveCmsContent(content);
+
+  return true;
+}
+
+export function parseEventFormData(formData: FormData) {
+  return {
+    title: String(formData.get("title") ?? "").trim(),
+    date: String(formData.get("date") ?? "").trim(),
+    location: String(formData.get("location") ?? "").trim(),
+    description: String(formData.get("description") ?? "").trim(),
+    ctaLabel: String(formData.get("ctaLabel") ?? "").trim(),
+    ctaHref: String(formData.get("ctaHref") ?? "/contact-us").trim(),
+  };
 }
 
 export async function saveHomeImage(file: File) {

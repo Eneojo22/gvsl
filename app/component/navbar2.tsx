@@ -101,9 +101,9 @@ export default function Navbar() {
               href="/"
               className={`ml-3 min-w-0 text-sm font-bold leading-tight tracking-tight sm:text-base lg:text-lg xl:text-2xl ${montserrat.className} ${navTextColor}`}
             >
-              <span className="text-[#dd5500]">G&V Support</span>
-              <span className="sm:inline-flex items-center gap-2 text-[#ffffff]">
-                Services Limited
+              <span className="text-[#dd5500] mx-3">G&V Support</span>
+              <span className="sm:inline-flex items-center gap-2 text-[#dd5500]  ">
+                 Services Limited
                 <span className="relative h-7 w-7 shrink-0 rounded-full bg-black/20 p-1 shadow-[0_0_0_8px_rgba(255,213,79,0.24)] transition-transform duration-300 hover:scale-110">
                   <Image
                     src="/svg/ramadan-badge.svg"
@@ -122,7 +122,7 @@ export default function Navbar() {
             <div key={`${href}-${index}`} className="group relative">
               <Link
                 href={normalizePath(href)}
-                className={`font-bold transition-colors hover:text-[#cf6c3d] ${navTextColor}`}
+                className={`font-bold transition-colors hover:text-[#cf6c3d] text-orange-100 ${navTextColor}`}
               >
                 {label}
               </Link>

@@ -96,9 +96,22 @@ export interface ContactMessage {
   replies: ContactReply[];
 }
 
+export interface EventItem {
+  id: number;
+  title: string;
+  date: string;
+  location: string;
+  description: string;
+  ctaLabel: string;
+  ctaHref: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
 export interface CmsContent {
   homes: HomeListing[];
   furniture: FurnitureItem[];
+  events: EventItem[];
 }
 
 export interface AdminUserRecord {

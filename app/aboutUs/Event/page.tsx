@@ -1,36 +1,8 @@
 import HeroSection from "../shared/HeroSection";
+import { getEvents } from "@/app/lib/cms-store";
 
-const events = [
-  {
-    title: "Welcome Orientation Session",
-    date: "April 18, 2026",
-    location: "Lagos – Victoria Island",
-    description:
-      "A full-day orientation designed to help new arrivals navigate local culture, transport, and essential services. Includes a guided city tour and Q&A with our relocation specialists.",
-    ctaLabel: "Reserve your spot",
-    ctaHref: "/contact-us",
-  },
-  {
-    title: "Housing & School Search Workshop",
-    date: "May 9, 2026",
-    location: "Abuja – Central Business District",
-    description:
-      "Learn how to identify suitable neighbourhoods, evaluate properties, and match schools with your family’s needs. This workshop includes a live Q&A and real-case insights.",
-    ctaLabel: "Join the workshop",
-    ctaHref: "/contact-us",
-  },
-  {
-    title: "Corporate Relocation Roundtable",
-    date: "June 12, 2026",
-    location: "Port Harcourt – Conference Centre",
-    description:
-      "A forum for HR and mobility leaders to discuss best practices, compliance updates, and evolving expectations for expatriate support in Nigeria.",
-    ctaLabel: "Request details",
-    ctaHref: "/contact-us",
-  },
-];
-
-export default function EventsPage() {
+export default async function EventsPage() {
+  const events = await getEvents();
   return (
     <div>
       <HeroSection

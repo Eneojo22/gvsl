@@ -174,4 +174,30 @@ export const seedCmsContent: CmsContent = {
       updatedAt: seededAt,
     },
   ],
+  events: [
+    {
+      id: 1,
+      title: "Welcome Orientation Session",
+      date: "April 18, 2026",
+      location: "Lagos – Victoria Island",
+      description:
+        "A full-day orientation designed to help new arrivals navigate local culture, transport, and essential services.",
+      ctaLabel: "Reserve your spot",
+      ctaHref: "/contact-us",
+      createdAt: seededAt,
+      updatedAt: seededAt,
+    },
+    {
+      id: 2,
+      title: "Housing & School Search Workshop",
+      date: "May 9, 2026",
+      location: "Abuja – Central Business District",
+      description:
+        "Learn how to identify suitable neighbourhoods, evaluate properties, and match schools with your family’s needs.",
+      ctaLabel: "Join the workshop",
+      ctaHref: "/contact-us",
+      createdAt: seededAt,
+      updatedAt: seededAt,
+    },
+  ],
 };
