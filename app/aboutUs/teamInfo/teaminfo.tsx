@@ -1,163 +1,95 @@
 
 'use client'
-import React from 'react'
+
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
+const teamMembers = [
+  {
+    name: 'Gospel Akuetiemhe',
+    title: 'Managing Director',
+    image: '/image/picpic.jpg',
+    bio: 'Strategic leader focused on growth, operational excellence, and exceptional client outcomes for our relocation services.',
+  },
+  {
+    name: 'Abiodun Akuetiemhe',
+    title: 'Director, Administration & Human Resources',
+    image: '/image/picpic.jpg',
+    bio: 'HR and operations strategist, leading talent, performance, and service delivery for a high-performing team.',
+  },
+  {
+    name: 'Wisdom Ugwu',
+    title: 'Accountant',
+    image: '/image/wisdompic.jpg',
+    bio: 'Finance lead delivering transparent financial reporting, compliance, and effective cashflow management.',
+  },
+  {
+    name: 'Oluwakemi Adesanwo',
+    title: 'Facility Supervisor',
+    image: '/image/kemipic.jpg',
+    bio: 'Facility operations expert maintaining safe, efficient environments and excellent support for client engagements.',
+  },
+];
 
-const Company = () => {
+export default function Company() {
   return (
-    <div className=' mt-35 border-4 text-black'>
-          <ImageCarousel 
-            title="Our Team"
-                  subtitle="We are a mulitidisciplinary team with extensive experience in relocation and global mobility services. 
-                  Our team is passionate about delivering exceptional service and support to our clients, ensuring a smooth and successful relocation experience. 
-                   We are dedicated to providing personalized solutions that meet the unique needs of each client, and we work closely with them to ensure their satisfaction
-                    throughout the entire relocation process.        "
-                  image="/image/meetgreet.jpg"
-                  overlayOpacity="bg-black/80"
-                  height="h-[30vh]"
-          
-          />
-{/* why then how */}
-{/* What will i do if i know i cant fail */}
-            <div className='w-full text-center p-6 md:text-5xl text-3xl font-bold'>Meet Our team</div>
-            
+    <div className="bg-slate-50 text-slate-900">
+      <section className="relative overflow-hidden bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 py-20 text-white">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-5 md:grid-cols-2 md:items-center">
             <div>
-             <CompanyInfo 
-  name="Gospel Akuetiemhe" 
-  workTitle="Managing Director" 
-  image="/image/picpic.jpg"  
-  details="Gospel Akuetiemhe is the Managing Director of G&V Support Services limited, where he provides strategic leadership and drives the company’s vision for growth and operational excellence. With extensive industry experience and a results-oriented mindset, he ensures that GVSS consistently delivers exceptional value to its clients while fostering innovation, efficiency, and sustainable long-term success."
-/>
-
-<CompanyInfo 
-  name="Abiodun Akuetiemhe" 
-  workTitle="Director, Administration & Human Resources" 
-  image="/image/picpic.jpg"
-  details="Abiodun Akuetiemhe serves as the Director of Administration and Human Resources. She is dedicated to building a strong workforce and cultivating a positive organizational culture. With expertise in recruitment, employee relations, and staff development, she ensures that GVSS attracts, develops, and retains top talent to support the company’s mission and long-term growth."
-/>
-
-<CompanyInfo 
-  name="Wisdom Ugwu" 
-  workTitle="Accountant" 
-  image="/image/wisdompic.jpg"
-  details="Wisdom Ugwu is the Accountant at G&V Support Services, bringing strong expertise in financial reporting, auditing, and tax compliance. With keen attention to detail and a commitment to financial accuracy, he oversees the company’s financial operations, ensuring transparency, efficiency, and compliance with industry regulations."
-/>
-
-<CompanyInfo 
-  name="Oluwakemi Adesanwo" 
-  workTitle="Facility Supervisor" 
-  image="/image/kemipic.jpg"  
-  details="Oluwakemi Adesanwo is the Facility Supervisor at G&V Support Services, responsible for overseeing daily facility operations and ensuring a safe, efficient, and well-organized environment. With a strong focus on operational excellence and attention to detail, she plays a key role in maintaining smooth facility management processes that support productivity and organizational effectiveness."
-/>
+              <p className="mb-3 inline-flex rounded-full bg-[#fd4c07] px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white">Our Leadership</p>
+              <h1 className="text-3xl font-bold md:text-5xl">Professional Team Driving Global Mobility Excellence</h1>
+              <p className="mt-4 max-w-2xl text-sm text-slate-200 md:text-base">
+                We combine relocation expertise, local knowledge, and operational precision to deliver tailored relocation outcomes. From strategy and administration to finance and facilities, our team ensures seamless transitions for every client.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <span className="rounded-full bg-white/10 px-4 py-2 text-xs font-medium text-white ring-1 ring-white/20">Trusted Advisors</span>
+                <span className="rounded-full bg-white/10 px-4 py-2 text-xs font-medium text-white ring-1 ring-white/20">Expert Support</span>
+                <span className="rounded-full bg-white/10 px-4 py-2 text-xs font-medium text-white ring-1 ring-white/20">Client Focused</span>
+              </div>
             </div>
-         </div>
-  )
-}
+            <div className="rounded-3xl border border-white/20 bg-[#0f172a]/70 p-6 shadow-2xl backdrop-blur">
+              <div className="text-sm uppercase tracking-[0.2em] text-slate-300">Our Values</div>
+              <ul className="mt-4 space-y-3 text-slate-200">
+                <li className="rounded-xl bg-white/10 p-3">Customer-first service with transparent communication.</li>
+                <li className="rounded-xl bg-white/10 p-3">Reliable processes built on local and global experience.</li>
+                <li className="rounded-xl bg-white/10 p-3">Data-driven recommendations and personalized support.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
 
-export default Company;
+      <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="mb-8 text-center">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#dd5500]">Meet the Team</p>
+          <h2 className="mt-3 text-3xl font-bold text-slate-900">Experienced experts, dedicated to your success</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-slate-600">Our multidisciplinary team blends relocation strategy, operations, finance, and people management to deliver seamless outcomes.</p>
+        </div>
 
-
-interface imageCarouselProps {
-  title: string;
-  subtitle?: string;
-  image: string;
-  overlayOpacity?: string; 
-  height?: string; 
-}
-
-
-export function ImageCarousel({
-  title,
-  subtitle,
-  image,
-  overlayOpacity = 'bg-black/40',
-  height = 'h-[30vh]',
-}: imageCarouselProps) {
-  return (
-     <section className={`relative ${height} w-full flex items-center justify-center overflow-hidden`}>
-          {/* Background Image */}
-          <Image src={image} alt={title} fill priority className="object-cover object-center" />
-    
-          {/* Overlay */}
-          <div className={`absolute inset-0 ${overlayOpacity}`} />
-    
-          {/* Content */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-               duration: 0.9,
-               delay: 0.6,
-                ease: [0, 0.71, 0.2, 1.01],
-           }} className="relative z-10 text-center text-white px-4">
-            <h1 className="text-[30px]  md:text-7xl text-[#fd4c07] font-bold mb-4">{title}</h1>
-            {subtitle && <motion.p
-            initial={{ opacity: 0, scale: 0.5, translateX: 0 }}
-            animate={{ opacity: 1, scale: 1, translateX: 10 }}
-            transition={{
-               duration: 0.9,
-               delay: 0.6,
-                ease: [0, 0.71, 0.2, 1.01],
-           }}
-            
-            
-            className="text-[10px] md:text-sm text-shadow-2xs  font-extrabold">{subtitle}</motion.p>
-            }
-          </motion.div>
-        </section>
-  )
-  }
-
-  interface companyInfoProps {
-    name: string;
-    workTitle: string;
-    image: string;
-    details: string; 
-    // height: 'h-[30vh]'; 
-  }
-
-  export function CompanyInfo({ name, workTitle, image, details }: companyInfoProps) {
-  return (
-    // <div className="  ">
-      <div className="md:m-auto p-3 md:w-5/6 md:p-10 text-black   flex md:flex  md:flex-row flex-col md:items-start  md:space-x-6">
-        
-        {/* Image container */}
-        <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-               duration: 0.9,
-               delay: 0.6,
-                ease: [0, 0.71, 0.2, 1.01],
-           }}  
-        
-        className="relative  h-100 md:w-80 md:h-90  shadow-2xl  rounded-lg overflow-hidden">
-          <Image
-            src={image}
-            alt={name}
-            fill
-            className="object-cover object-center"
-            placeholder="empty"
-          />
-        </motion.div>
-
-        {/* Text content */}
-        <motion.div
-            initial={{ opacity: 1,  scale: 0, translateX: -100 }}
-            animate={{ opacity: 1,scale: 1, translateX:0,  }}
-            transition={{
-               duration: 0.8,
-               delay: 0.8,
-                ease: [0, 0.71, 0.2, 1.01],
-           }}
-           className="md:flex-1  md:w-1/2 p-3 ">
-          <h1 className="md:text-lg font-bold text-[#000] py-4">{name}</h1>
-          <h2 className="text-[#d17000] font-extrabold">{workTitle}</h2>
-          <p className="mt-2 md:w-1/2 text-gray-700  ">{details}</p>
-        </motion.div>
-      </div>
-    // <div>
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {teamMembers.map((member) => (
+            <motion.article
+              key={member.name}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ duration: 0.35 }}
+              className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm"
+            >
+              <div className="relative aspect-square overflow-hidden rounded-xl bg-slate-100">
+                <Image src={member.image} alt={member.name} fill className="object-cover object-center" />
+              </div>
+              <div className="mt-4">
+                <h3 className="text-lg font-semibold text-slate-900">{member.name}</h3>
+                <p className="mt-1 text-xs font-medium uppercase tracking-[0.14em] text-[#dd5500]">{member.title}</p>
+                <p className="mt-3 text-sm leading-6 text-slate-600">{member.bio}</p>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      </main>
+    </div>
   );
 }
