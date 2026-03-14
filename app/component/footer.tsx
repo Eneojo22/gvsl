@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="bg-[#111827] text-slate-200 py-12 px-4 md:px-8 mt-20">
+    <footer className="bg-black text-slate-200 py-12 px-4 md:px-8 mt-20">
       <div className="max-w-7xl mx-auto grid grid-cols-1 gap-10 md:grid-cols-4 text-left">
         <div className="space-y-4">
           <div className="flex items-center">
@@ -106,7 +106,7 @@ const SocialIcon = ({ icon, href }: SocialIconProps) => {
 
 const FooterLink = ({ href, text }: { href: string; text: string }) => (
   <li>
-    <Link href={href} className="text-[#2e2d2d] hover:text-white text-sm transition-colors">
+    <Link href={href} className="text-slate-300 hover:text-white text-sm transition-colors">
       {text}
     </Link>
   </li>
