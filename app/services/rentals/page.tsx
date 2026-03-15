@@ -1,17 +1,5 @@
-import React from 'react'
-import Carrental from './main'
-// import { CarProvider } from './gettingcarinputfromclient'
-// import { HeroSectionOne, RideSection } from './carrental'
-const page = () => {
-  return (
-    <>
-    <div className=' mt-35 bg-[#fff] '>
-      <Carrental/>
-      {/* <CarList/> */}
-      </div>
-    </>
-   
-  )
-}
+import Carrental from "./main";
 
-export default page
+export default function RentalsPage() {
+  return <Carrental />;
+}

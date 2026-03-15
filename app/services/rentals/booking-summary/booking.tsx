@@ -62,7 +62,7 @@ export const BookingSummaryPage: React.FC = () => {
                 {/* Total for 3 days: ₦{total.toLocaleString()} //////////////////////////////////////////////////////////////*/}
               </p>
                 <Link
-                      href={`/services/carrentals/booking-summary/Checkout`}>
+                      href={`/services/rentals/booking-summary/Checkout`}>
                       <motion.button
                        whileHover={{ scale: 1.05 }}
                        whileTap={{ scale: 0.95 }}
@@ -105,7 +105,7 @@ export const BookingSummaryPage: React.FC = () => {
                 <p className="text-lg font-semibold text-orange-600">
                   ₦{car.amount} / day
                 </p>
-                <Link href={`/services/carrentals/booking-summary/${car.slug}`} >
+                <Link href={`/services/rentals/booking-summary/${car.slug}`} >
                 <button className="mt-3 border border-orange-500 text-orange-500 px-5 py-2 rounded-3xl hover:bg-orange-500 hover:text-white transition-all">
                   Rent this Vehicle
                 </button>

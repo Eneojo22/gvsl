@@ -52,7 +52,7 @@ const CheckoutPage = () => {
         console.log("Order created:", data);
         // alert("Order successfully created!",data);
   router.push(
-  `/services/carrentals/booking-summary/${booking?.carName
+  `/services/rentals/booking-summary/${booking?.carName
     .toLowerCase()
     .replace(/\s+/g, "-")}/car-order/car-order-success?orderId=${data.order_number}`
 );

@@ -69,7 +69,7 @@ export const CarPage: React.FC<CarPageProps> = ({ car }) => {
         console.log("Order created:", data);
         // alert("Order successfully created!",data);
   router.push(
-  `/services/carrentals/booking-summary/${car.name
+  `/services/rentals/booking-summary/${car.name
     .toLowerCase()
     .replace(/\s+/g, "-")}/car-order/car-order-success?orderId=${data.order_number}`
 );

@@ -68,7 +68,7 @@ export default async function Page({
               </span>{" "}
               For personalized recommendations, you can contact our admin.
             </p>
-            <Link href={"/services/carrentals/booking-summary"}>
+            <Link href={"/services/rentals/booking-summary"}>
               <button className="mt-5 bg-orange-500 hover:bg-orange-600 transition-colors py-2 px-6 text-white font-semibold rounded-3xl shadow-md">
                 Rent a car now
               </button>

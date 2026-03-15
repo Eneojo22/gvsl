@@ -55,7 +55,7 @@ function DirectionAwareHoverprop() {
       <span className="text-sm md:text-white font-normal shadow-2xl block">
         {pkg.description}
       </span>
-      <Link href={`/services/carrentals/sight-seeing/${pkg.slug}`}>
+      <Link href={`/services/rentals/sight-seeing/${pkg.slug}`}>
         <button className="mt-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-full px-4 py-2">
           Book This Trip
         </button>
@@ -75,7 +75,7 @@ function DirectionAwareHoverprop() {
     <div className="p-3 bg-white rounded-b-2xl">
       <h3 className="text-black font-bold text-lg mb-1">{pkg.title}</h3>
       <p className="text-gray-600 text-sm">{pkg.description}</p>
-      <Link href={`/services/carrentals/sight-seeing/${pkg.slug}`}>
+      <Link href={`/services/rentals/sight-seeing/${pkg.slug}`}>
         <button className="mt-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-full px-4 py-2">
           Book This Trip
         </button>

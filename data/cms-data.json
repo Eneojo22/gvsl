@@ -128,35 +128,6 @@
       "updatedAt": "2026-03-11T00:00:00.000Z"
     },
     {
-      "id": 6,
-      "title": "Banana Island Executive 3-Bedroom Home",
-      "type": "Luxury shortlet house",
-      "description": "Contemporary 3-bedroom waterfront home with private security and island lifestyle.",
-      "price": 120000000,
-      "location": "Banana Island, Lagos",
-      "image": "/image/homes.jpg",
-      "gallery": {
-        "livingRoom": [],
-        "bedroom": [],
-        "toilet": []
-      },
-      "features": {
-        "bedrooms": 3,
-        "bathrooms": 3,
-        "toilets": 4,
-        "parkingSpaces": 2
-      },
-      "airbnb": {
-        "listingName": "Banana Island Executive Home",
-        "url": "https://airbnb.com/rooms/bananaislandhome",
-        "location": "Banana Island, Lagos",
-        "ownerContact": "+234 802 999 8877",
-        "type": "home"
-      },
-      "createdAt": "2026-03-11T00:00:00.000Z",
-      "updatedAt": "2026-03-11T00:00:00.000Z"
-    },
-    {
       "id": 7,
       "title": "Ikoyi Smart 4-Bedroom Duplex",
       "type": "Premium home for rent",

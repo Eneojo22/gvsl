@@ -285,9 +285,6 @@ export default function LeadwoodHomesLanding({ homes }: LeadwoodHomesLandingProp
                     <p className="mt-3 text-sm font-semibold text-[#7b3917]">
                       ₦{home.price.toLocaleString()}
                     </p>
-                    {home.airbnb ? (
-                      <p className="mt-1 text-xs text-[#5f4a3b]">Airbnb middleman available</p>
-                    ) : null}
                     <Link
                       href={`${leadwoodBasePath}/${home.id}`}
                       className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-[#dd5500]"

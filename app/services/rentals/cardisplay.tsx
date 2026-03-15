@@ -1,130 +1,90 @@
+"use client";
 
-import React from 'react'
-import { useState,useEffect } from 'react';
-import Image from 'next/image';
-interface CarDisplayProps{
-  bags: number;
-  passengers: number;
-    imageUrl: string;
-  type:string;
-  name:string;
-}
+import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { ArrowRight, Briefcase, DoorClosed, Users } from "lucide-react";
 
-const CarDisplay: CarDisplayProps[] = [
- {
-    type: "Compact car",
-    name: "Toyota Camry",
-    passengers: 4,
-    bags: 2,
-    // doors: 4,
-    imageUrl: "/image/compact-car.webp",
-  },
-   {
-    type: "Premium car",
-    name: "Benz",
-    passengers: 4,
-    bags: 2,
-    // doors: 4,
-    imageUrl: "/image/premium-sedan.webp",
-  },
-   {
-    type: "Mini",
-    name: "Mini Camry",
-    passengers: 4,
-    bags: 1,
-    // doors: 4,
-    imageUrl: "/image/mini.webp",
-  },
-  {
-    type: "Luxury",
-    name: "Toyota Luxury",
-    passengers: 4,
-    bags: 3,
-    // doors: 4,
-    imageUrl: "/image/hybrid-sedan.webp",
-  },
-  {
-    type: "7-Seater",
-    name: "Toyota",
-    passengers: 7,
-    bags: 7,
-    // doors: 4,
-    imageUrl: "/image/7-seater.webp",
-  },
+import { carTypes } from "./chooseAvehicle";
 
+const formatAmount = (amount: string) => `NGN ${amount}`;
 
-];
-
-const CardisplayPage: React.FC = () => {
-    
+export default function CardisplayPage() {
   return (
-    <div className='mx-8' >
-        <div className=' text-black py-10'>
-            <p className='font-bold text-lg '>Your Time, Your Ride</p>
-            <h3 className='font-extrabold md:text-6xl text-orange-500 my-4 '>Car Rental</h3>
-            <p  className='font-extrabold md:text-4xl text-shadow-2xs  '>in Lagos,Abuja. Nigeria </p>
-            <div>
-                <div className='text-shadow-2xs text-[#5f5c5c] mt-5'> We stand for exciting mobility and tailored solutions. 
-                    <p>We lead with innovation in the car-hire sector.</p>
-                    High-quality customer service and seamless rental experiences
-                </div>
-            </div>
-        </div>
-        <div className=' py-10 '>
-            <p className='text-shadow-2xs text-[#141212] m-5 w-full md:text-start text-center text-3xl font-bold'>Our Fleet of Rentals Cars</p>
-            <DisplayDifferentCar/>
-        </div>
-        <div></div>
-    </div>
-    
-  )
-}
-export default CardisplayPage
+    <div className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+      <div className="max-w-3xl">
+        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#dd5500]">
+          Curated fleet
+        </p>
+        <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900">
+          Vehicles prepared for modern Nigerian movement
+        </h2>
+        <p className="mt-4 text-base leading-7 text-slate-600">
+          Explore a small fleet designed around airport pickups, business trips, family movement,
+          and hosted guest transport. Each option gives clients a clearer idea of comfort, luggage
+          capacity, and daily rate before they continue.
+        </p>
+      </div>
 
-function DisplayDifferentCar(){
-    const [currentMessageIndex, setCurrentMessageIndex] = useState<number>(0);
-      const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
-      useEffect(() => {
-        const transitionDuration = 1000; // 1 second for fade out/in
-        const displayDuration = 6000;    // 6 seconds display time
-        const interval = setInterval(() => {
-          // Start transition out
-          setIsTransitioning(true);
-          
-          // After fade out completes, change message and fade in
-          setTimeout(() => {
-            setCurrentMessageIndex((prev) => (prev + 1) % CarDisplay.length);
-            setIsTransitioning(false);
-          }, transitionDuration);
-          
-        }, displayDuration + transitionDuration);
-        
-        return () => clearInterval(interval);
-      }, []);
-    
-      const currentMessage =CarDisplay[currentMessageIndex];
-    return(
-         <section className="flex items-center relative">
-          {/* Background Image Blend */}
-          <div className={`text-black h-50 w-50 md:h-100 duration-1000 relative ${isTransitioning && 'opacity-100' }`}>
-            <Image
-              src={currentMessage.imageUrl}
-              alt={currentMessage.name}
-              className="object-cover"
-              fill
-            />
-          </div>
-    
-          {/* Content */}
-          <div className="z-50 flex flex-col justify-center items-center mx-auto  text-left px-4 ">
-            
-          </div>
-    
-          {/* Decorative Hexagon */}
-          {/* <div
-            className="absolute bottom-4 right-4 w-10 h-10 bg-yellow-400"
-            style={hexagonClipPath}
-          /> */}
-        </section>
-    )
+      <div className="mt-8 grid gap-6 md:grid-cols-2">
+        {carTypes.map((car, index) => (
+          <motion.article
+            key={car.slug}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.4, delay: index * 0.05 }}
+            className="overflow-hidden rounded-[1.75rem] border border-slate-200 bg-[#fcfaf7] shadow-sm"
+          >
+            <div className="relative h-52 bg-gradient-to-br from-white to-[#f6e7d9]">
+              <Image
+                src={car.imageUrl}
+                alt={car.name}
+                fill
+                className="object-contain p-5"
+              />
+            </div>
+
+            <div className="p-6">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#cf6c3d]">
+                    {car.type}
+                  </p>
+                  <h3 className="mt-2 text-xl font-semibold text-slate-900">{car.name}</h3>
+                </div>
+                <div className="rounded-2xl border border-[#ecd7c4] bg-white px-4 py-2 text-right">
+                  <p className="text-xs uppercase tracking-[0.16em] text-slate-500">Daily rate</p>
+                  <p className="mt-1 text-sm font-semibold text-slate-900">{formatAmount(car.amount)}</p>
+                </div>
+              </div>
+
+              <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                <div className="flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-3 py-3 text-sm text-slate-700">
+                  <Users className="h-4 w-4 text-[#dd5500]" />
+                  <span>{car.passengers}</span>
+                </div>
+                <div className="flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-3 py-3 text-sm text-slate-700">
+                  <Briefcase className="h-4 w-4 text-[#dd5500]" />
+                  <span>{car.bags}</span>
+                </div>
+                <div className="flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-3 py-3 text-sm text-slate-700">
+                  <DoorClosed className="h-4 w-4 text-[#dd5500]" />
+                  <span>{car.doors}</span>
+                </div>
+              </div>
+
+              <Link
+                href={`/services/rentals/booking-summary/${car.slug}`}
+                className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#1b1209] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#dd5500]"
+              >
+                View vehicle
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </motion.article>
+        ))}
+      </div>
+    </div>
+  );
 }

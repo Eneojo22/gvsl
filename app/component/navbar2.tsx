@@ -71,14 +71,19 @@ export default function Navbar() {
   }, [pathname]);
 
   const normalizePath = (path: string) => (path.startsWith("/") ? path : `/${path}`);
-  const navTextColor = isScrolled ? "text-white" : "text-white";
+  const isServicesPage = pathname.startsWith("/services");
+  const useElevatedNavbar = isScrolled || isServicesPage || menuOpen;
+  const navTextColor = useElevatedNavbar ? "text-[#f7ede3]" : "text-white";
+  const navLinkColor = useElevatedNavbar
+    ? "text-[#f7ede3] hover:text-[#ffbf94]"
+    : "text-white hover:text-[#ffd4b8]";
+  const brandAccentColor = useElevatedNavbar ? "text-[#ffb27d]" : "text-[#dd5500]";
+  const navSurfaceClass = useElevatedNavbar
+    ? "border-b border-white/10 bg-[#120b06]/88 shadow-[0_20px_50px_-30px_rgba(0,0,0,0.85)] backdrop-blur-md"
+    : "bg-transparent";
 
   return (
-    <nav
-      className={`fixed top-0 left-0 z-50 w-full transition-colors duration-300 ${
-        isScrolled ? "bg-black/95 shadow-lg backdrop-blur" : "bg-transparent"
-      }`}
-    >
+    <nav className={`fixed top-0 left-0 z-50 w-full transition-all duration-300 ${navSurfaceClass}`}>
       <div className="mx-auto flex items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <div className="flex min-w-0 flex-1 items-center">
           <motion.div
@@ -101,8 +106,8 @@ export default function Navbar() {
               href="/"
               className={`ml-3 min-w-0 text-sm font-bold leading-tight tracking-tight sm:text-base lg:text-lg xl:text-2xl ${montserrat.className} ${navTextColor}`}
             >
-              <span className="text-[#dd5500] mx-3">G&V Support</span>
-              <span className="sm:inline-flex items-center gap-2 text-[#dd5500]  ">
+              <span className={`${brandAccentColor} mx-3`}>G&V Support</span>
+              <span className={`sm:inline-flex items-center gap-2 ${brandAccentColor}`}>
                  Services Limited
                 <span className="relative h-7 w-7 shrink-0 rounded-full bg-black/20 p-1 shadow-[0_0_0_8px_rgba(255,213,79,0.24)] transition-transform duration-300 hover:scale-110">
                   <Image
@@ -122,18 +127,18 @@ export default function Navbar() {
             <div key={`${href}-${index}`} className="group relative text-white">
               <Link
                 href={normalizePath(href)}
-                className={`font-bold transition-colors hover:text-[#cf6c3d] text-[#fff]  ${navTextColor}`}
+                className={`font-bold transition-colors ${navLinkColor}`}
               >
                 {label}
               </Link>
 
               {dropdown && (
-                <ul className="invisible absolute left-0 mt-2 w-60 translate-y-2 rounded-md bg-white py-2 opacity-0 shadow-lg transition-all duration-300 ease-in-out group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                <ul className="invisible absolute left-0 mt-2 w-60 translate-y-2 rounded-2xl border border-[#ead9cb] bg-[#fffaf5] py-2 opacity-0 shadow-lg transition-all duration-300 ease-in-out group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
                   {dropdown.map((item) => (
                     <li key={item.href}>
                       <Link
                         href={item.href}
-                        className="block px-4 py-2 text-black transition-colors hover:text-[#cf6c3d]"
+                        className="block px-4 py-2 text-[#2a1d13] transition-colors hover:text-[#cf6c3d]"
                       >
                         {item.name}
                       </Link>
@@ -146,7 +151,7 @@ export default function Navbar() {
 
           <Link
             href="/contact-us"
-            className="rounded-md bg-white px-4 py-3 font-bold text-[#dd5500] shadow-lg transition-all duration-300 hover:bg-gray-100 hover:shadow-xl"
+            className="rounded-full bg-[#fff8f1] px-5 py-3 font-bold text-[#a5430c] shadow-lg transition-all duration-300 hover:bg-white hover:shadow-xl"
           >
             Contact Us
           </Link>
@@ -157,7 +162,9 @@ export default function Navbar() {
             onClick={() => setMenuOpen((previous) => !previous)}
             aria-label="Toggle menu"
             aria-expanded={menuOpen}
-            className="text-[#dd5500] transition-transform duration-300 ease-in-out"
+            className={`transition-transform duration-300 ease-in-out ${
+              useElevatedNavbar ? "text-[#ffb27d]" : "text-white"
+            }`}
           >
             {menuOpen ? (
               <HiX size={30} className="rotate-90 transition-transform duration-300" />
