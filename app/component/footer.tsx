@@ -6,10 +6,10 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="bg-black text-slate-200 py-12 px-4 md:px-8 mt-20">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 gap-10 md:grid-cols-4 text-left">
+    <footer className="mt-20 overflow-x-hidden bg-black px-4 py-12 text-slate-200 md:px-8">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 text-center md:grid-cols-4 md:text-left">
         <div className="space-y-4">
-          <div className="flex items-center">
+          <div className="flex items-center justify-center md:justify-start">
             <Image
               src="/image/G___V_SUPPORT_SERVICE_ltd__7_-removebg-preview.png"
               alt="G&V Support Services logo"
@@ -18,18 +18,22 @@ export function Footer() {
               className="h-20 w-auto"
             />
           </div>
-          <p className="text-slate-300 text-sm">
-            Your trusted partner for relocation, housing, apartments, and furniture support in Nigeria.
+          <p className="text-sm text-slate-300">
+            Your trusted partner for relocation, housing, apartments, and furniture support in
+            Nigeria.
           </p>
-          <div className="mt-2 flex space-x-3">
-            <SocialIcon href="https://www.linkedin.com/in/g-v-support-services-025a84376/" icon="linkedin" />
+          <div className="mt-2 flex justify-center gap-3 md:justify-start">
+            <SocialIcon
+              href="https://www.linkedin.com/in/g-v-support-services-025a84376/"
+              icon="linkedin"
+            />
             <SocialIcon href="https://twitter.com" icon="twitter" />
             <SocialIcon href="https://instagram.com" icon="instagram" />
           </div>
         </div>
 
         <div>
-          <h3 className="font-semibold text-white text-lg mb-4">Our Services</h3>
+          <h3 className="mb-4 text-lg font-semibold text-white">Our Services</h3>
           <ul className="space-y-2">
             <FooterLink href="/services/orientation" text="Orientation" />
             <FooterLink href="/services/airportmeetandgreet" text="Airport Meet & Greet" />
@@ -40,7 +44,7 @@ export function Footer() {
         </div>
 
         <div>
-          <h3 className="font-semibold text-white text-lg mb-4">Company</h3>
+          <h3 className="mb-4 text-lg font-semibold text-white">Company</h3>
           <ul className="space-y-2">
             <FooterLink href="/aboutUs" text="About Us" />
             <FooterLink href="/aboutUs/teamInfo" text="Our Team" />
@@ -51,8 +55,8 @@ export function Footer() {
         </div>
 
         <div>
-          <h3 className="font-semibold text-white text-lg mb-4">Contact Us</h3>
-          <address className="not-italic space-y-2">
+          <h3 className="mb-4 text-lg font-semibold text-white">Contact Us</h3>
+          <address className="space-y-2 break-words not-italic">
             <p>90, Allen Avenue Ikeja Lagos</p>
             <p>Email: info@gvss.ng</p>
             <p>Phone: +234 8137167298</p>
@@ -60,9 +64,9 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-slate-700 mt-10 pt-6 text-center text-slate-300 text-sm">
-        <p>© {new Date().getFullYear()} G&V Support Services Limited. All rights reserved.</p>
-        <div className="flex justify-center space-x-4 mt-2">
+      <div className="mt-10 border-t border-slate-700 pt-6 text-center text-sm text-slate-300">
+        <p>&copy; {new Date().getFullYear()} G&V Support Services Limited. All rights reserved.</p>
+        <div className="mt-2 flex flex-wrap justify-center gap-x-4 gap-y-2">
           <Link href="/contact-us" className="hover:text-[#f8f8f8]">
             Contact
           </Link>
@@ -96,8 +100,13 @@ const SocialIcon = ({ icon, href }: SocialIconProps) => {
   };
 
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-white">
-      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-neutral-400 transition-colors hover:text-white"
+    >
+      <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
         <path d={icons[icon]} />
       </svg>
     </a>
@@ -106,7 +115,7 @@ const SocialIcon = ({ icon, href }: SocialIconProps) => {
 
 const FooterLink = ({ href, text }: { href: string; text: string }) => (
   <li>
-    <Link href={href} className="text-slate-300 hover:text-white text-sm transition-colors">
+    <Link href={href} className="text-sm text-slate-300 transition-colors hover:text-white">
       {text}
     </Link>
   </li>

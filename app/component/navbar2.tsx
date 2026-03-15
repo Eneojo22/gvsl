@@ -71,7 +71,7 @@ export default function Navbar() {
   }, [pathname]);
 
   const normalizePath = (path: string) => (path.startsWith("/") ? path : `/${path}`);
-  const navTextColor = isScrolled ? "text-white" : "text-black";
+  const navTextColor = isScrolled ? "text-white" : "text-white";
 
   return (
     <nav
@@ -122,7 +122,7 @@ export default function Navbar() {
             <div key={`${href}-${index}`} className="group relative text-white">
               <Link
                 href={normalizePath(href)}
-                className={`font-bold transition-colors hover:text-[#cf6c3d] text-[#ffffff]  ${navTextColor}`}
+                className={`font-bold transition-colors hover:text-[#cf6c3d] text-[#fff]  ${navTextColor}`}
               >
                 {label}
               </Link>
