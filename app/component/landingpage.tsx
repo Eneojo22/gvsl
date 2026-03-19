@@ -198,7 +198,7 @@ function SuccessStory() {
             <p className="text-sm font-semibold uppercase tracking-[0.26em] text-[#c8612b]">
               Success story
             </p>
-            <h2 className="mt-4 text-3xl font-semibold text-slate-900">
+            <h2 className="mt-4 text-3xl font-semibold text-white">
               {story.title}
             </h2>
             <p className="mt-6 text-base leading-relaxed text-[#5a473a]">
@@ -403,9 +403,7 @@ const HeroSection: React.FC = () => {
   return (
     <section className="relative flex min-h-screen items-center bg-gradient-to-r from-[#000000] to-[#868585] text-white">
       <div
-        className={`absolute inset-0 transition-opacity duration-1000 ${
-          isTransitioning ? "opacity-0" : "opacity-50"
-        }`}
+        className={`absolute inset-0 transition-opacity duration-1000 `}
       >
         <Image
           src={currentMessage.image}
@@ -419,7 +417,7 @@ const HeroSection: React.FC = () => {
 
       <div className="z-10 mx-auto flex min-h-screen flex-col items-center justify-center px-4 text-left">
         <div className="relative inline-flex items-center">
-          <h1 className="animate-fade p-5 text-center text-5xl font-extrabold text-black md:text-8xl md:text-white">
+          <h1 className="animate-fade p-5 text-center text-5xl font-extrabold text-white md:text-8xl md:text-white">
             {currentMessage.title}
           </h1>
 
