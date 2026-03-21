@@ -1,10 +1,18 @@
-import React from 'react'
-import ContactForm from './contactUs'
+import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 
-const page = () => {
-  return (
-    <ContactForm/>
-  )
+export const metadata: Metadata = {
+  title: "Contact G&V Support Services",
+  robots: {
+    index: false,
+    follow: true,
+    googleBot: {
+      index: false,
+      follow: true,
+    },
+  },
+};
+
+export default function ContactUsServicePage() {
+  redirect("/contact-us");
 }
-
-export default page

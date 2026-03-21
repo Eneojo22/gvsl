@@ -19,11 +19,11 @@ interface HeroMessage {
 
 const heroMessages: HeroMessage[] = [
   {
-    title: "Your Journey Starts Here",
+    title: "G&V Support Services",
     description:
-      "G&V Support Services Limited turns relocation complexity into a smooth, well-coordinated experience from arrival to housing, furniture setup, and settling in.",
-    cta: "Explore Services",
-    ctaLink: "/services/airportmeetandgreet",
+      "Find apartments and houses in Lagos, furnish homes and offices, and settle in with trusted relocation support across Nigeria.",
+    cta: "Find Apartments in Lagos",
+    ctaLink: "/services/leadwoodhomes/apartments",
     image: "/image/chad-peltola-Rch8oP-O5sU-unsplash.jpg",
   },
   {
@@ -307,14 +307,15 @@ const BrandSearchSection = () => {
           G&amp;V Support Services
         </p>
         <h2 className="mt-4 text-3xl font-semibold leading-tight md:text-4xl">
-          Housing, furniture, and relocation support in Nigeria.
+          Find apartments in Lagos, furnish homes, and settle in Nigeria.
         </h2>
         <p className="mt-5 max-w-4xl text-base leading-7 text-[#5a473a]">
           G&amp;V Support Services Limited, also searched as G and V Support
-          Services or GandV, helps clients with houses, apartments, furniture,
-          airport meet and greet, orientation, and departure support in Nigeria.
-          Through Leadwood Homes and Leadwood Furniture, we connect housing and
-          furnishing needs under one trusted brand.
+          Services, GVSS, or GandV, helps clients find apartments and houses in
+          Lagos, furnish homes and offices, and manage relocation support
+          across Nigeria. Through Leadwood Homes and Leadwood Furniture, we
+          bring housing, furnishing, airport meet and greet, orientation, and
+          departure services together under one trusted brand.
         </p>
 
         <div className="mt-8 grid gap-4 md:grid-cols-3">
@@ -324,7 +325,7 @@ const BrandSearchSection = () => {
           >
             <p className="text-lg font-semibold">Leadwood Homes</p>
             <p className="mt-2 text-sm leading-6 text-[#5a473a]">
-              Browse houses and apartments supported by G&amp;V.
+              Browse apartments in Lagos and housing options supported by G&amp;V.
             </p>
           </Link>
           <Link
@@ -337,12 +338,12 @@ const BrandSearchSection = () => {
             </p>
           </Link>
           <Link
-            href="/contact-us"
+            href="/services/airportmeetandgreet"
             className="rounded-[24px] border border-[#ead9cb] bg-[#fff8f2] px-5 py-5 transition hover:border-[#dd5500] hover:bg-white"
           >
-            <p className="text-lg font-semibold">Contact G&amp;V</p>
+            <p className="text-lg font-semibold">Relocation Support</p>
             <p className="mt-2 text-sm leading-6 text-[#5a473a]">
-              Talk to our team about housing, furniture, or relocation support.
+              Get arrival, orientation, and settling-in support from one local team.
             </p>
           </Link>
         </div>

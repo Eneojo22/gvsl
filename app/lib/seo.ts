@@ -1,28 +1,35 @@
-export const siteUrl = "https://gvss.com";
+export const siteUrl = "https://gvss.ng";
 export const siteName = "G&V Support Services";
 export const siteLegalName = "G&V Support Services Limited";
 export const siteDescription =
-  "G&V Support Services Limited provides housing support, apartments, furniture solutions, airport meet and greet, orientation, and departure services in Nigeria.";
+  "G&V Support Services Limited helps clients find apartments and houses in Lagos, furnish homes and offices, and manage relocation support across Nigeria.";
 
 export const brandSearchTerms = [
   "G&V Support Services",
   "G and V Support Services",
   "G and V",
   "GandV",
+  "GVSS",
+  "GVSS Nigeria",
   "GV Support Services",
+  "gvss.ng",
 ];
 
 export const defaultKeywords = [
   "G&V Support Services",
   "G and V Support Services",
   "GandV",
+  "GVSS",
   "housing in Nigeria",
+  "apartment in Lagos",
   "apartments in Lagos",
+  "serviced apartments Lagos",
   "houses in Lagos",
   "Leadwood Homes",
   "Leadwood Furniture",
   "furniture in Lagos",
   "furniture in Nigeria",
+  "relocation services Lagos",
   "relocation services in Nigeria",
   "airport meet and greet Nigeria",
   "orientation services Nigeria",
@@ -31,9 +38,9 @@ export const defaultKeywords = [
 
 export const organizationStructuredData = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": "ProfessionalService",
   name: siteLegalName,
-  alternateName: "G and V Support Services (GandV)",
+  alternateName: "G and V Support Services (GVSS)",
   url: siteUrl,
   logo: `${siteUrl}/image/G___V_SUPPORT_SERVICE_ltd__7_-removebg-preview.png`,
   email: "info@gvss.ng",
@@ -48,6 +55,7 @@ export const organizationStructuredData = {
   description: siteDescription,
   areaServed: "Nigeria",
   knowsAbout: [
+    "apartments in Lagos",
     "housing support",
     "apartments",
     "houses",

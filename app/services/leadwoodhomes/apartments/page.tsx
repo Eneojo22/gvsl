@@ -6,11 +6,12 @@ import { defaultKeywords } from "@/app/lib/seo";
 import ApartmentBrowser from "./apartment-browser";
 
 export const metadata: Metadata = {
-  title: "Browse Apartments | Leadwood Homes",
+  title: "Browse Apartments in Lagos | Leadwood Homes",
   description:
-    "Filter Leadwood Homes apartments and houses by type, location, and bedroom count to find the right fit quickly with G&V Support Services.",
+    "Filter apartments in Lagos by type, location, and bedroom count to find the right Leadwood Homes fit quickly with G&V Support Services.",
   keywords: [
     ...defaultKeywords,
+    "apartment in Lagos",
     "browse apartments Lagos",
     "Leadwood Homes listings",
     "G&V apartments",

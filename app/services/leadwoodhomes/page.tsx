@@ -6,11 +6,12 @@ import { defaultKeywords } from "@/app/lib/seo";
 import LeadwoodHomesLanding from "./ourapartment";
 
 export const metadata: Metadata = {
-  title: "Leadwood Homes | G&V Support Services",
+  title: "Apartments in Lagos | Leadwood Homes by G&V Support Services",
   description:
-    "Explore Leadwood Homes apartment options, houses, and premium living spaces from G&V Support Services across Lagos.",
+    "Browse apartments in Lagos, executive homes, and premium housing options through Leadwood Homes with support from G&V Support Services.",
   keywords: [
     ...defaultKeywords,
+    "apartment in Lagos",
     "Leadwood Homes apartments",
     "Leadwood Homes houses",
     "G&V housing support",
