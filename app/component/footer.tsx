@@ -50,6 +50,7 @@ export function Footer() {
             <FooterLink href="/aboutUs/teamInfo" text="Our Team" />
             <FooterLink href="/aboutUs/Event" text="Events" />
             <FooterLink href="/aboutUs/Testimonials" text="Testimonials" />
+            <FooterLink href="/aboutUs/feedback" text="Feedback" />
             <FooterLink href="/contact-us" text="Contact Us" />
           </ul>
         </div>

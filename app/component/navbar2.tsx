@@ -23,6 +23,7 @@ const navLinks = [
       { name: "Team Info", href: "/aboutUs/teamInfo" },
       { name: "Events", href: "/aboutUs/Event" },
       { name: "Testimonials", href: "/aboutUs/Testimonials" },
+      { name: "Feedback", href: "/aboutUs/feedback" },
     ],
   },
   {

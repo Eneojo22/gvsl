@@ -36,6 +36,14 @@ export default function AboutUsCatchAll({ params }: Props) {
             </li>
             <li>
               <Link
+                href="/aboutUs/feedback"
+                className="inline-flex items-center gap-2 rounded-full bg-[#dd5500] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#c54800]"
+              >
+                Feedback
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/aboutUs"
                 className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50"
               >
