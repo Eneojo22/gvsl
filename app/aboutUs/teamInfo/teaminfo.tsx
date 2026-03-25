@@ -9,32 +9,32 @@ interface ImageCarouselProps {
   subtitle?: string;
   image: string;
   overlayOpacity?: string;
-  height?: string;
+  // height?: string;
 }
 
 const teamMembers = [
   {
     name: 'Gospel Akuetiemhe',
     title: 'Managing Director',
-    image: '/image/picpic.jpg',
+    image: '/image/team-pic/Gospel Akuetiemhe_Web Image.png',
     bio: 'Strategic leader focused on growth, operational excellence, and exceptional client outcomes for our relocation services.',
   },
   {
     name: 'Abiodun Akuetiemhe',
     title: 'Director, Administration & Human Resources',
-    image: '/image/picpic.jpg',
+    image: '/image/team-pic/Abiodun Akuetiemhe_Web Image.png',
     bio: 'HR and operations strategist, leading talent, performance, and service delivery for a high-performing team.',
   },
   {
     name: 'Wisdom Ugwu',
     title: 'Accountant',
-    image: '/image/wisdompic.jpg',
+    image: '/image/team-pic/wisdompic.jpg',
     bio: 'Finance lead delivering transparent financial reporting, compliance, and effective cashflow management.',
   },
   {
     name: 'Oluwakemi Adesanwo',
     title: 'Facility Supervisor',
-    image: '/image/kemipic.jpg',
+    image: '/image/team-pic/kemipic.jpg',
     bio: 'Facility operations expert maintaining safe, efficient environments and excellent support for client engagements.',
   },
 ];
@@ -44,10 +44,10 @@ export function ImageCarousel({
   subtitle,
   image,
   overlayOpacity = 'bg-black/60',
-  height = 'h-[48vh]',
+  
 }: ImageCarouselProps) {
   return (
-    <section className={`relative isolate overflow-hidden ${height}`}>
+    <section className={`relative isolate overflow-hidden `}>
       <Image
         src={image}
         alt={title}

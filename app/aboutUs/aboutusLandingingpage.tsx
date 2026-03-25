@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import HeroSection from "./shared/HeroSection";
 
 const stats = [
-  { value: "300+", label: "Relocations completed", description: "Supporting families and executives across Nigeria." },
+  { value: "60+", label: "Relocations completed", description: "Supporting families and executives across Nigeria." },
   { value: "10+", label: "Years of experience", description: "Delivering dependable support since day one." },
   { value: "98%", label: "Customer satisfaction", description: "Trusted by clients for consistent, people-first service." },
   { value: "6+", label: "Cities covered", description: "Active presence across Nigeria’s major hubs." },
@@ -26,9 +26,7 @@ export default function AboutusLandingingpage() {
       />
 
       <div className="mx-auto mt-8 max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="rounded-2xl bg-amber-50 px-6 py-4 text-center text-sm font-semibold text-amber-950 shadow-sm">
-          ✨ New layout active — enjoy the updated design and scroll down for fresh stats & features.
-        </div>
+       
       </div>
 
       <main className="mx-auto max-w-6xl px-4 pb-16 pt-14 sm:px-6 lg:px-8">

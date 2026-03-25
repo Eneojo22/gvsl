@@ -12,7 +12,7 @@ const Location = () => {
         <Hero
           title="Nigeria"
           subtitle="Ẹ̀káàbọ̀"
-          image="/image/emmanuel-ikwuegbu-T4q6ZPpYjog-unsplash.jpg"
+          image="/image/pexels-tracehudson-2775541.jpg"
           overlayOpacity="bg-black/50"
           height="h-[25vh]"
         />
