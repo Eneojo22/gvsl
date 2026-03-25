@@ -47,26 +47,26 @@ export function ImageCarousel({
   
 }: ImageCarouselProps) {
   return (
-    <section className={`relative isolate overflow-hidden `}>
-      <Image
-        src={image}
-        alt={title}
-        fill
-        priority
-        className="object-cover object-center"
-      />
-      <div className={`absolute inset-0 ${overlayOpacity}`} />
-      <div className="relative z-10 flex h-full items-center">
-        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl text-white">
-            <h1 className="text-3xl font-bold md:text-5xl">{title}</h1>
-            {subtitle ? (
-              <p className="mt-4 text-sm text-slate-100 md:text-base">{subtitle}</p>
-            ) : null}
-          </div>
-        </div>
+    <section className="relative isolate overflow-hidden h-[600px] sm:h-[600px]">
+  <Image
+    src={image}
+    alt={title}
+    fill
+    priority
+    className="object-center object-cover"
+  />
+  <div className={`absolute inset-0 ${overlayOpacity}`} />
+  <div className="relative z-10 flex h-full items-center">
+    <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="max-w-2xl text-white">
+        <h1 className="text-3xl font-bold md:text-5xl">{title}</h1>
+        {subtitle ? (
+          <p className="mt-4 text-sm text-slate-100 md:text-base">{subtitle}</p>
+        ) : null}
       </div>
-    </section>
+    </div>
+  </div>
+</section>
   );
 }
 
