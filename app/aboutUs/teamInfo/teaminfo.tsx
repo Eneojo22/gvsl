@@ -16,7 +16,7 @@ const teamMembers = [
   {
     name: 'Gospel Akuetiemhe',
     title: 'Managing Director',
-    image: '/image/team-pic/Gospel Akuetiemhe_Web Image.png',
+    image: '/image/team-pic/Gospel Akuetiemhe_Web Image.jpg',
     bio: 'Strategic leader focused on growth, operational excellence, and exceptional client outcomes for our relocation services.',
   },
   {
