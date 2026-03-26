@@ -9,7 +9,7 @@ interface ImageCarouselProps {
   subtitle?: string;
   image: string;
   overlayOpacity?: string;
-  // height?: string;
+  height?: string;
 }
 
 const teamMembers = [
@@ -44,10 +44,10 @@ export function ImageCarousel({
   subtitle,
   image,
   overlayOpacity = 'bg-black/60',
-  
+  height = 'h-[600px] sm:h-[600px]',
 }: ImageCarouselProps) {
   return (
-    <section className="relative isolate overflow-hidden h-[600px] sm:h-[600px]">
+    <section className={`relative isolate overflow-hidden ${height}`}>
   <Image
     src={image}
     alt={title}
