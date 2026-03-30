@@ -78,10 +78,10 @@ export default function ApartmentBrowser({ homes }: ApartmentBrowserProps) {
 
           <div className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
             <div className="max-w-3xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.26em] text-[#cf6c3d]">
+              <p className="text-sm font-medium uppercase tracking-[0.26em] text-[#cf6c3d]">
                 Apartment browser
               </p>
-              <h1 className="mt-3 text-4xl font-semibold leading-tight sm:text-5xl">
+              <h1 className="mt-3 text-[2.6rem] font-semibold leading-[1.08] tracking-[-0.03em] sm:text-[3.45rem]">
                 Explore the kind of apartment Leadwood Homes currently offers.
               </h1>
               <p className="mt-4 max-w-2xl text-base leading-7 text-[#5f4a3b]">
@@ -91,17 +91,17 @@ export default function ApartmentBrowser({ homes }: ApartmentBrowserProps) {
             </div>
 
             <div className="rounded-[28px] bg-[#1c120b] p-6 text-white shadow-[0_24px_70px_-34px_rgba(0,0,0,0.7)]">
-              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#f3b48d]">
+              <p className="text-sm font-medium uppercase tracking-[0.22em] text-[#f3b48d]">
                 Live overview
               </p>
-              <p className="mt-4 text-4xl font-semibold">{homes.length}</p>
+              <p className="mt-4 text-4xl font-medium">{homes.length}</p>
               <p className="mt-2 text-sm leading-6 text-white/70">
                 active apartments are available to explore right now.
               </p>
               <Link
                 href={getInspectionLink()}
                 target="_blank"
-                className="mt-6 inline-flex items-center justify-center rounded-full bg-[#dd5500] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#c54800]"
+                className="mt-6 inline-flex items-center justify-center rounded-full bg-[#dd5500] px-5 py-3 text-sm font-medium text-white transition hover:bg-[#c54800]"
               >
                 Request inspection help
               </Link>

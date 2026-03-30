@@ -63,8 +63,8 @@ type ServicePageTemplateProps = {
 function ActionLink({ action }: { action: ServiceAction }) {
   const className =
     action.variant === "secondary"
-      ? "inline-flex items-center justify-center rounded-full border border-white/25 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/20"
-      : "inline-flex items-center justify-center gap-2 rounded-full bg-[#dd5500] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#c54800]";
+      ? "inline-flex items-center justify-center rounded-full border border-white/25 bg-white/10 px-6 py-3 text-sm font-medium text-white transition hover:bg-white/20"
+      : "inline-flex items-center justify-center gap-2 rounded-full bg-[#dd5500] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#c54800]";
 
   return (
     <Link
@@ -124,10 +124,10 @@ export default function ServicePageTemplate({
 
           <div className="mt-10 grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_360px]">
             <div className="max-w-3xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[#f2b994]">
+              <p className="text-sm font-medium uppercase tracking-[0.28em] text-[#f2b994]">
                 {eyebrow}
               </p>
-              <h1 className="mt-5 text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
+              <h1 className="mt-5 text-[2.85rem] font-semibold leading-[1.08] tracking-[-0.03em] text-white sm:text-5xl lg:text-[3.7rem]">
                 {title}
               </h1>
               <p className="mt-6 max-w-2xl text-base leading-7 text-white/80 sm:text-lg">
@@ -146,10 +146,10 @@ export default function ServicePageTemplate({
                     key={stat.label}
                     className="rounded-[24px] border border-white/10 bg-white/10 p-4 backdrop-blur"
                   >
-                    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#f2b994]">
+                    <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#f2b994]">
                       {stat.label}
                     </p>
-                    <p className="mt-3 text-2xl font-semibold text-white">{stat.value}</p>
+                    <p className="mt-3 text-2xl font-medium text-white">{stat.value}</p>
                     <p className="mt-2 text-sm leading-6 text-white/70">{stat.description}</p>
                   </div>
                 ))}
@@ -157,7 +157,7 @@ export default function ServicePageTemplate({
             </div>
 
             <aside className="rounded-[32px] border border-white/10 bg-white/10 p-6 text-white shadow-[0_24px_80px_-32px_rgba(0,0,0,0.65)] backdrop-blur">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#f2b994]">
+              <p className="text-sm font-medium uppercase tracking-[0.24em] text-[#f2b994]">
                 What clients can expect
               </p>
               <div className="mt-6 space-y-4">

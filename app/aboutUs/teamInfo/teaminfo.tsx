@@ -2,6 +2,7 @@
 'use client'
 
 import Image from 'next/image';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 
 interface ImageCarouselProps {
@@ -12,18 +13,26 @@ interface ImageCarouselProps {
   height?: string;
 }
 
-const teamMembers = [
+interface TeamMember {
+  name: string;
+  title: string;
+  image: string;
+  bio: string;
+  imageClassName?: string;
+}
+
+const teamMembers: TeamMember[] = [
   {
-    name: 'Gospel Akuetiemhe',
+    name: 'Abiodun Gospel',
     title: 'Managing Director',
-    image: '/image/team-pic/Gospel Akuetiemhe_Web Image.jpg',
+    image: '/image/team-pic/md.jpeg',
     bio: 'Strategic leader focused on growth, operational excellence, and exceptional client outcomes for our relocation services.',
   },
   {
-    name: 'Abiodun Akuetiemhe',
+    name: ' Akuetiemhe  Abiodun',
     title: 'Director, Administration & Human Resources',
     image: '/image/team-pic/Abiodun Akuetiemhe_Web Image.png',
-    bio: 'HR and operations strategist, leading talent, performance, and service delivery for a high-performing team.',
+    bio: 'HR and operations strategist dedicated to optimizing talent, strengthening organizational performance, and driving team synergy',
   },
   {
     name: 'Wisdom Ugwu',
@@ -35,9 +44,77 @@ const teamMembers = [
     name: 'Oluwakemi Adesanwo',
     title: 'Facility Supervisor',
     image: '/image/team-pic/kemipic.jpg',
-    bio: 'Facility operations expert maintaining safe, efficient environments and excellent support for client engagements.',
+    bio: 'Facility operations expert maintaining safe, efficient environments, excellent support and vendor management.',
   },
+  {
+    name: 'Ifeoluwa Folorunsho',
+    title: 'Admin & Client Relations Officer',
+    image: '/image/team-pic/ifeoluwa.jpeg',
+    bio: 'A detail-oriented administrative coordinator and client relations officer dedicated to efficient workflow management, prompt service delivery, and fostering strong client satisfaction.',
+  },
+  {
+    name: 'Ejiga Victor',
+    title: 'IT Team – Developer & IT Operations',
+    image: '/image/team-pic/ejigavictor.jpeg',
+    bio: 'Supports digital systems, software development, and IT operations to keep business processes efficient and reliable.',
+  },
+  {
+    name: 'Akuetiemhe Ogie ',
+    title: 'IT Team – Developer & IT Operations',
+    image: '/image/team-pic/ogie-pic.jpeg',
+    bio: 'Works across development and IT operations, helping to maintain secure, scalable, and effective technology solutions.',
+  },
+  {
+    name: 'Layiwola Oluwafemi',
+    title: 'Project Specialist',
+    image: '/image/team-pic/layiwola.jpeg',
+    bio: 'Coordinates projects with a focus on execution, organization, and delivering quality results on time.',
+  },
+  {
+    name: 'Abiodun Toni',
+    title: 'Design Consultant',
+    image: '/image/team-pic/toni.PNG',
+    bio: 'Provides creative design direction and visualA versatile design consultant blending creativity and strategic space planning to develop elegant, practical, and inspiring environments for homes and corporate settings solutions that strengthen brand identity and user experience.',
+  },
+{
+  name: 'Gbagi Lewis',
+  title: 'Workshop Foreman',
+  image: '/image/team-pic/gbagi-lawis.jpeg',
+  bio: 'As Workshop Foreman at Leadwood Furniture, Lewis oversees production operations, leads a high-performing team, and ensures strict quality control standards are maintained across all projects.',
+},
 ];
+
+function getInitials(name: string) {
+  return name
+    .trim()
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase() ?? '')
+    .join('');
+}
+
+function TeamMemberImage({ member }: { member: TeamMember }) {
+  const [hasImageError, setHasImageError] = useState(false);
+
+  if (hasImageError) {
+    return (
+      <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-slate-200 via-slate-100 to-white text-3xl font-semibold tracking-[0.18em] text-slate-500">
+        {getInitials(member.name)}
+      </div>
+    );
+  }
+
+  return (
+    <Image
+      src={member.image}
+      alt={member.name}
+      fill
+      sizes="(min-width: 1024px) 22vw, (min-width: 640px) 44vw, 92vw"
+      className={`object-cover object-top ${member.imageClassName ?? ''}`}
+      onError={() => setHasImageError(true)}
+    />
+  );
+}
 
 export function ImageCarousel({
   title,
@@ -117,8 +194,8 @@ export default function Company() {
               transition={{ duration: 0.35 }}
               className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm"
             >
-              <div className="relative aspect-square overflow-hidden rounded-xl bg-slate-100">
-                <Image src={member.image} alt={member.name} fill className="object-cover object-center" />
+              <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-slate-100">
+                <TeamMemberImage member={member} />
               </div>
               <div className="mt-4">
                 <h3 className="text-lg font-semibold text-slate-900">{member.name}</h3>

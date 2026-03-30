@@ -84,10 +84,10 @@ export default function ContactForm() {
       <section className="mx-auto max-w-6xl overflow-hidden rounded-[2rem] bg-white shadow-[0_25px_80px_rgba(0,0,0,0.08)]">
         <div className="grid gap-0 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="bg-[#111111] px-6 py-10 text-white sm:px-8 lg:px-10">
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#dd5500]">
+            <p className="text-sm font-medium uppercase tracking-[0.3em] text-[#dd5500]">
               Contact Us
             </p>
-            <h1 className="mt-4 max-w-xl text-3xl font-bold leading-tight sm:text-4xl">
+            <h1 className="mt-4 max-w-xl text-[2.4rem] font-semibold leading-[1.08] tracking-[-0.03em] sm:text-[3.05rem]">
               Let&apos;s help you settle in with confidence.
             </h1>
             <p className="mt-4 max-w-xl text-sm leading-7 text-white/80 sm:text-base">
@@ -97,21 +97,21 @@ export default function ContactForm() {
 
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <p className="text-sm font-semibold text-[#dd5500]">Call us</p>
-                <a href="tel:+2348137167298" className="mt-2 block text-lg font-semibold">
+                <p className="text-sm font-medium text-[#dd5500]">Call us</p>
+                <a href="tel:+2348137167298" className="mt-2 block text-lg font-medium">
                   +234 813 716 7298
                 </a>
               </div>
               <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <p className="text-sm font-semibold text-[#dd5500]">Email us</p>
-                <a href="mailto:info@gvss.ng" className="mt-2 block text-lg font-semibold">
+                <p className="text-sm font-medium text-[#dd5500]">Email us</p>
+                <a href="mailto:info@gvss.ng" className="mt-2 block text-lg font-medium">
                   info@gvss.ng
                 </a>
               </div>
             </div>
 
             <div className="mt-4 rounded-2xl border border-white/10 bg-white/5 p-4">
-              <p className="text-sm font-semibold text-[#dd5500]">Visit us</p>
+              <p className="text-sm font-medium text-[#dd5500]">Visit us</p>
               <p className="mt-2 text-base font-medium">
                 90, Allen Avenue, Ikeja, Lagos
               </p>

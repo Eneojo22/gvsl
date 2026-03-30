@@ -87,10 +87,10 @@ export default function ApartmentDetailPage({
 
           <div className="mt-10 grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_360px]">
             <div className="max-w-3xl">
-              <div className="inline-flex rounded-full bg-white/12 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-[#f3b48d] backdrop-blur">
+              <div className="inline-flex rounded-full bg-white/12 px-4 py-2 text-xs font-medium uppercase tracking-[0.24em] text-[#f3b48d] backdrop-blur">
                 {getHomeCollection(apartment)}
               </div>
-              <h1 className="mt-5 text-4xl font-semibold leading-tight text-white sm:text-5xl">
+              <h1 className="mt-5 text-[2.8rem] font-semibold leading-[1.08] tracking-[-0.03em] text-white sm:text-[3.5rem]">
                 {apartment.title}
               </h1>
               <p className="mt-4 max-w-2xl text-base leading-7 text-white/80 sm:text-lg">
@@ -104,10 +104,10 @@ export default function ApartmentDetailPage({
                     className="rounded-[24px] border border-white/10 bg-white/10 p-4 text-white backdrop-blur"
                   >
                     <fact.icon className="h-5 w-5 text-[#f3b48d]" />
-                    <p className="mt-3 text-sm font-semibold uppercase tracking-[0.18em] text-[#f3b48d]">
+                    <p className="mt-3 text-sm font-medium uppercase tracking-[0.18em] text-[#f3b48d]">
                       {fact.label}
                     </p>
-                    <p className="mt-2 text-lg font-semibold">{fact.value}</p>
+                    <p className="mt-2 text-lg font-medium">{fact.value}</p>
                   </div>
                 ))}
               </div>
@@ -116,14 +116,14 @@ export default function ApartmentDetailPage({
                 <Link
                   href={getInspectionLink(apartment.title)}
                   target="_blank"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#dd5500] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#c54800]"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#dd5500] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#c54800]"
                 >
                   Book inspection
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
                   href={`${leadwoodBasePath}/apartments`}
-                  className="inline-flex items-center justify-center rounded-full border border-white/25 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/20"
+                  className="inline-flex items-center justify-center rounded-full border border-white/25 bg-white/10 px-6 py-3 text-sm font-medium text-white transition hover:bg-white/20"
                 >
                   Browse more apartments
                 </Link>
@@ -132,27 +132,27 @@ export default function ApartmentDetailPage({
             </div>
 
             <aside className="rounded-[32px] border border-white/10 bg-white/10 p-6 text-white shadow-[0_24px_80px_-32px_rgba(0,0,0,0.65)] backdrop-blur">
-              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#f3b48d]">
+              <p className="text-sm font-medium uppercase tracking-[0.22em] text-[#f3b48d]">
                 Apartment summary
               </p>
-              <p className="mt-5 text-4xl font-semibold">{formatHomePrice(apartment.price)}</p>
+              <p className="mt-5 text-4xl font-medium">{formatHomePrice(apartment.price)}</p>
               <p className="mt-2 text-sm text-white/70">{getPricingCadence(apartment)}</p>
 
               <div className="mt-8 space-y-5 text-sm leading-6 text-white/80">
                 <div>
-                  <p className="font-semibold uppercase tracking-[0.18em] text-[#f3b48d]">
+                  <p className="font-medium uppercase tracking-[0.18em] text-[#f3b48d]">
                     Type
                   </p>
                   <p className="mt-2">{apartment.type}</p>
                 </div>
                 <div>
-                  <p className="font-semibold uppercase tracking-[0.18em] text-[#f3b48d]">
+                  <p className="font-medium uppercase tracking-[0.18em] text-[#f3b48d]">
                     Best suited for
                   </p>
                   <p className="mt-2">{getAudienceLabel(apartment)}</p>
                 </div>
                 <div>
-                  <p className="font-semibold uppercase tracking-[0.18em] text-[#f3b48d]">
+                  <p className="font-medium uppercase tracking-[0.18em] text-[#f3b48d]">
                     Location
                   </p>
                   <p className="mt-2">{apartment.location}</p>

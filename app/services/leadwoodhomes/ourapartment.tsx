@@ -96,10 +96,10 @@ export default function LeadwoodHomesLanding({ homes }: LeadwoodHomesLandingProp
 
           <div className="mt-10 grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_360px]">
             <div className="max-w-3xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[#f3b48d]">
+              <p className="text-sm font-medium uppercase tracking-[0.28em] text-[#f3b48d]">
                 Leadwood Homes
               </p>
-              <h1 className="mt-5 text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
+              <h1 className="mt-5 text-[2.85rem] font-semibold leading-[1.08] tracking-[-0.03em] text-white sm:text-5xl lg:text-[3.7rem]">
                 A real apartment journey, not just one landing page.
               </h1>
               <p className="mt-6 max-w-2xl text-base leading-7 text-white/80 sm:text-lg">
@@ -111,7 +111,7 @@ export default function LeadwoodHomesLanding({ homes }: LeadwoodHomesLandingProp
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link
                   href={`${leadwoodBasePath}/apartments`}
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#dd5500] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#c54800]"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#dd5500] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#c54800]"
                 >
                   Explore apartments
                   <ArrowRight className="h-4 w-4" />
@@ -119,7 +119,7 @@ export default function LeadwoodHomesLanding({ homes }: LeadwoodHomesLandingProp
                 <Link
                   href={getInspectionLink()}
                   target="_blank"
-                  className="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/20"
+                  className="inline-flex items-center justify-center rounded-full border border-white/30 bg-white/10 px-6 py-3 text-sm font-medium text-white transition hover:bg-white/20"
                 >
                   Book an inspection
                 </Link>
@@ -131,10 +131,10 @@ export default function LeadwoodHomesLanding({ homes }: LeadwoodHomesLandingProp
                     key={stat.label}
                     className="rounded-[24px] border border-white/10 bg-white/10 p-4 backdrop-blur"
                   >
-                    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#f2b994]">
+                    <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#f2b994]">
                       {stat.label}
                     </p>
-                    <p className="mt-3 text-2xl font-semibold text-white">{stat.value}</p>
+                    <p className="mt-3 text-2xl font-medium text-white">{stat.value}</p>
                     <p className="mt-2 text-sm leading-6 text-white/70">{stat.description}</p>
                   </div>
                 ))}
@@ -142,7 +142,7 @@ export default function LeadwoodHomesLanding({ homes }: LeadwoodHomesLandingProp
             </div>
 
             <div className="rounded-[32px] border border-white/10 bg-white/10 p-6 text-white shadow-[0_24px_80px_-32px_rgba(0,0,0,0.65)] backdrop-blur">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#f2b994]">
+              <p className="text-sm font-medium uppercase tracking-[0.24em] text-[#f2b994]">
                 Explore by page
               </p>
               <div className="mt-6 space-y-4">
@@ -150,7 +150,7 @@ export default function LeadwoodHomesLanding({ homes }: LeadwoodHomesLandingProp
                   href={leadwoodBasePath}
                   className="block rounded-[24px] border border-white/10 bg-white/5 p-4 transition hover:bg-white/10"
                 >
-                  <p className="text-lg font-semibold">Overview</p>
+                  <p className="text-lg font-medium">Overview</p>
                   <p className="mt-2 text-sm leading-6 text-white/70">
                     Start with the Leadwood Homes story, apartment mix, and client journey.
                   </p>
@@ -159,7 +159,7 @@ export default function LeadwoodHomesLanding({ homes }: LeadwoodHomesLandingProp
                   href={`${leadwoodBasePath}/apartments`}
                   className="block rounded-[24px] border border-white/10 bg-white/5 p-4 transition hover:bg-white/10"
                 >
-                  <p className="text-lg font-semibold">Apartment browser</p>
+                  <p className="text-lg font-medium">Apartment browser</p>
                   <p className="mt-2 text-sm leading-6 text-white/70">
                     Filter live listings by type, location, bedroom count, and price order.
                   </p>
@@ -168,7 +168,7 @@ export default function LeadwoodHomesLanding({ homes }: LeadwoodHomesLandingProp
                   href={featuredHomes[0] ? `${leadwoodBasePath}/${featuredHomes[0].id}` : leadwoodBasePath}
                   className="block rounded-[24px] border border-white/10 bg-white/5 p-4 transition hover:bg-white/10"
                 >
-                  <p className="text-lg font-semibold">Apartment detail pages</p>
+                  <p className="text-lg font-medium">Apartment detail pages</p>
                   <p className="mt-2 text-sm leading-6 text-white/70">
                     Open any apartment to see a deeper page with facts, highlights, and inspection
                     action.
@@ -177,7 +177,7 @@ export default function LeadwoodHomesLanding({ homes }: LeadwoodHomesLandingProp
               </div>
 
               <div className="mt-8 rounded-[24px] bg-[#f8e2d3] p-5 text-[#2d170c]">
-                <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#b74a09]">
+                <p className="text-sm font-medium uppercase tracking-[0.22em] text-[#b74a09]">
                   What visitors learn faster
                 </p>
                 <ul className="mt-4 space-y-3 text-sm leading-6">

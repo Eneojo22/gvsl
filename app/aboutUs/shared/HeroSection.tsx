@@ -47,7 +47,7 @@ export default function HeroSection({
                     {item.label}
                   </Link>
                 ) : (
-                  <span className="font-semibold">{item.label}</span>
+                  <span className="font-medium">{item.label}</span>
                 )}
 
                 {index < breadcrumbs.length - 1 && (
@@ -59,7 +59,7 @@ export default function HeroSection({
         ) : null}
 
         <div className="mt-8 max-w-3xl">
-          <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
+          <h1 className="text-[2.8rem] font-semibold leading-[1.08] tracking-[-0.03em] text-white sm:text-5xl lg:text-[3.7rem]">
             {title}
           </h1>
           {subtitle ? (
@@ -72,7 +72,7 @@ export default function HeroSection({
             <div className="mt-8">
               <Link
                 href={ctaHref}
-                className="inline-flex items-center justify-center rounded-full bg-[#dd5500] px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#c54800]"
+                className="inline-flex items-center justify-center rounded-full bg-[#dd5500] px-6 py-3 text-sm font-medium text-white shadow-sm transition hover:bg-[#c54800]"
               >
                 {ctaLabel}
               </Link>

@@ -190,21 +190,21 @@ export default function Herowood() {
         <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
 
         <div className="relative z-10 flex flex-col items-center justify-center text-center h-full px-4">
-          <p className="text-sm uppercase tracking-widest text-white">
+          <p className="text-sm font-medium uppercase tracking-widest text-white">
             Leadwood by G&V Support Services
           </p>
 
-          <h1 className="text-5xl md:text-6xl font-bold text-white my-4">
+          <h1 className="my-4 text-[2.9rem] font-semibold leading-[1.08] tracking-[-0.03em] text-white md:text-[4.1rem]">
             Furnish Smarter. Live Better.
           </h1>
 
-          <p className="text-white/90 mb-6 max-w-xl">
+          <p className="mb-6 max-w-xl text-white/90 leading-7">
             Premium furniture solutions for homes, offices, and serviced apartments across Nigeria.
           </p>
 
           <div className="flex space-x-4">
             <Link href="/services/leadwoodfurniture/leadwoods-funitures">
-            <button className="px-6 py-3 rounded-full border border-white text-white font-medium hover:bg-white hover:text-[#dd5500] transition duration-300">
+            <button className="rounded-full border border-white px-6 py-3 text-white font-medium transition duration-300 hover:bg-white hover:text-[#dd5500]">
               Explore Collection
             </button>
             </Link>

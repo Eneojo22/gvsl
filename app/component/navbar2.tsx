@@ -10,7 +10,7 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 import { HiMenu, HiPlus, HiX } from "react-icons/hi";
 
 const montserrat = Montserrat({
-  weight: "700",
+  weight: ["500", "600"],
   subsets: ["latin"],
 });
 
@@ -72,16 +72,35 @@ export default function Navbar() {
   }, [pathname]);
 
   const normalizePath = (path: string) => (path.startsWith("/") ? path : `/${path}`);
+  const isHomePage = pathname === "/";
   const isServicesPage = pathname.startsWith("/services");
   const useElevatedNavbar = isScrolled || isServicesPage || menuOpen;
-  const navTextColor = useElevatedNavbar ? "text-[#f7ede3]" : "text-white";
+  const useWarmHomeNavbar = isHomePage && !useElevatedNavbar;
+  const navTextColor = useElevatedNavbar
+    ? "text-[#f7ede3]"
+    : useWarmHomeNavbar
+      ? "text-[#3a2113]"
+      : "text-white";
   const navLinkColor = useElevatedNavbar
     ? "text-[#f7ede3] hover:text-[#ffbf94]"
-    : "text-white hover:text-[#ffd4b8]";
-  const brandAccentColor = useElevatedNavbar ? "text-[#ffb27d]" : "text-[#dd5500]";
+    : useWarmHomeNavbar
+      ? "text-[#4b2a17] hover:text-[#c8612b]"
+      : "text-white hover:text-[#ffd4b8]";
+  const brandAccentColor = useElevatedNavbar
+    ? "text-[#ffb27d]"
+    : useWarmHomeNavbar
+      ? "text-[#b65017]"
+      : "text-[#dd5500]";
   const navSurfaceClass = useElevatedNavbar
     ? "border-b border-white/10 bg-[#120b06]/88 shadow-[0_20px_50px_-30px_rgba(0,0,0,0.85)] backdrop-blur-md"
-    : "bg-transparent";
+    : useWarmHomeNavbar
+      ? "border-b border-[#ead8c8]/70 bg-[#fff9f1]/82 shadow-[0_18px_42px_-32px_rgba(83,34,12,0.42)] backdrop-blur-md"
+      : "bg-transparent";
+  const contactButtonClass = useElevatedNavbar
+    ? "rounded-full bg-[#fff8f1] px-5 py-3 font-medium text-[#a5430c] shadow-lg transition-all duration-300 hover:bg-white hover:shadow-xl"
+    : useWarmHomeNavbar
+      ? "rounded-full bg-[#cf5f1f] px-5 py-3 font-medium text-white shadow-[0_18px_36px_-26px_rgba(177,84,25,0.75)] transition-all duration-300 hover:bg-[#b9521a] hover:shadow-xl"
+      : "rounded-full bg-[#fff8f1] px-5 py-3 font-medium text-[#a5430c] shadow-lg transition-all duration-300 hover:bg-white hover:shadow-xl";
 
   return (
     <nav className={`fixed top-0 left-0 z-50 w-full transition-all duration-300 ${navSurfaceClass}`}>
@@ -105,7 +124,7 @@ export default function Navbar() {
 
             <Link
               href="/"
-              className={`ml-3 min-w-0 text-sm font-bold leading-tight tracking-tight sm:text-base lg:text-lg xl:text-2xl ${montserrat.className} ${navTextColor}`}
+              className={`ml-3 min-w-0 text-sm font-medium leading-tight tracking-tight sm:text-base lg:text-lg xl:text-[1.35rem] ${montserrat.className} ${navTextColor}`}
             >
               <span className={`${brandAccentColor} mx-3`}>G&V Support</span>
               <span className={brandAccentColor}>
@@ -120,7 +139,7 @@ export default function Navbar() {
             <div key={`${href}-${index}`} className="group relative text-white">
               <Link
                 href={normalizePath(href)}
-                className={`font-bold transition-colors ${navLinkColor}`}
+                className={`font-medium transition-colors ${navLinkColor}`}
               >
                 {label}
               </Link>
@@ -144,7 +163,7 @@ export default function Navbar() {
 
           <Link
             href="/contact-us"
-            className="rounded-full bg-[#fff8f1] px-5 py-3 font-bold text-[#a5430c] shadow-lg transition-all duration-300 hover:bg-white hover:shadow-xl"
+            className={contactButtonClass}
           >
             Contact Us
           </Link>
@@ -156,7 +175,11 @@ export default function Navbar() {
             aria-label="Toggle menu"
             aria-expanded={menuOpen}
             className={`transition-transform duration-300 ease-in-out ${
-              useElevatedNavbar ? "text-[#ffb27d]" : "text-white"
+              useElevatedNavbar
+                ? "text-[#ffb27d]"
+                : useWarmHomeNavbar
+                  ? "text-[#cf5f1f]"
+                  : "text-white"
             }`}
           >
             {menuOpen ? (
@@ -223,7 +246,7 @@ export default function Navbar() {
 
           <Link
             href="/contact-us"
-            className="mt-3 inline-flex w-full items-center justify-center rounded-md bg-[#dd5500] px-4 py-3 font-semibold text-white transition-colors hover:bg-[#c54400]"
+            className="mt-3 inline-flex w-full items-center justify-center rounded-md bg-[#dd5500] px-4 py-3 font-medium text-white transition-colors hover:bg-[#c54400]"
             onClick={() => setMenuOpen(false)}
           >
             Contact Us
