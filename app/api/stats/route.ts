@@ -2,12 +2,36 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   const stats = [
-    { value: "300+", label: "Relocations completed", description: "Supporting families and executives across Nigeria." },
-    { value: "10+", label: "Years of experience", description: "Delivering dependable support since day one." },
-    { value: "98%", label: "Customer satisfaction", description: "Trusted by clients for consistent, people-first service." },
-    { value: "6+", label: "Cities covered", description: "Active presence across Nigeria’s major hubs." },
-    { value: "15+", label: "Team members", description: "Experienced local specialists working together for you." },
-    { value: "< 24h", label: "Avg response time", description: "Fast answers when you need them most." },
+    {
+      value: "300+",
+      label: "Clients supported",
+      description: "Across housing, relocation, and move-in support in Nigeria.",
+    },
+    {
+      value: "10+",
+      label: "Years of experience",
+      description: "Helping clients make confident relocation decisions for over a decade.",
+    },
+    {
+      value: "98%",
+      label: "Client satisfaction",
+      description: "Trusted for responsive, people-first service delivery.",
+    },
+    {
+      value: "7+",
+      label: "Service locations",
+      description: "Supporting assignments across key Nigerian locations.",
+    },
+    {
+      value: "End-to-end",
+      label: "Relocation coverage",
+      description: "Housing, arrival support, furniture, and ongoing local coordination.",
+    },
+    {
+      value: "< 24h",
+      label: "Average response time",
+      description: "Fast answers when timelines and move decisions need clarity.",
+    },
   ];
 
   return NextResponse.json(stats, { status: 200 });

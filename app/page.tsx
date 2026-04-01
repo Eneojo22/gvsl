@@ -10,7 +10,7 @@ import {
 } from "./lib/seo";
 
 const homePageDescription =
-  "G&V Support Services helps clients find apartments in Lagos, secure houses, furnish homes, and manage relocation support across Nigeria.";
+  "G&V Support Services helps clients secure housing, coordinate relocation, and furnish ready-to-live homes across Nigeria.";
 
 const homeStructuredData = {
   "@context": "https://schema.org",
