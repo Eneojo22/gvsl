@@ -70,7 +70,7 @@ const defaultSuccessStory: SuccessStory = {
 };
 
 const heroTrustItems: TrustItem[] = [
-  { value: "300+", label: "Clients supported" },
+  { value: "50+", label: "Clients supported" },
   { value: "10+", label: "Years of experience" },
   { value: "7+", label: "Nigerian locations" },
   { value: "< 24h", label: "Average response time" },
