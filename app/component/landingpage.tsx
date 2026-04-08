@@ -238,58 +238,111 @@ export default function Landingpage() {
 
 function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(135deg,#fff7ea_0%,#fffdf9_45%,#f3e3d0_100%)] pb-20 pt-32 text-[#2f1b0f] sm:pt-36">
+    <section className="relative overflow-hidden bg-[linear-gradient(135deg,#fff7ea_0%,#fffdf9_45%,#f3e3d0_100%)] pb-16 pt-24 text-[#2f1b0f] sm:pb-20 sm:pt-28 lg:pt-36">
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-[-8%] top-[-14%] h-72 w-72 rounded-full bg-[#ffd4ad]/70 blur-3xl sm:h-96 sm:w-96" />
-        <div className="absolute right-[-10%] top-[10%] h-72 w-72 rounded-full bg-[#ffe6c8]/80 blur-3xl sm:h-[28rem] sm:w-[28rem]" />
-        <div className="absolute bottom-[-10%] left-[15%] h-56 w-56 rounded-full bg-[#ffd7b8]/40 blur-3xl sm:h-72 sm:w-72" />
+        <div className="absolute left-[-12%] top-[-10%] h-56 w-56 rounded-full bg-[#ffd4ad]/70 blur-3xl sm:h-80 sm:w-80 lg:h-96 lg:w-96" />
+        <div className="absolute right-[-16%] top-[10%] h-60 w-60 rounded-full bg-[#ffe6c8]/80 blur-3xl sm:h-80 sm:w-80 lg:h-[28rem] lg:w-[28rem]" />
+        <div className="absolute bottom-[-10%] left-[12%] h-44 w-44 rounded-full bg-[#ffd7b8]/40 blur-3xl sm:h-60 sm:w-60 lg:h-72 lg:w-72" />
         <div className="absolute inset-0 bg-[url('/svg/african-pattern.svg')] opacity-[0.03]" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-12 lg:grid-cols-[1fr_0.95fr] lg:gap-16">
-          <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#e7d4c2] bg-white/90 px-4 py-2 text-sm font-medium text-[#9f4d1d] shadow-[0_16px_35px_-26px_rgba(83,34,12,0.42)] backdrop-blur">
+        <div className="grid gap-8 sm:gap-10 lg:grid-cols-[1fr_0.95fr] lg:items-start lg:gap-16">
+          <div className="max-w-2xl lg:pt-6">
+            <div className="inline-flex items-center gap-2  rounded-full border border-[#e7d4c2] bg-white/90 px-3.5 py-2 text-[11px] font-medium uppercase tracking-[0.18em] text-[#9f4d1d] shadow-[0_16px_35px_-26px_rgba(83,34,12,0.42)] backdrop-blur sm:px-4 sm:text-sm sm:tracking-normal">
               <Sparkles className="h-4 w-4" />
               Housing, relocation, and furniture support in Nigeria
             </div>
 
-            <h1 className="mt-6 text-[3rem] font-semibold leading-[1.04] tracking-[-0.035em] text-[#281409] sm:text-[3.8rem] lg:text-[4.45rem]">
+            <h1 className="mt-5 text-[2.35rem] font-semibold leading-[1.05] tracking-[-0.04em] text-[#281409] sm:mt-6 sm:text-[3rem] lg:text-[4.45rem]">
               Find the right home, move with less stress, and settle faster in Nigeria.
             </h1>
 
-            <p className="mt-6 max-w-xl text-base leading-8 text-[#5f4938] sm:text-lg">
+            <p className="mt-5 max-w-xl text-[15px] leading-7 text-[#5f4938] sm:mt-6 sm:text-lg sm:leading-8">
               G&amp;V Support Services helps expatriates, families, and corporate teams secure
               housing, coordinate relocation, and furnish ready-to-live spaces through one
               experienced local partner.
             </p>
 
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
+            <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:items-center sm:gap-4">
               <Link
                 href="/contact-us"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#cf5f1f] px-7 py-4 text-sm font-medium text-white shadow-[0_22px_40px_-24px_rgba(177,84,25,0.7)] transition hover:bg-[#b9521a]"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#cf5f1f] px-6 py-4 text-sm font-medium text-white shadow-[0_22px_40px_-24px_rgba(177,84,25,0.7)] transition hover:bg-[#b9521a] sm:w-auto sm:px-7"
               >
                 Talk to a relocation specialist
                 <ArrowRight className="h-4 w-4" />
               </Link>
-              <p className="text-sm leading-6 text-[#715847]">
+              <p className="max-w-sm text-sm leading-6 text-[#715847]">
                 Ideal for private moves, executive assignments, and corporate relocation needs.
               </p>
             </div>
+          </div>
 
-            <div className="mt-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="mx-auto w-full max-w-[34rem] rounded-[30px] border border-[#ead8c8] bg-white/92 p-2.5 shadow-[0_32px_90px_-42px_rgba(83,34,12,0.55)] sm:rounded-[36px] sm:p-3 lg:col-start-2 lg:row-span-2 lg:max-w-none"
+          >
+            <div className="relative aspect-[4/3.8] overflow-hidden rounded-[24px] bg-[#f1e3d5] sm:aspect-[4/4.35] sm:rounded-[30px] lg:aspect-[4/4.7]">
+              <Image
+                src="/image/leadhome.jpg"
+                alt="Premium apartment prepared for move-in support"
+                fill
+                priority
+                sizes="(min-width: 1024px) 42vw, 100vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,248,238,0.42)_0%,rgba(255,248,238,0.06)_36%,rgba(37,19,9,0.74)_100%)]" />
+              <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-white/92 px-3 py-2 text-[10px] font-medium uppercase tracking-[0.18em] text-[#9f4d1d] shadow-sm sm:left-5 sm:top-5 sm:px-4 sm:text-xs sm:tracking-[0.24em]">
+                <ShieldCheck className="h-4 w-4" />
+                One coordinated local partner
+              </div>
+            </div>
+
+            <div className="p-5 sm:p-6">
+              <p className="text-xs font-medium uppercase tracking-[0.28em] text-[#c56a32]">
+                What clients get
+              </p>
+              <h2 className="mt-3 text-[1.7rem] font-semibold leading-tight tracking-[-0.03em] text-[#271307] sm:text-[2rem]">
+                Clear decisions, smoother arrival, and a move-in-ready space.
+              </h2>
+
+              <div className="mt-6 space-y-3">
+                {deliveryProof.map((item) => (
+                  <div key={item} className="flex items-start gap-3 text-sm leading-6 text-[#5f4938]">
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#bf571c]" />
+                    <p>{item}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-6 rounded-[22px] bg-[#2a170c] p-4 text-white sm:rounded-[24px] sm:p-5">
+                <p className="text-xs font-medium uppercase tracking-[0.24em] text-[#f3cda3]">
+                  Corporate and private relocation
+                </p>
+                <p className="mt-3 text-sm leading-6 text-[#f7ebdf]">
+                  Built for expatriate assignments, executive arrivals, relocating families, serviced
+                  apartments, and employers who need reliable local execution.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+          <div className="grid gap-4 sm:gap-5 lg:max-w-2xl">
+            <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
               {heroTrustItems.map((item) => (
                 <div
                   key={item.label}
-                  className="rounded-[24px] border border-[#ead8c8] bg-white/90 px-4 py-4 shadow-[0_14px_32px_-28px_rgba(83,34,12,0.42)]"
+                  className="rounded-[22px] border border-[#ead8c8] bg-white/90 px-4 py-4 shadow-[0_14px_32px_-28px_rgba(83,34,12,0.42)] sm:rounded-[24px]"
                 >
-                  <p className="text-xl font-semibold text-[#bf571c]">{item.value}</p>
+                  <p className="text-lg font-semibold text-[#bf571c] sm:text-xl">{item.value}</p>
                   <p className="mt-1 text-sm leading-5 text-[#5f4938]">{item.label}</p>
                 </div>
               ))}
             </div>
 
-            <div className="mt-8 rounded-[28px] border border-[#ead9cb] bg-white/90 p-5 shadow-[0_20px_55px_-38px_rgba(83,34,12,0.45)]">
+            <div className="rounded-[24px] border border-[#ead9cb] bg-white/90 p-4 shadow-[0_20px_55px_-38px_rgba(83,34,12,0.45)] sm:rounded-[28px] sm:p-5">
               <p className="text-xs font-medium uppercase tracking-[0.28em] text-[#c56a32]">
                 Recent relocation result
               </p>
@@ -303,57 +356,6 @@ function HeroSection() {
               </p>
             </div>
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="rounded-[36px] border border-[#ead8c8] bg-white/92 p-3 shadow-[0_32px_90px_-42px_rgba(83,34,12,0.55)]"
-          >
-            <div className="relative aspect-[4/4.7] overflow-hidden rounded-[30px] bg-[#f1e3d5]">
-              <Image
-                src="/image/leadhome.jpg"
-                alt="Premium apartment prepared for move-in support"
-                fill
-                priority
-                sizes="(min-width: 1024px) 42vw, 100vw"
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,248,238,0.42)_0%,rgba(255,248,238,0.06)_36%,rgba(37,19,9,0.74)_100%)]" />
-              <div className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full bg-white/92 px-4 py-2 text-xs font-medium uppercase tracking-[0.24em] text-[#9f4d1d] shadow-sm">
-                <ShieldCheck className="h-4 w-4" />
-                One coordinated local partner
-              </div>
-            </div>
-
-            <div className="p-6">
-              <p className="text-xs font-medium uppercase tracking-[0.28em] text-[#c56a32]">
-                What clients get
-              </p>
-              <h2 className="mt-3 text-[2rem] font-semibold leading-tight tracking-[-0.025em] text-[#271307]">
-                Clear decisions, smoother arrival, and a move-in-ready space.
-              </h2>
-
-              <div className="mt-6 space-y-3">
-                {deliveryProof.map((item) => (
-                  <div key={item} className="flex items-start gap-3 text-sm leading-6 text-[#5f4938]">
-                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#bf571c]" />
-                    <p>{item}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-6 rounded-[24px] bg-[#2a170c] p-5 text-white">
-                <p className="text-xs font-medium uppercase tracking-[0.24em] text-[#f3cda3]">
-                  Corporate and private relocation
-                </p>
-                <p className="mt-3 text-sm leading-6 text-[#f7ebdf]">
-                  Built for expatriate assignments, executive arrivals, relocating families, serviced
-                  apartments, and employers who need reliable local execution.
-                </p>
-              </div>
-            </div>
-          </motion.div>
         </div>
       </div>
     </section>
@@ -362,13 +364,13 @@ function HeroSection() {
 
 function ServicePathwaysSection() {
   return (
-    <section className="bg-[#f8efe6] px-4 py-16 text-[#1d160f]">
+    <section className="bg-[#f8efe6] px-4 py-14 text-[#1d160f] sm:py-16">
       <div className="mx-auto max-w-7xl">
         <div className="max-w-3xl">
           <p className="text-sm font-medium uppercase tracking-[0.28em] text-[#c8612b]">
             Choose your pathway
           </p>
-          <h2 className="mt-4 text-3xl font-semibold leading-tight md:text-4xl">
+          <h2 className="mt-4 text-2xl font-semibold leading-tight sm:text-3xl md:text-4xl">
             Start with the support path that matches the assignment.
           </h2>
           <p className="mt-4 text-base leading-7 text-[#5f4a3b]">
@@ -378,7 +380,7 @@ function ServicePathwaysSection() {
           </p>
         </div>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-2">
+        <div className="mt-8 grid gap-5 sm:mt-10 lg:grid-cols-2">
           {servicePathways.map((pathway, index) => {
             const Icon = pathway.icon;
             const isDark = pathway.theme === "dark";
@@ -390,13 +392,13 @@ function ServicePathwaysSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.35 }}
                 transition={{ duration: 0.45, delay: index * 0.08 }}
-                className={`rounded-[32px] border p-8 shadow-[0_22px_60px_-38px_rgba(83,34,12,0.4)] ${
+                className={`rounded-[28px] border p-6 shadow-[0_22px_60px_-38px_rgba(83,34,12,0.4)] sm:rounded-[32px] sm:p-8 ${
                   isDark
                     ? "border-[#3f2616] bg-[#21140b] text-white"
                     : "border-[#ead9cb] bg-white text-[#1d160f]"
                 }`}
               >
-                <div className="flex items-start justify-between gap-4">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                   <div>
                     <p
                       className={`text-xs font-medium uppercase tracking-[0.26em] ${
@@ -405,10 +407,12 @@ function ServicePathwaysSection() {
                     >
                       {pathway.eyebrow}
                     </p>
-                    <h3 className="mt-3 text-2xl font-semibold leading-tight">{pathway.title}</h3>
+                    <h3 className="mt-3 text-[1.45rem] font-semibold leading-tight sm:text-2xl">
+                      {pathway.title}
+                    </h3>
                   </div>
                   <div
-                    className={`flex h-12 w-12 items-center justify-center rounded-2xl ${
+                    className={`flex h-11 w-11 items-center justify-center rounded-2xl sm:h-12 sm:w-12 ${
                       isDark ? "bg-white/10 text-[#f3cda3]" : "bg-[#fff3e7] text-[#bf571c]"
                     }`}
                   >
@@ -417,7 +421,7 @@ function ServicePathwaysSection() {
                 </div>
 
                 <p
-                  className={`mt-5 text-base leading-7 ${
+                  className={`mt-5 text-[15px] leading-7 sm:text-base ${
                     isDark ? "text-white/80" : "text-[#5f4a3b]"
                   }`}
                 >
@@ -425,7 +429,7 @@ function ServicePathwaysSection() {
                 </p>
 
                 <div
-                  className={`mt-6 rounded-[24px] p-5 ${
+                  className={`mt-6 rounded-[22px] p-4 sm:rounded-[24px] sm:p-5 ${
                     isDark ? "bg-white/6" : "bg-[#fff8f2]"
                   }`}
                 >
@@ -461,10 +465,10 @@ function ServicePathwaysSection() {
 
                 <Link
                   href={pathway.href}
-                  className={`mt-8 inline-flex items-center gap-2 text-sm font-medium transition ${
+                  className={`mt-8 inline-flex w-full items-center justify-between gap-2 rounded-full border px-5 py-3 text-sm font-medium transition sm:w-fit ${
                     isDark
-                      ? "text-[#f7e2cf] hover:text-white"
-                      : "text-[#a5430c] hover:text-[#cf5f1f]"
+                      ? "border-white/12 bg-white/8 text-[#f7e2cf] hover:bg-white/12 hover:text-white"
+                      : "border-[#e2c7b4] bg-[#fff8f2] text-[#a5430c] hover:bg-[#fff1e4] hover:text-[#cf5f1f]"
                   }`}
                 >
                   {pathway.ctaLabel}
@@ -481,14 +485,14 @@ function ServicePathwaysSection() {
 
 function CredibilitySection() {
   return (
-    <section className="bg-[#1c120b] px-4 py-16 text-white">
+    <section className="bg-[#1c120b] px-4 py-14 text-white sm:py-16">
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-8 lg:grid-cols-[1.08fr_0.92fr]">
-          <div className="rounded-[34px] border border-white/10 bg-white/5 p-8 shadow-[0_24px_70px_-42px_rgba(0,0,0,0.8)] sm:p-10">
+        <div className="grid gap-6 sm:gap-8 lg:grid-cols-[1.08fr_0.92fr]">
+          <div className="rounded-[28px] border border-white/10 bg-white/5 p-6 shadow-[0_24px_70px_-42px_rgba(0,0,0,0.8)] sm:rounded-[34px] sm:p-10">
             <p className="text-sm font-medium uppercase tracking-[0.28em] text-[#f3cda3]">
               Professional credibility
             </p>
-            <h2 className="mt-4 text-3xl font-semibold leading-tight sm:text-4xl">
+            <h2 className="mt-4 text-2xl font-semibold leading-tight sm:text-3xl lg:text-4xl">
               Built for global teams, corporate assignees, and families relocating into Nigeria.
             </h2>
             <p className="mt-5 max-w-3xl text-base leading-8 text-white/75">
@@ -497,8 +501,8 @@ function CredibilitySection() {
               the process together themselves.
             </p>
 
-            <div className="mt-8 grid gap-5 sm:grid-cols-2">
-              <div className="rounded-[28px] border border-white/10 bg-white/6 p-6">
+            <div className="mt-8 grid gap-4 md:grid-cols-2 md:gap-5">
+              <div className="rounded-[24px] border border-white/10 bg-white/6 p-5 sm:rounded-[28px] sm:p-6">
                 <div className="flex items-center gap-3 text-[#f3cda3]">
                   <Globe2 className="h-5 w-5" />
                   <p className="text-sm font-medium uppercase tracking-[0.2em]">Service locations</p>
@@ -515,7 +519,7 @@ function CredibilitySection() {
                 </div>
               </div>
 
-              <div className="rounded-[28px] border border-white/10 bg-white/6 p-6">
+              <div className="rounded-[24px] border border-white/10 bg-white/6 p-5 sm:rounded-[28px] sm:p-6">
                 <div className="flex items-center gap-3 text-[#f3cda3]">
                   <Users className="h-5 w-5" />
                   <p className="text-sm font-medium uppercase tracking-[0.2em]">
@@ -536,15 +540,15 @@ function CredibilitySection() {
             </div>
           </div>
 
-          <div className="space-y-6">
-            <div className="rounded-[34px] bg-[#fff4e8] p-8 text-[#26150a] shadow-[0_24px_70px_-42px_rgba(0,0,0,0.55)]">
+          <div className="space-y-5 sm:space-y-6">
+            <div className="rounded-[28px] bg-[#fff4e8] p-6 text-[#26150a] shadow-[0_24px_70px_-42px_rgba(0,0,0,0.55)] sm:rounded-[34px] sm:p-8">
               <div className="flex items-center gap-3 text-[#bf571c]">
                 <BriefcaseBusiness className="h-5 w-5" />
                 <p className="text-sm font-medium uppercase tracking-[0.2em]">
                   Corporate relocation option
                 </p>
               </div>
-              <h3 className="mt-4 text-2xl font-semibold leading-tight">
+              <h3 className="mt-4 text-[1.55rem] font-semibold leading-tight sm:text-2xl">
                 Give HR and mobility teams one accountable local partner.
               </h3>
               <p className="mt-4 text-base leading-7 text-[#5f4a3b]">
@@ -572,7 +576,7 @@ function CredibilitySection() {
               </Link>
             </div>
 
-            <div className="rounded-[34px] border border-white/10 bg-white/5 p-8 shadow-[0_24px_70px_-42px_rgba(0,0,0,0.8)]">
+            <div className="rounded-[28px] border border-white/10 bg-white/5 p-6 shadow-[0_24px_70px_-42px_rgba(0,0,0,0.8)] sm:rounded-[34px] sm:p-8">
               <div className="flex items-center gap-3 text-[#f3cda3]">
                 <ShieldCheck className="h-5 w-5" />
                 <p className="text-sm font-medium uppercase tracking-[0.2em]">Why teams trust us</p>
@@ -622,13 +626,13 @@ function StatsSection() {
   }, []);
 
   return (
-    <section className="bg-[#f7efe7] px-4 py-16 text-[#1d160f]">
+    <section className="bg-[#f7efe7] px-4 py-14 text-[#1d160f] sm:py-16">
       <div className="mx-auto max-w-7xl">
         <div className="max-w-3xl">
           <p className="text-sm font-medium uppercase tracking-[0.28em] text-[#c8612b]">
             Results and responsiveness
           </p>
-          <h2 className="mt-4 text-3xl font-semibold leading-tight md:text-4xl">
+          <h2 className="mt-4 text-2xl font-semibold leading-tight sm:text-3xl md:text-4xl">
             Performance proof that helps new clients trust the next step.
           </h2>
           <p className="mt-4 text-base leading-7 text-[#5f4a3b]">
@@ -637,7 +641,7 @@ function StatsSection() {
           </p>
         </div>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-8 grid gap-5 sm:mt-10 sm:grid-cols-2 xl:grid-cols-3">
           {statsData.map((stat, index) => (
             <motion.div
               key={stat.label}
@@ -645,7 +649,7 @@ function StatsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.45, delay: index * 0.08 }}
-              className="rounded-[30px] border border-[#e6d1c1] bg-white p-8 shadow-[0_18px_50px_-34px_rgba(74,37,15,0.32)]"
+              className="rounded-[26px] border border-[#e6d1c1] bg-white p-6 shadow-[0_18px_50px_-34px_rgba(74,37,15,0.32)] sm:rounded-[30px] sm:p-8"
             >
               <div className="flex items-start justify-between gap-4">
                 <div>
@@ -701,13 +705,13 @@ function ClientProofSection() {
   const featuredReviews = reviews.slice(0, 2);
 
   return (
-    <section className="bg-[#fff9f4] px-4 py-16 text-[#1d160f]">
+    <section className="bg-[#fff9f4] px-4 py-14 text-[#1d160f] sm:py-16">
       <div className="mx-auto max-w-7xl">
         <div className="max-w-3xl">
           <p className="text-sm font-medium uppercase tracking-[0.28em] text-[#c8612b]">
             Client proof
           </p>
-          <h2 className="mt-4 text-3xl font-semibold leading-tight md:text-4xl">
+          <h2 className="mt-4 text-2xl font-semibold leading-tight sm:text-3xl md:text-4xl">
             Confidence grows when the proof is visible.
           </h2>
           <p className="mt-4 text-base leading-7 text-[#5f4a3b]">
@@ -716,14 +720,14 @@ function ClientProofSection() {
           </p>
         </div>
 
-        <div className="mt-10 grid gap-8 lg:grid-cols-[0.92fr_1.08fr]">
-          <div className="rounded-[32px] border border-[#ead9cb] bg-white p-8 shadow-[0_18px_50px_-34px_rgba(74,37,15,0.3)]">
+        <div className="mt-8 grid gap-6 sm:mt-10 sm:gap-8 lg:grid-cols-[0.92fr_1.08fr]">
+          <div className="rounded-[28px] border border-[#ead9cb] bg-white p-6 shadow-[0_18px_50px_-34px_rgba(74,37,15,0.3)] sm:rounded-[32px] sm:p-8">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div>
                 <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#c8612b]">
                   Review snapshot
                 </p>
-                <h3 className="mt-2 text-2xl font-semibold text-[#1d160f]">
+                <h3 className="mt-2 text-[1.55rem] font-semibold text-[#1d160f] sm:text-2xl">
                   What clients say about the experience
                 </h3>
               </div>
@@ -746,7 +750,7 @@ function ClientProofSection() {
                 {featuredReviews.map((review) => (
                   <article
                     key={review.id}
-                    className="rounded-[28px] border border-[#ead9cb] bg-[#fffaf6] p-6"
+                    className="rounded-[24px] border border-[#ead9cb] bg-[#fffaf6] p-5 sm:rounded-[28px] sm:p-6"
                   >
                     <div className="flex items-start justify-between gap-4">
                       <div>
@@ -769,7 +773,7 @@ function ClientProofSection() {
               </div>
             ) : (
               <div className="mt-8 space-y-5">
-                <div className="rounded-[28px] border border-dashed border-[#dd5500]/35 bg-[#fffaf6] p-6">
+                <div className="rounded-[24px] border border-dashed border-[#dd5500]/35 bg-[#fffaf6] p-5 sm:rounded-[28px] sm:p-6">
                   <p className="text-lg font-medium text-[#1d160f]">No local reviews yet</p>
                   <p className="mt-3 text-sm leading-7 text-[#5f4a3b]">
                     Client reviews will appear here after feedback is submitted on this device. You
@@ -778,7 +782,7 @@ function ClientProofSection() {
                   </p>
                 </div>
 
-                <div className="rounded-[28px] bg-[#fff4e8] p-6">
+                <div className="rounded-[24px] bg-[#fff4e8] p-5 sm:rounded-[28px] sm:p-6">
                   <p className="text-sm font-medium uppercase tracking-[0.18em] text-[#a5430c]">
                     What clients consistently value
                   </p>
@@ -796,7 +800,7 @@ function ClientProofSection() {
               </div>
             )}
 
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Link
                 href="/aboutUs/Testimonials"
                 className="inline-flex items-center justify-center rounded-full bg-[#dd5500] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#c54800]"
@@ -812,11 +816,11 @@ function ClientProofSection() {
             </div>
           </div>
 
-          <div className="rounded-[32px] bg-[#21140b] p-8 text-white shadow-[0_24px_80px_-42px_rgba(0,0,0,0.72)]">
+          <div className="rounded-[28px] bg-[#21140b] p-6 text-white shadow-[0_24px_80px_-42px_rgba(0,0,0,0.72)] sm:rounded-[32px] sm:p-8">
             <p className="text-sm font-medium uppercase tracking-[0.24em] text-[#f3cda3]">
               Successful case
             </p>
-            <h3 className="mt-4 text-3xl font-semibold leading-tight">{story.title}</h3>
+            <h3 className="mt-4 text-2xl font-semibold leading-tight sm:text-3xl">{story.title}</h3>
             <p className="mt-5 text-base leading-8 text-white/80">{story.highlight}</p>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-3">
@@ -849,13 +853,13 @@ function ClientProofSection() {
 
 function TrustedPartnersSection() {
   return (
-    <section className="bg-[#f6efe7] px-4 py-16 text-[#1d160f]">
+    <section className="bg-[#f6efe7] px-4 py-14 text-[#1d160f] sm:py-16">
       <div className="mx-auto max-w-7xl">
         <div className="max-w-3xl">
           <p className="text-sm font-medium uppercase tracking-[0.28em] text-[#c8612b]">
             Trusted partners
           </p>
-          <h2 className="mt-4 text-3xl font-semibold leading-tight md:text-4xl">
+          <h2 className="mt-4 text-2xl font-semibold leading-tight sm:text-3xl md:text-4xl">
             Delivery backed by housing, furnishing, and support brands clients can recognize.
           </h2>
           <p className="mt-4 text-base leading-7 text-[#5f4a3b]">
@@ -865,18 +869,18 @@ function TrustedPartnersSection() {
           </p>
         </div>
 
-        <div className="mt-10 grid grid-cols-2 gap-5 sm:grid-cols-3 xl:grid-cols-7">
+        <div className="mt-8 grid grid-cols-2 gap-4 sm:mt-10 sm:grid-cols-3 sm:gap-5 xl:grid-cols-7">
           {partnerLogos.map((sponsor, index) => (
             <div
               key={index}
-              className="flex min-h-[8.5rem] items-center justify-center rounded-[26px] border border-[#ead9cb] bg-white p-5 shadow-[0_16px_42px_-32px_rgba(74,37,15,0.25)]"
+              className="flex min-h-[7rem] items-center justify-center rounded-[22px] border border-[#ead9cb] bg-white p-4 shadow-[0_16px_42px_-32px_rgba(74,37,15,0.25)] sm:min-h-[8.5rem] sm:rounded-[26px] sm:p-5"
             >
               <Image
                 src={sponsor.imageUrl}
                 alt={`Partner logo ${index + 1}`}
                 width={200}
                 height={110}
-                className="h-20 w-full object-contain"
+                className="h-16 w-full object-contain sm:h-20"
               />
             </div>
           ))}

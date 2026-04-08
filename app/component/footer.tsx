@@ -27,7 +27,7 @@ export function Footer() {
               href="https://www.linkedin.com/in/g-v-support-services-025a84376/"
               icon="linkedin"
             />
-            <SocialIcon href="https://twitter.com" icon="twitter" />
+            {/* <SocialIcon href="https://twitter.com" icon="twitter" /> */}
             <SocialIcon href="https://instagram.com" icon="instagram" />
           </div>
         </div>

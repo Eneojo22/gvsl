@@ -23,7 +23,7 @@ interface TeamMember {
 
 const teamMembers: TeamMember[] = [
   {
-    name: 'Abiodun Gospel',
+    name: 'Akuetiemhe  Gospel',
     title: 'Managing Director',
     image: '/image/team-pic/md.jpeg',
     bio: 'Strategic leader focused on growth, operational excellence, and exceptional client outcomes for our relocation services.',
@@ -53,31 +53,31 @@ const teamMembers: TeamMember[] = [
     bio: 'A detail-oriented administrative coordinator and client relations officer dedicated to efficient workflow management, prompt service delivery, and fostering strong client satisfaction.',
   },
   {
-    name: 'Ejiga Victor',
+    name: 'Victor Ejiga',
     title: 'IT Team – Developer & IT Operations',
     image: '/image/team-pic/ejigavictor.jpeg',
     bio: 'Supports digital systems, software development, and IT operations to keep business processes efficient and reliable.',
   },
   {
-    name: 'Akuetiemhe Ogie ',
+    name: 'Ogie Akuetiemhe ',
     title: 'IT Team – Developer & IT Operations',
-    image: '/image/team-pic/ogie-pic.jpeg',
+    image: '/image/team-pic/ogiepic.png',
     bio: 'Works across development and IT operations, helping to maintain secure, scalable, and effective technology solutions.',
   },
   {
-    name: 'Layiwola Oluwafemi',
+    name: 'Oluwafemi Layiwola',
     title: 'Project Specialist',
     image: '/image/team-pic/layiwola.jpeg',
     bio: 'Coordinates projects with a focus on execution, organization, and delivering quality results on time.',
   },
   {
-    name: 'Abiodun Toni',
+    name: 'Toni Akuetiemhe',
     title: 'Design Consultant',
     image: '/image/team-pic/toni.PNG',
     bio: 'Provides creative design direction and visualA versatile design consultant blending creativity and strategic space planning to develop elegant, practical, and inspiring environments for homes and corporate settings solutions that strengthen brand identity and user experience.',
   },
 {
-  name: 'Gbagi Lewis',
+  name: 'Lewis Gbagi',
   title: 'Workshop Foreman',
   image: '/image/team-pic/gbagi-lawis.jpeg',
   bio: 'As Workshop Foreman at Leadwood Furniture, Lewis oversees production operations, leads a high-performing team, and ensures strict quality control standards are maintained across all projects.',
