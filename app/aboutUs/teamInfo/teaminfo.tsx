@@ -23,13 +23,13 @@ interface TeamMember {
 
 const teamMembers: TeamMember[] = [
   {
-    name: 'Akuetiemhe  Gospel',
+    name: 'Gospel  Akuetiemhe',
     title: 'Managing Director',
     image: '/image/team-pic/md.jpeg',
     bio: 'Strategic leader focused on growth, operational excellence, and exceptional client outcomes for our relocation services.',
   },
   {
-    name: ' Akuetiemhe  Abiodun',
+    name: ' Abiodun  Akuetiemhe',
     title: 'Director, Administration & Human Resources',
     image: '/image/team-pic/Abiodun Akuetiemhe_Web Image.png',
     bio: 'HR and operations strategist dedicated to optimizing talent, strengthening organizational performance, and driving team synergy',
