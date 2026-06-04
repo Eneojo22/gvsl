@@ -207,7 +207,7 @@ export default function Navbar() {
           menuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="bg-[#ff9040] px-4 py-4 space-y-2">
+        <div className="bg-[#ffffff] px-4 py-4 space-y-2">
 
           {navLinks.map(({ href, label, dropdown }, index) => (
             <div
@@ -219,7 +219,7 @@ export default function Navbar() {
                 {/* Main link */}
                 <Link
                   href={normalizePath(href)}
-                  className="text-[#f7ede3]"
+                  className="text-[#000000]"
                   onClick={() => setMenuOpen(false)}
                 >
                   {label}
@@ -251,7 +251,7 @@ export default function Navbar() {
                     <Link
                       key={item.href}
                       href={item.href}
-                      className="block py-2 text-[#f7ede3] hover:text-[#ffb27d]"
+                      className="block py-2 text-[#000000] hover:text-[#ffb27d]"
                       onClick={() => setMenuOpen(false)}
                     >
                       {item.name}
