@@ -14,6 +14,7 @@ const montserrat = Montserrat({
   subsets: ["latin"],
 });
 
+/* ================= NAV LINKS ================= */
 const navLinks = [
   {
     href: "/aboutUs",
@@ -51,10 +52,13 @@ const navLinks = [
 
 export default function Navbar() {
   const pathname = usePathname();
+
+  /* ================= STATE ================= */
   const [menuOpen, setMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<number | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
 
+  /* ================= SCROLL DETECTION ================= */
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -62,95 +66,112 @@ export default function Navbar() {
 
     handleScroll();
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  /* Close mobile menu on page change */
   useEffect(() => {
     setMenuOpen(false);
     setOpenDropdown(null);
   }, [pathname]);
 
-  const normalizePath = (path: string) => (path.startsWith("/") ? path : `/${path}`);
+  /* ================= HELPERS ================= */
+  const normalizePath = (path: string) =>
+    path.startsWith("/") ? path : `/${path}`;
+
   const isHomePage = pathname === "/";
   const isServicesPage = pathname.startsWith("/services");
+
   const useElevatedNavbar = isScrolled || isServicesPage || menuOpen;
   const useWarmHomeNavbar = isHomePage && !useElevatedNavbar;
+
+  /* ================= DYNAMIC COLORS ================= */
   const navTextColor = useElevatedNavbar
     ? "text-[#f7ede3]"
     : useWarmHomeNavbar
-      ? "text-[#3a2113]"
-      : "text-white";
+    ? "text-[#3a2113]"
+    : "text-white";
+
   const navLinkColor = useElevatedNavbar
-    ? "text-[#f7ede3] hover:text-[#ffbf94]"
+    ? "text-[#f7ede3] hover:text-[#ffb27d]"
     : useWarmHomeNavbar
-      ? "text-[#4b2a17] hover:text-[#c8612b]"
-      : "text-white hover:text-[#ffd4b8]";
+    ? "text-[#4b2a17] hover:text-[#c8612b]"
+    : "text-white hover:text-[#ffd4b8]";
+
   const brandAccentColor = useElevatedNavbar
     ? "text-[#ffb27d]"
     : useWarmHomeNavbar
-      ? "text-[#b65017]"
-      : "text-[#dd5500]";
-  const navSurfaceClass = useElevatedNavbar
-    ? "border-b border-white/10 bg-[#120b06]/88 shadow-[0_20px_50px_-30px_rgba(0,0,0,0.85)] backdrop-blur-md"
-    : useWarmHomeNavbar
-      ? "border-b border-[#ead8c8]/70 bg-[#fff9f1]/82 shadow-[0_18px_42px_-32px_rgba(83,34,12,0.42)] backdrop-blur-md"
-      : "bg-transparent";
-  const contactButtonClass = useElevatedNavbar
-    ? "rounded-full bg-[#fff8f1] px-5 py-3 font-medium text-[#a5430c] shadow-lg transition-all duration-300 hover:bg-white hover:shadow-xl"
-    : useWarmHomeNavbar
-      ? "rounded-full bg-[#cf5f1f] px-5 py-3 font-medium text-white shadow-[0_18px_36px_-26px_rgba(177,84,25,0.75)] transition-all duration-300 hover:bg-[#b9521a] hover:shadow-xl"
-      : "rounded-full bg-[#fff8f1] px-5 py-3 font-medium text-[#a5430c] shadow-lg transition-all duration-300 hover:bg-white hover:shadow-xl";
+    ? "text-[#b65017]"
+    : "text-[#dd5500]";
 
+  /* Navbar background */
+  const navSurfaceClass = useElevatedNavbar
+    ? "bg-[#000000] border-b border-white/10 backdrop-blur-md shadow-lg"
+    : useWarmHomeNavbar
+    ? "bg-[#000]/85 border-b border-[#ead8c8] backdrop-blur-md shadow-md"
+    : "bg-transparent";
+
+  /* Contact button */
+  const contactButtonClass = useElevatedNavbar
+    ? "bg-[#fff8f1] text-[#a5430c] hover:bg-white"
+    : "bg-[#cf5f1f] text-white hover:bg-[#b9521a]";
+
+  /* ================= UI ================= */
   return (
-    <nav className={`fixed top-0 left-0 z-50 w-full transition-all duration-300 ${navSurfaceClass}`}>
+    <nav
+      className={`fixed top-0 left-0 z-50 w-full transition-all duration-300 ${navSurfaceClass}`}
+    >
       <div className="mx-auto flex items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <div className="flex min-w-0 flex-1 items-center">
+
+        {/* ================= LOGO ================= */}
+        <div className="flex items-center">
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.6 }}
             className="flex items-center"
           >
-            <Link href="/" className="shrink-0">
+            <Link href="/">
               <Image
-                src="/image/G & V SUPPORT SERVICE ltd (2).png"
-                height={50}
+                src="/image/logoooo.png"
                 width={80}
+                height={50}
                 alt="GVSS Logo"
-                className="h-12 w-auto object-contain sm:h-14"
+                className="h-12 w-auto sm:h-14"
               />
             </Link>
 
             <Link
               href="/"
-              className={`ml-3 min-w-0 text-sm font-medium leading-tight tracking-tight sm:text-base lg:text-lg xl:text-[1.35rem] ${montserrat.className} ${navTextColor}`}
+              className={`ml-3 font-medium ${montserrat.className} ${navTextColor}`}
             >
-              <span className={`${brandAccentColor} mx-3`}>G&V Support</span>
-              <span className={brandAccentColor}>
-                Services Limited
+              <span className="text-[#ff8000] mx-2">
+                G&V Support
               </span>
+             <span className="text-white">Services Limited</span> 
             </Link>
           </motion.div>
         </div>
 
-        <div className="hidden items-center gap-5 text-sm xl:flex 2xl:gap-7">
+        {/* ================= DESKTOP NAV ================= */}
+        <div className="hidden xl:flex items-center gap-6 text-sm">
           {navLinks.map(({ href, label, dropdown }, index) => (
-            <div key={`${href}-${index}`} className="group relative text-white">
+            <div key={index} className="relative group">
               <Link
                 href={normalizePath(href)}
-                className={`font-medium transition-colors ${navLinkColor}`}
+                className={`font-medium text-white`}
               >
                 {label}
               </Link>
 
+              {/* Dropdown */}
               {dropdown && (
-                <ul className="invisible absolute left-0 mt-2 w-60 translate-y-2 rounded-2xl border border-[#ead9cb] bg-[#fffaf5] py-2 opacity-0 shadow-lg transition-all duration-300 ease-in-out group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                <ul className="absolute left-0 mt-2 w-60 rounded-xl bg-[#120b06] border border-white/10 opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-all">
                   {dropdown.map((item) => (
                     <li key={item.href}>
                       <Link
                         href={item.href}
-                        className="block px-4 py-2 text-[#2a1d13] transition-colors hover:text-[#cf6c3d]"
+                        className="block px-4 py-2 text-[#f7ede3] hover:text-[#ffb27d]"
                       >
                         {item.name}
                       </Link>
@@ -163,96 +184,94 @@ export default function Navbar() {
 
           <Link
             href="/contact-us"
-            className={contactButtonClass}
+            className={`px-5 py-2 rounded-full font-medium transition ${contactButtonClass}`}
           >
             Contact Us
           </Link>
         </div>
 
+        {/* ================= MOBILE BUTTON ================= */}
         <div className="xl:hidden">
           <button
-            onClick={() => setMenuOpen((previous) => !previous)}
-            aria-label="Toggle menu"
-            aria-expanded={menuOpen}
-            className={`transition-transform duration-300 ease-in-out ${
-              useElevatedNavbar
-                ? "text-[#ffb27d]"
-                : useWarmHomeNavbar
-                  ? "text-[#cf5f1f]"
-                  : "text-white"
-            }`}
+            onClick={() => setMenuOpen(!menuOpen)}
+            className={useElevatedNavbar ? "text-[#ffb27d]" : "text-white"}
           >
-            {menuOpen ? (
-              <HiX size={30} className="rotate-90 transition-transform duration-300" />
-            ) : (
-              <HiMenu size={30} className="scale-110 transition-transform duration-300" />
-            )}
+            {menuOpen ? <HiX size={30} /> : <HiMenu size={30} />}
           </button>
         </div>
       </div>
 
+      {/* ================= MOBILE MENU ================= */}
       <div
-        className={`overflow-hidden transition-all duration-500 ease-in-out xl:hidden ${
+        className={`xl:hidden overflow-hidden transition-all duration-500 ${
           menuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="space-y-1 bg-white px-4 py-4 shadow-lg sm:px-6">
+        <div className="bg-[#ff9040] px-4 py-4 space-y-2">
+
           {navLinks.map(({ href, label, dropdown }, index) => (
-            <div key={`${href}-${index}`} className="border-b border-gray-200 py-2">
-              <div className="flex items-center justify-between gap-3 text-black">
+            <div
+              key={index}
+              className="border-b border-white/10 py-2"
+            >
+              <div className="flex justify-between items-center">
+
+                {/* Main link */}
                 <Link
                   href={normalizePath(href)}
-                  className="font-medium"
+                  className="text-[#f7ede3]"
                   onClick={() => setMenuOpen(false)}
                 >
                   {label}
                 </Link>
 
+                {/* Dropdown toggle */}
                 {dropdown && (
                   <button
                     onClick={() =>
-                      setOpenDropdown((current) => (current === index ? null : index))
+                      setOpenDropdown(
+                        openDropdown === index ? null : index
+                      )
                     }
-                    aria-label={`Toggle ${typeof label === "string" ? label : "menu"} submenu`}
-                    className="text-black transition-transform duration-300"
+                    className="text-[#ffb27d]"
                   >
                     <HiPlus
-                      size={20}
-                      className={`transition-transform duration-300 ease-in-out ${
-                        openDropdown === index ? "rotate-45" : "rotate-0"
-                      }`}
+                      className={
+                        openDropdown === index ? "rotate-45" : ""
+                      }
                     />
                   </button>
                 )}
               </div>
 
+              {/* Dropdown items */}
               {dropdown && openDropdown === index && (
-                <ul className="mt-2 rounded-md p-2 transition-all duration-300 ease-in-out">
+                <div className="mt-2 pl-3">
                   {dropdown.map((item) => (
-                    <li key={item.href}>
-                      <Link
-                        href={item.href}
-                        className="block py-2 text-black transition-colors hover:text-[#ffffff]"
-                        onClick={() => setMenuOpen(false)}
-                      >
-                        {item.name}
-                      </Link>
-                    </li>
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="block py-2 text-[#f7ede3] hover:text-[#ffb27d]"
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
                   ))}
-                </ul>
+                </div>
               )}
             </div>
           ))}
 
+          {/* Contact button */}
           <Link
             href="/contact-us"
-            className="mt-3 inline-flex w-full items-center justify-center rounded-md bg-[#dd5500] px-4 py-3 font-medium text-white transition-colors hover:bg-[#c54400]"
+            className="block text-center bg-[#dd5500] text-white py-3 rounded-md"
             onClick={() => setMenuOpen(false)}
           >
             Contact Us
           </Link>
         </div>
       </div>
-      </nav>
+    </nav>
   );
 }
