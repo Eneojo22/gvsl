@@ -114,7 +114,7 @@ export default function Navbar() {
           >
             <Link href="/" className="shrink-0">
               <Image
-                src="/image/G___V_SUPPORT_SERVICE_ltd__7_-removebg-preview.png"
+                src="/image/G & V SUPPORT SERVICE ltd (2).png"
                 height={50}
                 width={80}
                 alt="GVSS Logo"
