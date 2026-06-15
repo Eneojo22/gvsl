@@ -35,9 +35,9 @@ const teamMembers: TeamMember[] = [
     bio: 'HR and operations strategist dedicated to optimizing talent, strengthening organizational performance, and driving team synergy',
   },
   {
-    name: 'Wisdom Ugwu',
+    name: 'Daniel Adewole',
     title: 'Accountant',
-    image: '/image/team-pic/wisdompic.jpg',
+    image: '/image/team-pic/',
     bio: 'Finance lead delivering transparent financial reporting, compliance, and effective cashflow management.',
   },
   {
