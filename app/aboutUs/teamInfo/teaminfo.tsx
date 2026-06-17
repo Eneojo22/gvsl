@@ -37,7 +37,7 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Daniel Adewole',
     title: 'Accountant',
-    image: '/image/team-pic/',
+    image: '/image/team-pic/daniel.jpeg',
     bio: 'Finance lead delivering transparent financial reporting, compliance, and effective cashflow management.',
   },
   {
