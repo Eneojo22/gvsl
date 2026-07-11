@@ -33,8 +33,8 @@ const navLinks = [
     dropdown: [
       { name: "Orientation", href: "/services/orientation" },
       { name: "Airport Meet and Greet", href: "/services/airportmeetandgreet" },
-      { name: "LeadWood Homes", href: "/services/leadwoodhomes" },
-      { name: "LeadWood Furniture", href: "/services/leadwoodfurniture" },
+      // { name: "LeadWood Homes", href: "/services/leadwoodhomes" },
+      // { name: "LeadWood Furniture", href: "/services/leadwoodfurniture" },
       { name: "Departure Services", href: "/services/departureservices" },
       { name: "Chauffeur Services", href: "/services/rentals" },
     ],
@@ -133,7 +133,7 @@ export default function Navbar() {
           >
             <Link href="/">
               <Image
-                src="/image/logoooo.png"
+                src="/image/G & V SUPPORT SERVICE ltd (1).png"
                 width={80}
                 height={50}
                 alt="GVSS Logo"
