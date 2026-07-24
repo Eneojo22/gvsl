@@ -106,9 +106,9 @@ export default function Navbar() {
 
   /* Navbar background */
   const navSurfaceClass = useElevatedNavbar
-    ? "bg-[#000000] border-b border-white/10 backdrop-blur-md shadow-lg"
+    ? "bg-[#000000] border-b  backdrop-blur-md shadow-lg"
     : useWarmHomeNavbar
-    ? "bg-[#000]/85 border-b border-[#ead8c8] backdrop-blur-md shadow-md"
+    ? "bg-[#000] border-b border-[#ead8c8] backdrop-blur-md shadow-md"
     : "bg-transparent";
 
   /* Contact button */
@@ -119,7 +119,7 @@ export default function Navbar() {
   /* ================= UI ================= */
   return (
     <nav
-      className={`fixed top-0 left-0 z-50 w-full transition-all duration-300 ${navSurfaceClass}`}
+      className={`fixed top-0 left-0 z-50 w-full  transition-all duration-300 ${navSurfaceClass}`}
     >
       <div className="mx-auto flex items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
 
