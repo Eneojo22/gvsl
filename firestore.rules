@@ -1,0 +1,69 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helpers
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn();
+    }
+
+    function isValidProject(data) {
+      return (!data.keys().hasAll(['title']) || (data.title is string && data.title.size() <= 500)) &&
+             (!data.keys().hasAll(['image']) || (data.image is string && data.image.size() <= 2000000)) &&
+             (!data.keys().hasAll(['type']) || (data.type in ['portfolio', 'home', 'furniture'])) &&
+             (!data.keys().hasAll(['category']) || (data.category is string && data.category.size() <= 300)) &&
+             (!data.keys().hasAll(['description']) || (data.description is string && data.description.size() <= 10000)) &&
+             (!data.keys().hasAll(['location']) || (data.location is string && data.location.size() <= 500)) &&
+             (!data.keys().hasAll(['size']) || (data.size is string && data.size.size() <= 100)) &&
+             (!data.keys().hasAll(['before']) || (data.before is string && data.before.size() <= 2000000)) &&
+             (!data.keys().hasAll(['after']) || (data.after is string && data.after.size() <= 2000000)) &&
+             (!data.keys().hasAll(['portfolioType']) || (data.portfolioType is string && data.portfolioType.size() <= 300)) &&
+             (!data.keys().hasAll(['client']) || (data.client is string && data.client.size() <= 500)) &&
+             (!data.keys().hasAll(['testimonial']) || (data.testimonial is string && data.testimonial.size() <= 5000)) &&
+             (!data.keys().hasAll(['tower']) || (data.tower is string && data.tower.size() <= 300)) &&
+             (!data.keys().hasAll(['rentBuy']) || (data.rentBuy is string && data.rentBuy.size() <= 100)) &&
+             (!data.keys().hasAll(['unitType']) || (data.unitType is string && data.unitType.size() <= 300)) &&
+             (!data.keys().hasAll(['price']) || (data.price is string && data.price.size() <= 100)) &&
+             (!data.keys().hasAll(['promoPrice']) || (data.promoPrice is string && data.promoPrice.size() <= 100)) &&
+             (!data.keys().hasAll(['dimensions']) || (data.dimensions is string && data.dimensions.size() <= 300)) &&
+             (!data.keys().hasAll(['material']) || (data.material is string && data.material.size() <= 500)) &&
+             (!data.keys().hasAll(['condition']) || (data.condition is string && data.condition.size() <= 100)) &&
+             (!data.keys().hasAll(['isFurniture']) || (data.isFurniture is bool)) &&
+             (!data.keys().hasAll(['isRoom']) || (data.isRoom is bool)) &&
+             (!data.keys().hasAll(['inStock']) || (data.inStock is bool)) &&
+             (!data.keys().hasAll(['colors']) || (data.colors is string && data.colors.size() <= 1000));
+    }
+
+    function isValidLead(data) {
+      return (!data.keys().hasAll(['name']) || (data.name is string && data.name.size() <= 300)) &&
+             (!data.keys().hasAll(['email']) || (data.email is string && data.email.size() <= 300)) &&
+             (!data.keys().hasAll(['description']) || (data.description is string && data.description.size() <= 10000)) &&
+             (!data.keys().hasAll(['message']) || (data.message is string && data.message.size() <= 10000));
+    }
+
+    match /projects/{projectId} {
+      allow read: if true; // Publicly viewable catalog
+      allow create: if isSignedIn() && isValidProject(request.resource.data);
+      allow update: if isSignedIn() && isValidProject(request.resource.data);
+      allow delete: if isSignedIn();
+    }
+
+    match /admins/{adminId} {
+      allow read: if isSignedIn();
+      allow write: if isSignedIn();
+    }
+
+    match /leads/{leadId} {
+      allow create: if true; // Public inquiry submission
+      allow read, update, delete: if isSignedIn();
+    }
+  }
+}

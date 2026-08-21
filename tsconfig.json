@@ -1,43 +1,26 @@
 {
   "compilerOptions": {
-    "target": "esnext", // Modern JS features
+    "target": "ES2022",
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false,
+    "module": "ESNext",
     "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
     ],
-    "allowJs": true, // Allow JS files
-    "skipLibCheck": true, // Skip type checking for libraries
-    "strict": true, // Enable strict type checking
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true, // Don’t output JS files
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true, // For Next.js and Babel
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "allowJs": true,
     "jsx": "react-jsx",
-    "incremental": true, // Faster builds
-    "baseUrl": ".",
     "paths": {
       "@/*": [
         "./*"
       ]
     },
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
-  },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+    "allowImportingTsExtensions": true,
+    "noEmit": true
+  }
 }
