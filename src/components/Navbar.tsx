@@ -69,7 +69,7 @@ export function Navbar() {
             : 'bg-transparent text-black'
         }`}
       >
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-8   h-30">
           <Link 
             to="/" 
             className="flex items-center gap-4 p-2 pl-4 hover:opacity-75 transition-all text-left"
@@ -77,8 +77,8 @@ export function Navbar() {
           >
             <Logo className={isFurniturePage ? 'brightness-50 saturate-100 font-bold text-orange-500' : ''} />
             <div className="flex flex-col -gap-1">
-              <span className={`text-[13px] font-extrabold tracking-tighter uppercase leading-none ${isFurniturePage ? 'text-black' : 'text-black'}`}>G&V Support</span>
-              <span className={`text-[8px] font-bold uppercase tracking-[0.2em] leading-none ${isFurniturePage ? 'text-orange-500 opacity-90' : 'text-orange-500 opacity-80'}`}>Services Limited</span>
+              <span className={`text-[16px] md:text-[20px] font-extrabold tracking-tighter uppercase leading-none ${isFurniturePage ? 'text-black' : 'text-black'}`}>G&V Support</span>
+              <span className={`text-[14px] md:text-[16px] font-bold uppercase tracking-[0.2em] leading-none ${isFurniturePage ? 'text-orange-500 opacity-90' : 'text-orange-500 opacity-80'}`}>Services Limited</span>
             </div>
           </Link>
         </div>
